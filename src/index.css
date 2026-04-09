@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #F4F7FE;
+  --primary: #2B3674;
+  --secondary: #4318FF;
+  --secondary-container: #E9E3FF;
+  --surface-container-low: #FFFFFF;
+  --surface-container: #F4F7FE;
+  --surface-container-high: #EAEBEE;
+  --surface-container-highest: #DFE0E4;
+  --surface-bright: #FFFFFF;
+  --on-surface: #2B3674;
+  --outline-variant: #E0E5F2;
+  --sidebar-bg: #4318FF;
+  --sidebar-text: #FFFFFF;
+  --sidebar-text-muted: rgba(255, 255, 255, 0.7);
+}
+
+.dark {
+  --background: #0B1437;
+  --primary: #FFFFFF;
+  --secondary: #7551FF;
+  --secondary-container: #111C44;
+  --surface-container-low: #111C44;
+  --surface-container: #1B254B;
+  --surface-container-high: #2B3674;
+  --surface-container-highest: #323440;
+  --surface-bright: #111C44;
+  --on-surface: #FFFFFF;
+  --outline-variant: #2B3674;
+  --sidebar-bg: #111C44;
+  --sidebar-text: #FFFFFF;
+  --sidebar-text-muted: rgba(255, 255, 255, 0.7);
+}
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Figtree", sans-serif;
+  --font-body: "Figtree", sans-serif;
+  --font-label: "Figtree", sans-serif;
+
+  --color-background: var(--background);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-bright: var(--surface-bright);
+  --color-on-surface: var(--on-surface);
+  --color-outline-variant: var(--outline-variant);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-text: var(--sidebar-text);
+  --color-sidebar-text-muted: var(--sidebar-text-muted);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-4xl: 40px;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-primary font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .editorial-shadow {
+    box-shadow: 0 10px 30px -10px rgba(63, 25, 156, 0.1);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
