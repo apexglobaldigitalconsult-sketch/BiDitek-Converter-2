@@ -32,6 +32,7 @@ import DueDateCalculator from './pages/DueDateCalculator';
 import ScientificCalculator from './pages/ScientificCalculator';
 import FractionCalculator from './pages/FractionCalculator';
 import PercentageCalculator from './pages/PercentageCalculator';
+import RandomGenerator from './pages/RandomGenerator';
 import { ThemeProvider } from './lib/ThemeContext';
 
 export default function App() {
@@ -76,7 +77,7 @@ export default function App() {
             <Route path="/calculators/scientific" element={<ScientificCalculator />} />
             <Route path="/calculators/fraction" element={<FractionCalculator />} />
             <Route path="/calculators/percentage" element={<PercentageCalculator />} />
-            <Route path="/calculators/random" element={<GenericCalculator title="Random Number Generator" category="Math" />} />
+            <Route path="/calculators/random" element={<RandomGenerator />} />
             <Route path="/calculators/triangle" element={<GenericCalculator title="Triangle Calculator" category="Math" />} />
             <Route path="/calculators/std-dev" element={<GenericCalculator title="Standard Deviation" category="Math" />} />
 
