@@ -33,6 +33,17 @@ import ScientificCalculator from './pages/ScientificCalculator';
 import FractionCalculator from './pages/FractionCalculator';
 import PercentageCalculator from './pages/PercentageCalculator';
 import RandomGenerator from './pages/RandomGenerator';
+import TriangleCalculator from './pages/TriangleCalculator';
+import StdDevCalculator from './pages/StdDevCalculator';
+import AgeCalculator from './pages/AgeCalculator';
+import DateCalculator from './pages/DateCalculator';
+import TimeCalculator from './pages/TimeCalculator';
+import GPACalculator from './pages/GPACalculator';
+import GradeCalculator from './pages/GradeCalculator';
+import ConcreteCalculator from './pages/ConcreteCalculator';
+import SubnetCalculator from './pages/SubnetCalculator';
+import PasswordGenerator from './pages/PasswordGenerator';
+import ConversionCalculator from './pages/ConversionCalculator';
 import { ThemeProvider } from './lib/ThemeContext';
 
 export default function App() {
@@ -78,20 +89,19 @@ export default function App() {
             <Route path="/calculators/fraction" element={<FractionCalculator />} />
             <Route path="/calculators/percentage" element={<PercentageCalculator />} />
             <Route path="/calculators/random" element={<RandomGenerator />} />
-            <Route path="/calculators/triangle" element={<GenericCalculator title="Triangle Calculator" category="Math" />} />
-            <Route path="/calculators/std-dev" element={<GenericCalculator title="Standard Deviation" category="Math" />} />
+            <Route path="/calculators/triangle" element={<TriangleCalculator />} />
+            <Route path="/calculators/std-dev" element={<StdDevCalculator />} />
 
             {/* Other Calculators */}
-            <Route path="/calculators/age" element={<GenericCalculator title="Age Calculator" category="Other" />} />
-            <Route path="/calculators/date" element={<GenericCalculator title="Date Calculator" category="Other" />} />
-            <Route path="/calculators/time" element={<GenericCalculator title="Time Calculator" category="Other" />} />
-            <Route path="/calculators/hours" element={<GenericCalculator title="Hours Calculator" category="Other" />} />
-            <Route path="/calculators/gpa" element={<GenericCalculator title="GPA Calculator" category="Other" />} />
-            <Route path="/calculators/grade" element={<GenericCalculator title="Grade Calculator" category="Other" />} />
-            <Route path="/calculators/concrete" element={<GenericCalculator title="Concrete Calculator" category="Other" />} />
-            <Route path="/calculators/subnet" element={<GenericCalculator title="Subnet Calculator" category="Other" />} />
-            <Route path="/calculators/password" element={<GenericCalculator title="Password Generator" category="Other" />} />
-            <Route path="/calculators/conversion" element={<GenericCalculator title="Conversion Calculator" category="Other" />} />
+            <Route path="/calculators/age" element={<AgeCalculator />} />
+            <Route path="/calculators/date" element={<DateCalculator />} />
+            <Route path="/calculators/time" element={<TimeCalculator />} />
+            <Route path="/calculators/gpa" element={<GPACalculator />} />
+            <Route path="/calculators/grade" element={<GradeCalculator />} />
+            <Route path="/calculators/concrete" element={<ConcreteCalculator />} />
+            <Route path="/calculators/subnet" element={<SubnetCalculator />} />
+            <Route path="/calculators/password" element={<PasswordGenerator />} />
+            <Route path="/calculators/conversion" element={<ConversionCalculator />} />
 
             <Route path="/sitemap" element={<Sitemap />} />
           </Routes>

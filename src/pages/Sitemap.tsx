@@ -63,7 +63,6 @@ export default function Sitemap() {
         { name: 'Age Calculator', path: '/calculators/age' },
         { name: 'Date Calculator', path: '/calculators/date' },
         { name: 'Time Calculator', path: '/calculators/time' },
-        { name: 'Hours Calculator', path: '/calculators/hours' },
         { name: 'GPA Calculator', path: '/calculators/gpa' },
         { name: 'Grade Calculator', path: '/calculators/grade' },
         { name: 'Concrete Calculator', path: '/calculators/concrete' },
