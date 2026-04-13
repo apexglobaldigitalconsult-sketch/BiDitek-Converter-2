@@ -17,7 +17,9 @@ import {
   FileText,
   DollarSign,
   Divide,
-  Monitor
+  Monitor,
+  MapPin,
+  SlidersHorizontal
 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
@@ -119,29 +121,24 @@ export default function Layout({ children }: LayoutProps) {
       {/* Sidebar Navigation */}
       <aside className="hidden lg:flex flex-col w-[280px] fixed inset-y-0 left-0 bg-sidebar-bg text-sidebar-text z-50 overflow-y-auto no-scrollbar">
         <div className="px-8 py-8 flex items-center gap-3">
-          <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-white font-bold text-2xl">
-            J
-          </div>
-          <span className="text-2xl font-bold tracking-tight text-primary dark:text-white">
-            Jobie
-          </span>
+          <Link to="/" className="flex items-center">
+            {theme === 'dark' ? (
+              <img 
+                src="https://i.ibb.co/Vpj2fw6G/Bid-Itek-converter-dark-mode-logo.png" 
+                alt="Bi-Dtek Converter" 
+                className="h-8 w-auto object-contain" 
+                referrerPolicy="no-referrer" 
+                onError={(e) => {
+                  e.currentTarget.src = "https://i.ibb.co/6JwtYnkr/Bid-Itek-converter-light-mode-logo.png";
+                }}
+              />
+            ) : (
+              <img src="https://i.ibb.co/6JwtYnkr/Bid-Itek-converter-light-mode-logo.png" alt="Bi-Dtek Converter" className="h-8 w-auto object-contain" referrerPolicy="no-referrer" />
+            )}
+          </Link>
         </div>
         
         <nav className="flex-1 space-y-2 mt-4 pl-6">
-          {/* Dashboard Link */}
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              cn(
-                "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
-              )
-            }
-          >
-            <Calculator className="w-5 h-5" />
-            Dashboard
-          </NavLink>
-
           {/* Converters Section */}
           <div className="pt-2">
             <button 
@@ -262,17 +259,34 @@ export default function Layout({ children }: LayoutProps) {
             >
               <Menu className="w-6 h-6" />
             </button>
-            <h1 className="text-2xl font-bold text-primary hidden md:block">Dashboard</h1>
           </div>
 
-          <div className="hidden md:flex items-center flex-1 max-w-xl mx-8">
-            <div className="w-full flex items-center bg-surface-container-low shadow-sm px-6 py-3.5 rounded-full border border-outline-variant/50 focus-within:shadow-md focus-within:border-secondary/30 transition-all">
-              <Search className="w-5 h-5 text-primary/40" />
-              <input 
-                type="text" 
-                placeholder="Search something here..." 
-                className="bg-transparent border-none focus:ring-0 text-sm w-full font-body placeholder:text-primary/40 ml-3 text-primary outline-none"
-              />
+          <div className="hidden md:flex items-center flex-1 max-w-3xl mx-8">
+            <div className="w-full bg-surface-container-low rounded-full p-2 flex items-center shadow-sm border border-outline-variant/50">
+              <button className="flex items-center gap-2 px-6 py-2 text-primary/70 hover:text-primary transition-colors border-r border-outline-variant/50">
+                <MapPin className="w-5 h-5 text-secondary" />
+                <span className="font-medium text-sm whitespace-nowrap">All Categories</span>
+                <ChevronDown className="w-4 h-4 ml-2" />
+              </button>
+              
+              <div className="flex-1 flex items-center px-6">
+                <input 
+                  type="text" 
+                  placeholder="Search by Title, Category or any tool keyword..."
+                  className="w-full bg-transparent border-none focus:ring-0 text-sm font-body placeholder:text-primary/40 text-primary outline-none"
+                />
+              </div>
+
+              <div className="flex items-center gap-3 pr-2">
+                <button className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-background text-primary/70 font-medium text-sm hover:bg-outline-variant/50 transition-colors">
+                  <SlidersHorizontal className="w-4 h-4" />
+                  FILTER
+                </button>
+                <button className="flex items-center gap-2 px-8 py-2.5 rounded-full bg-secondary text-white font-medium text-sm hover:opacity-90 transition-opacity shadow-md">
+                  <Search className="w-4 h-4" />
+                  FIND
+                </button>
+              </div>
             </div>
           </div>
 
@@ -284,23 +298,6 @@ export default function Layout({ children }: LayoutProps) {
             >
               {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
-            <button className="p-3 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary/60 hover:text-secondary hover:shadow-sm transition-all relative">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-secondary text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-surface-container-low">18</span>
-            </button>
-            <button className="p-3 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary/60 hover:text-secondary hover:shadow-sm transition-all relative">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-secondary text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-surface-container-low">52</span>
-            </button>
-            <div className="flex items-center gap-3 ml-2">
-              <div className="text-right hidden sm:block">
-                <div className="text-sm font-bold text-primary">Oda Dink</div>
-                <div className="text-[10px] text-primary/50">Super Admin</div>
-              </div>
-              <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary font-bold overflow-hidden">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Oda" alt="User" className="w-full h-full object-cover" />
-              </div>
-            </div>
           </div>
         </header>
 
@@ -321,12 +318,21 @@ export default function Layout({ children }: LayoutProps) {
           >
             <div className="p-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  J
-                </div>
-                <span className="text-xl font-bold text-primary dark:text-white">
-                  Jobie
-                </span>
+                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center">
+                  {theme === 'dark' ? (
+                    <img 
+                      src="https://i.ibb.co/Vpj2fw6G/Bid-Itek-converter-dark-mode-logo.png" 
+                      alt="Bi-Dtek Converter" 
+                      className="h-8 w-auto object-contain" 
+                      referrerPolicy="no-referrer" 
+                      onError={(e) => {
+                        e.currentTarget.src = "https://i.ibb.co/6JwtYnkr/Bid-Itek-converter-light-mode-logo.png";
+                      }}
+                    />
+                  ) : (
+                    <img src="https://i.ibb.co/6JwtYnkr/Bid-Itek-converter-light-mode-logo.png" alt="Bi-Dtek Converter" className="h-8 w-auto object-contain" referrerPolicy="no-referrer" />
+                  )}
+                </Link>
               </div>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -338,20 +344,6 @@ export default function Layout({ children }: LayoutProps) {
             
             {/* Repeat mobile nav items similar to desktop sidebar */}
             <nav className="flex-1 space-y-1 mt-4 pl-4">
-              <NavLink
-                to="/"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  cn(
-                    "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
-                  )
-                }
-              >
-                <Calculator className="w-5 h-5" />
-                Dashboard
-              </NavLink>
-              
               <NavLink
                 to="/converters"
                 onClick={() => setIsMobileMenuOpen(false)}

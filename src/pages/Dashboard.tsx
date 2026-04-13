@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, MapPin, ChevronDown, SlidersHorizontal, Image as ImageIcon, FileText, File as FileIcon, HeartPulse, Wallet, Cake, List, Grid, Repeat, Ruler, DollarSign, Divide, Monitor } from 'lucide-react';
+import { Image as ImageIcon, FileText, File as FileIcon, HeartPulse, Wallet, Cake, Repeat, Ruler, DollarSign, Divide, Monitor } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 import { Link } from 'react-router-dom';
@@ -72,35 +72,8 @@ export default function Dashboard() {
     <div className="space-y-8 pb-24 max-w-[1400px] mx-auto">
       {/* Search Section */}
       <section className="w-full">
-        <div className="bg-surface-container-low rounded-full p-2 flex items-center shadow-sm border border-outline-variant/50">
-          <button className="flex items-center gap-2 px-6 py-3 text-primary/70 hover:text-primary transition-colors border-r border-outline-variant/50">
-            <MapPin className="w-5 h-5 text-secondary" />
-            <span className="font-medium text-sm">All Categories</span>
-            <ChevronDown className="w-4 h-4 ml-2" />
-          </button>
-          
-          <div className="flex-1 flex items-center px-6">
-            <input 
-              type="text" 
-              placeholder="Search by Title, Category or any tool keyword..."
-              className="w-full bg-transparent border-none focus:ring-0 text-sm font-body placeholder:text-primary/40 text-primary outline-none"
-            />
-          </div>
-
-          <div className="flex items-center gap-3 pr-2">
-            <button className="flex items-center gap-2 px-6 py-3 rounded-full bg-background text-primary/70 font-medium text-sm hover:bg-outline-variant/50 transition-colors">
-              <SlidersHorizontal className="w-4 h-4" />
-              FILTER
-            </button>
-            <button className="flex items-center gap-2 px-8 py-3 rounded-full bg-secondary text-white font-medium text-sm hover:opacity-90 transition-opacity shadow-md">
-              <Search className="w-4 h-4" />
-              FIND
-            </button>
-          </div>
-        </div>
-
         {/* Suggestions */}
-        <div className="flex items-center gap-4 mt-6 px-2">
+        <div className="flex items-center gap-4 px-2">
           <span className="text-sm text-primary/40 font-medium">Suggestions</span>
           <div className="flex gap-3">
             <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
@@ -118,62 +91,6 @@ export default function Dashboard() {
             <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
               Health
             </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Results Header */}
-      <section className="flex items-center justify-between pt-4">
-        <div>
-          <h2 className="text-lg font-bold text-primary">Showing 246 Tools Results</h2>
-          <p className="text-sm text-primary/40">Based your preferences</p>
-        </div>
-
-        <div className="flex items-center gap-8">
-          <div className="flex items-center gap-6">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <div className="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
-                <div className="w-2.5 h-2.5 rounded-full bg-transparent"></div>
-              </div>
-              <span className="text-sm font-medium text-primary/70">Free</span>
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <div className="w-5 h-5 rounded-full border-2 border-secondary flex items-center justify-center">
-                <div className="w-2.5 h-2.5 rounded-full bg-secondary"></div>
-              </div>
-              <span className="text-sm font-medium text-primary">Pro</span>
-            </label>
-          </div>
-
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-medium text-primary/70">Details</span>
-              <div className="w-10 h-5 bg-outline-variant rounded-full relative cursor-pointer">
-                <div className="w-4 h-4 bg-white rounded-full absolute left-0.5 top-0.5 shadow-sm"></div>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-medium text-primary/70">Advanced</span>
-              <div className="w-10 h-5 bg-secondary rounded-full relative cursor-pointer">
-                <div className="w-4 h-4 bg-white rounded-full absolute right-0.5 top-0.5 shadow-sm"></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-sm font-medium text-primary/70">
-              <List className="w-4 h-4" />
-              Newest
-              <ChevronDown className="w-4 h-4 ml-1" />
-            </button>
-            <div className="flex bg-surface-container-low rounded-full p-1 border border-outline-variant/50">
-              <button className="p-2 rounded-full text-primary/40 hover:text-primary">
-                <List className="w-4 h-4" />
-              </button>
-              <button className="p-2 rounded-full bg-secondary text-white shadow-sm">
-                <Grid className="w-4 h-4" />
-              </button>
-            </div>
           </div>
         </div>
       </section>
