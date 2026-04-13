@@ -54,10 +54,10 @@ export default function RandomGenerator() {
             <button
               key={tab.id}
               onClick={() => setMode(tab.id)}
-              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
+              className={`flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider rounded-[1px] whitespace-nowrap transition-all ${
                 mode === tab.id
-                  ? 'bg-indigo-50 dark:bg-secondary/30 text-indigo-600 dark:text-secondary'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                  ? 'bg-primary text-background shadow-md'
+                  : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'
               }`}
             >
               <Icon className="w-4 h-4" />

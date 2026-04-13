@@ -64,8 +64,8 @@ export default function PasswordGenerator() {
             onClick={() => setActiveTab(tab.id)}
             className={`px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all rounded-[1px] ${
               activeTab === tab.id 
-                ? 'bg-primary text-surface shadow-md' 
-                : 'bg-surface-container text-primary/50 hover:text-primary hover:bg-outline-variant/20'
+                ? 'bg-primary text-background shadow-md' 
+                : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'
             }`}
           >
             {tab.label}

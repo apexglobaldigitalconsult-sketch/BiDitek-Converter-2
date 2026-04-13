@@ -80,14 +80,14 @@ export function WeightedMode({ scale }: { scale: GradeScale[] }) {
         ))}
       </div>
       <div className="flex flex-wrap gap-3">
-        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-secondary bg-indigo-50 dark:bg-secondary/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Category</button>
+        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-primary bg-primary/10 hover:bg-primary/20 hover:text-secondary rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Category</button>
         <button onClick={clear} className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors">Clear All</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl font-medium border border-red-100 dark:border-red-800/50">{error}</div>}
       <button onClick={calculate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Grade</button>
 
       {result && (
-        <div className="mt-8 p-6 bg-indigo-50 dark:bg-secondary/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
+        <div className="mt-8 p-6 bg-primary/5 rounded-2xl border border-outline-variant/30">
           <div className="text-center mb-6">
             <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Weighted Final Grade</p>
             <div className="text-5xl font-black text-slate-900 dark:text-white mb-2">{result.finalPct.toFixed(2)}%</div>
@@ -219,7 +219,7 @@ export function GPAMode() {
         ))}
       </div>
       <div className="flex flex-wrap gap-3">
-        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-secondary bg-indigo-50 dark:bg-secondary/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Course</button>
+        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-primary bg-primary/10 hover:bg-primary/20 hover:text-secondary rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Course</button>
         <button onClick={clear} className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors">Clear All</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl font-medium border border-red-100 dark:border-red-800/50">{error}</div>}
@@ -227,7 +227,7 @@ export function GPAMode() {
 
       {result && (
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 bg-indigo-50 dark:bg-secondary/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50 text-center">
+          <div className="p-6 bg-primary/5 rounded-2xl border border-outline-variant/30 text-center">
             <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Semester GPA</p>
             <div className="text-5xl font-black text-slate-900 dark:text-white mb-2">{result.semGpa.toFixed(2)}</div>
             <p className="text-slate-600 dark:text-slate-300 text-sm">Based on {result.semCreds} credits</p>
@@ -310,7 +310,7 @@ export function FinalExamMode({ scale }: { scale: GradeScale[] }) {
       <button onClick={calculate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Required Score</button>
 
       {result && (
-        <div className={`mt-8 p-6 rounded-2xl border ${result.possible ? 'bg-indigo-50 dark:bg-secondary/20 border-indigo-100 dark:border-indigo-800/50' : 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800/50'}`}>
+        <div className={`mt-8 p-6 rounded-2xl border ${result.possible ? 'bg-primary/5 border-outline-variant/30' : 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800/50'}`}>
           <div className="text-center">
             <p className={`text-sm font-bold uppercase tracking-wider mb-2 ${result.possible ? 'text-indigo-600 dark:text-secondary' : 'text-red-600 dark:text-red-400'}`}>Required Final Exam Score</p>
             <div className={`text-5xl font-black mb-2 ${result.possible ? 'text-slate-900 dark:text-white' : 'text-red-600 dark:text-red-400'}`}>
@@ -445,7 +445,7 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
 
       <div className="flex flex-wrap gap-3 items-center justify-between">
         <div className="flex gap-3">
-          <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-secondary bg-indigo-50 dark:bg-secondary/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Assignment</button>
+          <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-primary bg-primary/10 hover:bg-primary/20 hover:text-secondary rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Assignment</button>
           <button onClick={clear} className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors">Clear All</button>
         </div>
         <div className="flex items-center gap-2">
@@ -458,7 +458,7 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
       <button onClick={calculate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Average</button>
 
       {result && (
-        <div className="mt-8 p-6 bg-indigo-50 dark:bg-secondary/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
+        <div className="mt-8 p-6 bg-primary/5 rounded-2xl border border-outline-variant/30">
           <div className="text-center mb-6">
             <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Final Average</p>
             <div className="text-5xl font-black text-slate-900 dark:text-white mb-2">{result.finalPct.toFixed(2)}%</div>

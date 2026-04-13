@@ -162,13 +162,13 @@ export default function PaymentCalculator() {
             <div className="md:col-span-5">
               <div className="flex">
                 <button 
-                  className={`flex-1 py-2 text-sm font-bold rounded-[1px] ${activeTab === 'fixedTerm' ? 'bg-primary text-background' : 'bg-secondary text-white hover:bg-secondary/80'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-[1px] transition-all ${activeTab === 'fixedTerm' ? 'bg-primary text-background shadow-md' : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'}`}
                   onClick={() => setActiveTab('fixedTerm')}
                 >
                   Fixed Term
                 </button>
                 <button 
-                  className={`flex-1 py-2 text-sm font-bold rounded-[1px] ${activeTab === 'fixedPayments' ? 'bg-primary text-background' : 'bg-secondary text-white hover:bg-secondary/80'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-[1px] transition-all ${activeTab === 'fixedPayments' ? 'bg-primary text-background shadow-md' : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'}`}
                   onClick={() => setActiveTab('fixedPayments')}
                 >
                   Fixed Payments

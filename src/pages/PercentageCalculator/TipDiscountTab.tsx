@@ -76,7 +76,7 @@ function TipCalculator() {
           {[10, 15, 18, 20, 25].map(p => {
             const t = valBill * (p/100);
             return (
-              <tr key={p} className={p === valTip ? 'bg-indigo-50 dark:bg-secondary/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
+              <tr key={p} className={p === valTip ? 'bg-primary/10 font-bold text-primary' : 'border-b border-outline-variant/30'}>
                 <td className="p-3">{p}%</td>
                 <td className="p-3">${t.toFixed(2)}</td>
                 <td className="p-3">${(valBill + t).toFixed(2)}</td>
@@ -203,7 +203,7 @@ function DiscountCalculator() {
             const t = a * (valTax/100);
             const f = a + t;
             return (
-              <tr key={p} className={p === valDisc ? 'bg-indigo-50 dark:bg-secondary/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
+              <tr key={p} className={p === valDisc ? 'bg-primary/10 font-bold text-primary' : 'border-b border-outline-variant/30'}>
                 <td className="p-3">{p}%</td>
                 <td className="p-3">${d.toFixed(2)}</td>
                 <td className="p-3">${f.toFixed(2)}</td>

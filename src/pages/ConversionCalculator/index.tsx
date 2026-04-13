@@ -232,13 +232,13 @@ const CategoryConverter: React.FC<CategoryConverterProps> = ({
           <div className="flex bg-surface-container rounded-[1px] p-1">
             <button 
               onClick={() => setDataMode('storage')}
-              className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-[1px] transition-all ${dataMode === 'storage' ? 'bg-primary text-surface shadow-sm' : 'text-primary/50 hover:text-primary'}`}
+              className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-[1px] transition-all ${dataMode === 'storage' ? 'bg-primary text-background shadow-sm' : 'text-primary/50 hover:text-secondary hover:bg-secondary/10'}`}
             >
               Storage Size
             </button>
             <button 
               onClick={() => setDataMode('transfer')}
-              className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-[1px] transition-all ${dataMode === 'transfer' ? 'bg-primary text-surface shadow-sm' : 'text-primary/50 hover:text-primary'}`}
+              className={`px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-[1px] transition-all ${dataMode === 'transfer' ? 'bg-primary text-background shadow-sm' : 'text-primary/50 hover:text-secondary hover:bg-secondary/10'}`}
             >
               Transfer Rate
             </button>
@@ -466,8 +466,8 @@ export default function ConversionCalculator() {
             }}
             className={`px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all rounded-[1px] ${
               activeCategory === cat.id 
-                ? 'bg-primary text-surface shadow-md' 
-                : 'bg-surface-container text-primary/50 hover:text-primary hover:bg-outline-variant/20'
+                ? 'bg-primary text-background shadow-md' 
+                : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'
             }`}
           >
             {cat.label}

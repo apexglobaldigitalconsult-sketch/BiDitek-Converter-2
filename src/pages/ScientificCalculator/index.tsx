@@ -44,10 +44,10 @@ export default function ScientificCalculator() {
                 <button
                   key={tab.id}
                   onClick={() => setMode(tab.id as Mode)}
-                  className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
+                  className={`flex items-center gap-2 px-4 py-3 text-sm font-bold uppercase tracking-wider rounded-[1px] whitespace-nowrap transition-all ${
                     mode === tab.id
-                      ? 'bg-indigo-50 dark:bg-secondary/30 text-indigo-600 dark:text-secondary'
-                      : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                      ? 'bg-primary text-background shadow-md'
+                      : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -70,9 +70,9 @@ export default function ScientificCalculator() {
         {/* Side Panels */}
         <div className="w-full lg:w-80 flex flex-col gap-4">
           <div className="flex bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
-            <button onClick={() => setActivePanel(p => p==='history'?null:'history')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='history'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-secondary':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="History"><History className="w-5 h-5" /></button>
-            <button onClick={() => setActivePanel(p => p==='units'?null:'units')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='units'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-secondary':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="Unit Converter"><ArrowRightLeft className="w-5 h-5" /></button>
-            <button onClick={() => setActivePanel(p => p==='constants'?null:'constants')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='constants'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-secondary':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="Constants"><BookOpen className="w-5 h-5" /></button>
+            <button onClick={() => setActivePanel(p => p==='history'?null:'history')} className={`flex-1 py-2 flex justify-center items-center rounded-[1px] transition-all ${activePanel==='history'?'bg-primary text-background shadow-md':'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'}`} title="History"><History className="w-5 h-5" /></button>
+            <button onClick={() => setActivePanel(p => p==='units'?null:'units')} className={`flex-1 py-2 flex justify-center items-center rounded-[1px] transition-all ${activePanel==='units'?'bg-primary text-background shadow-md':'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'}`} title="Unit Converter"><ArrowRightLeft className="w-5 h-5" /></button>
+            <button onClick={() => setActivePanel(p => p==='constants'?null:'constants')} className={`flex-1 py-2 flex justify-center items-center rounded-[1px] transition-all ${activePanel==='constants'?'bg-primary text-background shadow-md':'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'}`} title="Constants"><BookOpen className="w-5 h-5" /></button>
           </div>
 
           {activePanel === 'history' && (
@@ -189,7 +189,7 @@ function ConstantsPanel() {
               </div>
               <div className="text-xs text-slate-500 mt-1">{c.value} {c.unit}</div>
             </div>
-            <button onClick={() => handleCopy(c.value)} className="p-1.5 rounded-md text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 opacity-0 group-hover:opacity-100 transition-all">
+            <button onClick={() => handleCopy(c.value)} className="p-1.5 rounded-md text-primary/50 hover:text-secondary hover:bg-secondary/10 opacity-0 group-hover:opacity-100 transition-all">
               {copied === c.value ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
             </button>
           </div>

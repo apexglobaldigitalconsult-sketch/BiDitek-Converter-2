@@ -28,7 +28,7 @@ export default function Results({ mode, result }: ResultsProps) {
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
         <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
-          <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+          <div className="p-8 text-center bg-primary/5 border-b border-outline-variant/30">
             <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Result</p>
             <div className={`text-4xl md:text-5xl font-black tracking-tight ${isNegative ? 'text-red-600 dark:text-red-400' : 'text-slate-900 dark:text-white'}`}>
               {sign}{days} <span className="text-2xl text-slate-500">days,</span>{' '}
@@ -127,7 +127,7 @@ export default function Results({ mode, result }: ResultsProps) {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
                 {conversions.map((c: any) => (
-                  <tr key={c.id} className={c.id === toUnit ? 'bg-indigo-50/50 dark:bg-secondary/10' : 'bg-white dark:bg-slate-800'}>
+                  <tr key={c.id} className={c.id === toUnit ? 'bg-primary/10' : 'bg-white dark:bg-slate-800'}>
                     <td className={`py-4 px-6 font-medium ${c.id === toUnit ? 'text-indigo-600 dark:text-secondary' : 'text-slate-700 dark:text-slate-300'}`}>
                       {c.name}
                     </td>
@@ -311,7 +311,7 @@ export default function Results({ mode, result }: ResultsProps) {
       return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
           <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
-            <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+            <div className="p-8 text-center bg-primary/5 border-b border-outline-variant/30">
               <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Total Hours Worked</p>
               <div className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
                 {Math.floor(daily.workedSeconds / 3600)} <span className="text-2xl text-slate-500">h</span>{' '}
@@ -369,7 +369,7 @@ export default function Results({ mode, result }: ResultsProps) {
           </div>
 
           {weekly.hourlyRate > 0 && (
-            <div className="bg-indigo-50 dark:bg-secondary/20 p-6 rounded-2xl shadow-sm border border-indigo-100 dark:border-indigo-800/50 flex flex-wrap justify-around items-center gap-4 text-center">
+            <div className="bg-primary/5 p-6 rounded-2xl shadow-sm border border-outline-variant/30 flex flex-wrap justify-around items-center gap-4 text-center">
               <div>
                 <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-1">Regular Pay</p>
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">${weekly.regularPay.toFixed(2)}</p>

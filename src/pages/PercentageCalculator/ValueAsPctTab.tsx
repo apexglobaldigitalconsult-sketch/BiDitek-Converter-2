@@ -47,7 +47,7 @@ export default function ValueAsPctTab() {
         </thead>
         <tbody>
           {[valY*0.05, valY*0.1, valY*0.25, valY*0.5, valY*0.75, valY].map(v => (
-            <tr key={v} className={v === valX ? 'bg-indigo-50 dark:bg-secondary/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
+            <tr key={v} className={v === valX ? 'bg-primary/10 font-bold text-primary' : 'border-b border-outline-variant/30'}>
               <td className="p-3">{Number.isInteger(v) ? v : v.toFixed(2)}</td>
               <td className="p-3">{((v / valY) * 100).toFixed(2).replace(/\.00$/, '')}%</td>
             </tr>

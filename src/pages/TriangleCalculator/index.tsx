@@ -274,10 +274,10 @@ export default function TriangleCalculator() {
             <button
               key={m}
               onClick={() => handleModeChange(m)}
-              className={`flex-1 py-4 px-6 text-sm font-bold whitespace-nowrap transition-colors ${
+              className={`flex-1 py-4 px-6 text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all rounded-[1px] ${
                 mode === m
-                  ? 'bg-indigo-50 dark:bg-secondary/20 text-indigo-600 dark:text-secondary border-b-2 border-indigo-600 dark:border-secondary'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                  ? 'bg-primary text-background shadow-md'
+                  : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'
               }`}
             >
               {m}

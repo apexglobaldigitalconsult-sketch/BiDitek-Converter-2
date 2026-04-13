@@ -46,7 +46,7 @@ export default function PctOfValueTab() {
         </thead>
         <tbody>
           {[5, 10, 15, 20, 25, 50, 75, 100].map(p => (
-            <tr key={p} className={p === valX ? 'bg-indigo-50 dark:bg-secondary/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
+            <tr key={p} className={p === valX ? 'bg-primary/10 font-bold text-primary' : 'border-b border-outline-variant/30'}>
               <td className="p-3">{p}%</td>
               <td className="p-3">{((p / 100) * valY).toFixed(2).replace(/\.00$/, '')}</td>
             </tr>

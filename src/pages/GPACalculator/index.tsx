@@ -299,10 +299,10 @@ export default function GPACalculator() {
                 setMode(tab.id as Mode);
                 if (tab.id === 'reference') setResult(null); // Clear result to show reference panel
               }}
-              className={`flex-1 min-w-[140px] py-4 px-6 text-sm font-bold whitespace-nowrap transition-colors ${
+              className={`flex-1 min-w-[140px] py-4 px-6 text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all rounded-[1px] ${
                 mode === tab.id
-                  ? 'bg-indigo-50 dark:bg-secondary/20 text-indigo-600 dark:text-secondary border-b-2 border-indigo-600 dark:border-secondary'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                  ? 'bg-primary text-background shadow-md'
+                  : 'bg-surface-container text-primary/50 hover:text-secondary hover:bg-secondary/10'
               }`}
             >
               {tab.label}

@@ -78,7 +78,7 @@ export default function Results({ mode, result }: ResultsProps) {
               </div>
               <div className="h-4 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
                 <div 
-                  className="h-full bg-indigo-500 rounded-full transition-all duration-1000 ease-linear"
+                  className="h-full bg-primary rounded-full transition-all duration-1000 ease-linear"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -93,7 +93,7 @@ export default function Results({ mode, result }: ResultsProps) {
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
       {/* Section 1: Primary Result */}
       <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
-        <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+        <div className="p-8 text-center bg-primary/5 border-b border-outline-variant/30">
           {mode === 'duration' ? (
             <>
               <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">
@@ -175,7 +175,7 @@ export default function Results({ mode, result }: ResultsProps) {
             { label: 'Total Minutes', val: `${formatNum(result.totalUnits.minutes)} minutes`, sci: result.totalUnits.minutes.toExponential(4) },
             { label: 'Total Seconds', val: `${formatNum(result.totalUnits.seconds)} seconds`, sci: result.totalUnits.seconds.toExponential(4) },
           ].map((item, i) => (
-            <div key={i} className={`p-6 ${item.highlight ? 'bg-indigo-50 dark:bg-secondary/20' : 'bg-white dark:bg-slate-800'}`}>
+            <div key={i} className={`p-6 ${item.highlight ? 'bg-primary/5' : 'bg-white dark:bg-slate-800'}`}>
               <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">{item.label}</p>
               <p className={`text-xl font-bold ${item.highlight ? 'text-indigo-600 dark:text-secondary text-2xl' : 'text-slate-900 dark:text-white'}`}>
                 {item.val}

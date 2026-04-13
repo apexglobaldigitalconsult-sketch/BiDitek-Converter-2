@@ -43,7 +43,6 @@ export default function Layout({ children }: LayoutProps) {
 
   const convertersItems = [
     { name: 'File Converter', path: '/converters' },
-    { name: 'Unit Converter', path: '/converters' },
   ];
 
   const calculatorsCategories = [
@@ -165,8 +164,8 @@ export default function Layout({ children }: LayoutProps) {
                       to={item.path}
                       className={({ isActive }) =>
                         cn(
-                          "flex items-center pl-[3.25rem] pr-6 py-3 text-sm font-medium transition-all relative rounded-l-full",
-                          isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
+                          "flex items-center pl-[3.25rem] pr-6 py-3 text-sm font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                          isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                         )
                       }
                     >
@@ -221,8 +220,8 @@ export default function Layout({ children }: LayoutProps) {
                                 to={item.path}
                                 className={({ isActive }) =>
                                   cn(
-                                    "flex items-center pl-16 pr-6 py-2.5 text-sm font-medium transition-all relative rounded-l-full",
-                                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
+                                    "flex items-center pl-16 pr-6 py-2.5 text-sm font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                                    isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                                   )
                                 }
                               >
@@ -349,8 +348,8 @@ export default function Layout({ children }: LayoutProps) {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
+                    "flex items-center gap-4 px-6 py-4 text-base font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                    isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                   )
                 }
               >
@@ -363,8 +362,8 @@ export default function Layout({ children }: LayoutProps) {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
+                    "flex items-center gap-4 px-6 py-4 text-base font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                    isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                   )
                 }
               >

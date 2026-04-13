@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
-import Converters from './pages/Converters';
 import Calculators from './pages/Calculators';
 import BMICalculator from './pages/BMICalculator';
 import MortgageCalculator from './pages/MortgageCalculator';
@@ -53,7 +52,6 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/converters" element={<Converters />} />
             <Route path="/calculators" element={<Calculators />} />
             
             {/* Financial Calculators */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image as ImageIcon, FileText, File as FileIcon, HeartPulse, Wallet, Cake, Repeat, Ruler, DollarSign, Divide, Monitor } from 'lucide-react';
+import { ArrowRightLeft, RefreshCw, Repeat, Calculator, DollarSign } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ const popularTools = [
     title: 'Image Converter',
     salary: '',
     desc: 'Convert between JPG, PNG, WebP and more',
-    icon: ImageIcon,
+    icon: ArrowRightLeft,
     iconColor: 'bg-blue-600',
     tag: 'POPULAR',
     location: ''
@@ -21,7 +21,7 @@ const popularTools = [
     title: 'File Converter',
     salary: '',
     desc: 'Transform any file format instantly',
-    icon: FileIcon,
+    icon: RefreshCw,
     iconColor: 'bg-orange-500',
     tag: 'POPULAR',
     location: ''
@@ -31,7 +31,7 @@ const popularTools = [
     title: 'PDF Converter',
     salary: '',
     desc: 'PDF to Word, Excel, and more',
-    icon: FileText,
+    icon: Repeat,
     iconColor: 'bg-pink-500',
     tag: '',
     location: ''
@@ -41,7 +41,7 @@ const popularTools = [
     title: 'BMI Calculator',
     salary: '',
     desc: 'Check your body mass index',
-    icon: HeartPulse,
+    icon: Calculator,
     iconColor: 'bg-green-500',
     tag: 'POPULAR',
     location: ''
@@ -51,7 +51,7 @@ const popularTools = [
     title: 'Loan Calculator',
     salary: '',
     desc: 'Calculate monthly payments and interest',
-    icon: Wallet,
+    icon: DollarSign,
     iconColor: 'bg-teal-400',
     tag: '',
     location: ''
@@ -61,7 +61,7 @@ const popularTools = [
     title: 'Age Calculator',
     salary: '',
     desc: 'Find out your exact age in years, months, days',
-    icon: Cake,
+    icon: Calculator,
     iconColor: 'bg-green-500',
     tag: '',
     location: ''

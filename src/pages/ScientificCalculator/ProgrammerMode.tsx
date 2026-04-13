@@ -129,8 +129,8 @@ export default function ProgrammerMode() {
         </div>
 
         {bitResult !== null && (
-          <div className="p-4 rounded-lg bg-indigo-50 dark:bg-secondary/20 border border-indigo-100 dark:border-indigo-800/30">
-            <div className="text-sm text-indigo-600 dark:text-secondary mb-2 font-medium">Result</div>
+          <div className="p-4 rounded-[1px] bg-primary/5 border border-outline-variant/30">
+            <div className="text-sm text-primary mb-2 font-bold uppercase tracking-wider">Result</div>
             <div className="grid grid-cols-[40px_1fr] gap-2 text-sm">
               <span className="font-bold text-slate-500">DEC</span><span className="font-mono text-slate-900 dark:text-white">{bitResult}</span>
               <span className="font-bold text-slate-500">HEX</span><span className="font-mono text-slate-900 dark:text-white">{formatValue(bitResult, 16)}</span>
