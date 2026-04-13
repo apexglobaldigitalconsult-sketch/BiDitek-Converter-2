@@ -105,7 +105,7 @@ export default function ScientificCalculator() {
         "h-10 text-[11px] font-bold rounded-[1px] transition-all flex items-center justify-center border border-outline-variant/20",
         variant === 'default' && "bg-surface-container hover:bg-surface-container-high text-primary",
         variant === 'action' && "bg-secondary text-white hover:opacity-90",
-        variant === 'operator' && "bg-primary text-background hover:opacity-90",
+        variant === 'operator' && "bg-secondary text-white shadow-sm hover:bg-secondary/90 dark:bg-background dark:text-primary dark:shadow-none dark:hover:bg-surface-container-low dark:border-outline-variant/20",
         variant === 'function' && "bg-surface-container-high hover:bg-surface-container-highest text-primary/80",
         className
       )}
@@ -115,58 +115,61 @@ export default function ScientificCalculator() {
   );
 
   return (
-    <div className="bg-surface-container-low p-6 rounded-[1px] border border-outline-variant/30 shadow-sm max-w-2xl mx-auto w-full">
+    <div className="bg-surface-container-low p-6 rounded-[1px] border border-outline-variant/30 shadow-sm w-full">
       {/* Display */}
-      <div className="bg-primary p-4 rounded-[1px] mb-4 text-right overflow-hidden">
-        <div className="text-background/60 text-[10px] font-mono h-4 mb-1">{equation}</div>
-        <div className="text-background text-3xl font-mono font-bold truncate">{display}</div>
+      <div className="bg-surface-container-highest p-4 rounded-[1px] mb-4 text-right overflow-hidden border border-outline-variant/30 shadow-inner">
+        <div className="text-primary/60 text-[10px] font-mono h-4 mb-1">{equation}</div>
+        <div className="text-primary text-3xl font-mono font-bold truncate">{display}</div>
       </div>
 
       {/* Controls */}
-      <div className="grid grid-cols-10 gap-1">
-        {/* Row 1 */}
-        <Button onClick={() => handleFunction('sin')} variant="function" className="col-span-2">sin</Button>
-        <Button onClick={() => handleFunction('cos')} variant="function" className="col-span-2">cos</Button>
-        <Button onClick={() => handleFunction('tan')} variant="function" className="col-span-2">tan</Button>
-        <div className="col-span-4 flex items-center justify-center gap-2 bg-surface-container rounded-[1px] text-[10px] font-bold">
-          <label className="flex items-center gap-1 cursor-pointer">
-            <input type="radio" checked={isDegree} onChange={() => setIsDegree(true)} className="accent-secondary" /> Deg
-          </label>
-          <label className="flex items-center gap-1 cursor-pointer">
-            <input type="radio" checked={!isDegree} onChange={() => setIsDegree(false)} className="accent-secondary" /> Rad
-          </label>
+      <div className="flex flex-col md:flex-row gap-2">
+        {/* Functions */}
+        <div className="flex-1 grid grid-cols-5 gap-1">
+          {/* Row 1 */}
+          <Button onClick={() => handleFunction('sin')} variant="function">sin</Button>
+          <Button onClick={() => handleFunction('cos')} variant="function">cos</Button>
+          <Button onClick={() => handleFunction('tan')} variant="function">tan</Button>
+          <div className="col-span-2 flex items-center justify-center gap-2 bg-surface-container rounded-[1px] text-[10px] font-bold">
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input type="radio" checked={isDegree} onChange={() => setIsDegree(true)} className="accent-secondary" /> Deg
+            </label>
+            <label className="flex items-center gap-1 cursor-pointer">
+              <input type="radio" checked={!isDegree} onChange={() => setIsDegree(false)} className="accent-secondary" /> Rad
+            </label>
+          </div>
+
+          {/* Row 2 */}
+          <Button onClick={() => handleFunction('asin')} variant="function">sin⁻¹</Button>
+          <Button onClick={() => handleFunction('acos')} variant="function">cos⁻¹</Button>
+          <Button onClick={() => handleFunction('atan')} variant="function">tan⁻¹</Button>
+          <Button onClick={() => handleFunction('pi')} variant="function">π</Button>
+          <Button onClick={() => handleFunction('e')} variant="function">e</Button>
+
+          {/* Row 3 */}
+          <Button onClick={() => handleFunction('pow')} variant="function">xʸ</Button>
+          <Button onClick={() => handleFunction('cube')} variant="function">x³</Button>
+          <Button onClick={() => handleFunction('sqr')} variant="function">x²</Button>
+          <Button onClick={() => handleFunction('exp')} variant="function">eˣ</Button>
+          <Button onClick={() => handleFunction('10x')} variant="function">10ˣ</Button>
+
+          {/* Row 4 */}
+          <Button onClick={() => handleFunction('yroot')} variant="function">ʸ√x</Button>
+          <Button onClick={() => handleFunction('croot')} variant="function">³√x</Button>
+          <Button onClick={() => handleFunction('sqrt')} variant="function">√x</Button>
+          <Button onClick={() => handleFunction('ln')} variant="function">ln</Button>
+          <Button onClick={() => handleFunction('log')} variant="function">log</Button>
+
+          {/* Row 5 */}
+          <Button onClick={() => handleNumber('(')} variant="function">(</Button>
+          <Button onClick={() => handleNumber(')')} variant="function">)</Button>
+          <Button onClick={() => handleFunction('inv')} variant="function">1/x</Button>
+          <Button onClick={() => handleOperator('%')} variant="operator">%</Button>
+          <Button onClick={() => handleFunction('fact')} variant="function">n!</Button>
         </div>
 
-        {/* Row 2 */}
-        <Button onClick={() => handleFunction('asin')} variant="function" className="col-span-2">sin⁻¹</Button>
-        <Button onClick={() => handleFunction('acos')} variant="function" className="col-span-2">cos⁻¹</Button>
-        <Button onClick={() => handleFunction('atan')} variant="function" className="col-span-2">tan⁻¹</Button>
-        <Button onClick={() => handleFunction('pi')} variant="function" className="col-span-2">π</Button>
-        <Button onClick={() => handleFunction('e')} variant="function" className="col-span-2">e</Button>
-
-        {/* Row 3 */}
-        <Button onClick={() => handleFunction('pow')} variant="function" className="col-span-2">xʸ</Button>
-        <Button onClick={() => handleFunction('cube')} variant="function" className="col-span-2">x³</Button>
-        <Button onClick={() => handleFunction('sqr')} variant="function" className="col-span-2">x²</Button>
-        <Button onClick={() => handleFunction('exp')} variant="function" className="col-span-2">eˣ</Button>
-        <Button onClick={() => handleFunction('10x')} variant="function" className="col-span-2">10ˣ</Button>
-
-        {/* Row 4 */}
-        <Button onClick={() => handleFunction('yroot')} variant="function" className="col-span-2">ʸ√x</Button>
-        <Button onClick={() => handleFunction('croot')} variant="function" className="col-span-2">³√x</Button>
-        <Button onClick={() => handleFunction('sqrt')} variant="function" className="col-span-2">√x</Button>
-        <Button onClick={() => handleFunction('ln')} variant="function" className="col-span-2">ln</Button>
-        <Button onClick={() => handleFunction('log')} variant="function" className="col-span-2">log</Button>
-
-        {/* Row 5 */}
-        <Button onClick={() => handleNumber('(')} variant="function" className="col-span-2">(</Button>
-        <Button onClick={() => handleNumber(')')} variant="function" className="col-span-2">)</Button>
-        <Button onClick={() => handleFunction('inv')} variant="function" className="col-span-2">1/x</Button>
-        <Button onClick={() => handleOperator('%')} variant="function" className="col-span-2">%</Button>
-        <Button onClick={() => handleFunction('fact')} variant="function" className="col-span-2">n!</Button>
-
         {/* Number Pad & Basic Ops */}
-        <div className="col-span-10 grid grid-cols-5 gap-1 mt-2">
+        <div className="flex-1 grid grid-cols-5 gap-1">
           <Button onClick={() => handleNumber('7')}>7</Button>
           <Button onClick={() => handleNumber('8')}>8</Button>
           <Button onClick={() => handleNumber('9')}>9</Button>

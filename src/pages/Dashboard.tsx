@@ -3,6 +3,7 @@ import { Image as ImageIcon, FileText, File as FileIcon, HeartPulse, Wallet, Cak
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 import { Link } from 'react-router-dom';
+import ScientificCalculator from '../components/ScientificCalculator';
 
 const popularTools = [
   {
@@ -70,34 +71,26 @@ const popularTools = [
 export default function Dashboard() {
   return (
     <div className="space-y-8 pb-24 max-w-[1400px] mx-auto">
-      {/* Search Section */}
-      <section className="w-full">
-        {/* Suggestions */}
-        <div className="flex items-center gap-4 px-2">
-          <span className="text-sm text-primary/40 font-medium">Suggestions</span>
-          <div className="flex gap-3">
-            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
-              Your Favorites
-            </button>
-            <button className="px-5 py-2 rounded-full bg-secondary text-white text-sm font-medium shadow-md">
-              Converters
-            </button>
-            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
-              Calculators
-            </button>
-            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
-              Financial
-            </button>
-            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
-              Health
-            </button>
-          </div>
+      {/* Hero Section */}
+      <section className="flex flex-col lg:flex-row items-center gap-[5%] pt-4 pb-8">
+        <div className="w-full lg:w-[30%] space-y-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-[#ef6c02] font-['Jost',sans-serif]">
+            All-in-One Converter & Calculator
+          </h1>
+          <p className="text-lg text-primary/70 leading-relaxed">
+            Fast, simple tools that work directly in your browser. No ads, no tracking, just pure utility.
+          </p>
+        </div>
+        <div className="w-full lg:w-[65%]">
+          <ScientificCalculator />
         </div>
       </section>
 
-      {/* Cards Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
-        {popularTools.map((tool, idx) => (
+      {/* Popular Tools Section */}
+      <section className="pt-2">
+        <h2 className="text-2xl font-bold text-primary mb-6">Popular Tools</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {popularTools.map((tool, idx) => (
           <motion.div
             key={tool.title}
             initial={{ opacity: 0, y: 20 }}
@@ -135,6 +128,7 @@ export default function Dashboard() {
             </div>
           </motion.div>
         ))}
+        </div>
       </section>
     </div>
   );
