@@ -40,7 +40,7 @@ export default function RandomGenerator() {
         <p className="mt-2 text-slate-600 dark:text-slate-400">Generate numbers, lists, dice rolls, coin flips, and lottery picks.</p>
       </div>
 
-      <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 mb-6 hide-scrollbar">
+      <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700 mb-6 hide-scrollbar">
         {[
           { id: 'number', label: 'Number', icon: Hash },
           { id: 'list', label: 'List', icon: ListOrdered },
@@ -56,7 +56,7 @@ export default function RandomGenerator() {
               onClick={() => setMode(tab.id)}
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                 mode === tab.id
-                  ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/30 text-indigo-600 dark:text-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -69,7 +69,7 @@ export default function RandomGenerator() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
             {mode === 'number' && <NumberTab onGenerate={addHistory} loadedSettings={loadedSettings} />}
             {mode === 'list' && <ListTab onGenerate={addHistory} loadedSettings={loadedSettings} />}
             {mode === 'dice' && <DiceTab onGenerate={addHistory} loadedSettings={loadedSettings} />}
@@ -78,7 +78,7 @@ export default function RandomGenerator() {
             {mode === 'lottery' && <LotteryTab onGenerate={addHistory} loadedSettings={loadedSettings} />}
           </div>
 
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
             <button 
               onClick={() => setShowRandomNote(!showRandomNote)}
               className="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
@@ -99,8 +99,8 @@ export default function RandomGenerator() {
         </div>
 
         <div className="lg:col-span-1">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col h-[600px]">
-            <div className="p-4 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 rounded-t-2xl">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 flex flex-col h-[600px]">
+            <div className="p-4 border-b border-outline-variant/50 dark:border-slate-700 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 rounded-t-2xl">
               <h3 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
                 <HistoryIcon className="w-5 h-5 text-slate-500" />
                 History
@@ -120,7 +120,7 @@ export default function RandomGenerator() {
                 history.map(entry => (
                   <div key={entry.id} className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-xl border border-slate-100 dark:border-slate-700">
                     <div className="flex justify-between items-start mb-2">
-                      <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">{entry.tool}</span>
+                      <span className="text-xs font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider">{entry.tool}</span>
                       <span className="text-xs text-slate-400">{entry.timestamp.toLocaleTimeString()}</span>
                     </div>
                     <div className="text-sm font-medium text-slate-800 dark:text-slate-200 mb-3 break-words">
@@ -128,7 +128,7 @@ export default function RandomGenerator() {
                     </div>
                     <button 
                       onClick={() => loadSettings(entry.tool.toLowerCase(), entry.settings)}
-                      className="flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                      className="flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-indigo-600 dark:hover:text-secondary transition-colors"
                     >
                       <RefreshCw className="w-3 h-3" /> Re-use Settings
                     </button>

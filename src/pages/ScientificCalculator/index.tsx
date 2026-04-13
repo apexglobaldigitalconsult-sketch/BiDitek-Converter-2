@@ -37,7 +37,7 @@ export default function ScientificCalculator() {
         {/* Main Calculator Area */}
         <div className="flex-1">
           {/* Tabs */}
-          <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 mb-6 hide-scrollbar">
+          <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700 mb-6 hide-scrollbar">
             {tabs.map(tab => {
               const Icon = tab.icon;
               return (
@@ -46,7 +46,7 @@ export default function ScientificCalculator() {
                   onClick={() => setMode(tab.id as Mode)}
                   className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                     mode === tab.id
-                      ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                      ? 'bg-indigo-50 dark:bg-secondary/30 text-indigo-600 dark:text-secondary'
                       : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
                   }`}
                 >
@@ -58,7 +58,7 @@ export default function ScientificCalculator() {
           </div>
 
           {/* Active Mode Content */}
-          <div className="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div className="bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-outline-variant/50 dark:border-slate-800">
             {mode === 'scientific' && <ScientificMode onHistoryAdd={handleHistoryAdd} />}
             {mode === 'advanced' && <AdvancedMode />}
             {mode === 'programmer' && <ProgrammerMode />}
@@ -69,14 +69,14 @@ export default function ScientificCalculator() {
 
         {/* Side Panels */}
         <div className="w-full lg:w-80 flex flex-col gap-4">
-          <div className="flex bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-            <button onClick={() => setActivePanel(p => p==='history'?null:'history')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='history'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="History"><History className="w-5 h-5" /></button>
-            <button onClick={() => setActivePanel(p => p==='units'?null:'units')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='units'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="Unit Converter"><ArrowRightLeft className="w-5 h-5" /></button>
-            <button onClick={() => setActivePanel(p => p==='constants'?null:'constants')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='constants'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-400':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="Constants"><BookOpen className="w-5 h-5" /></button>
+          <div className="flex bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
+            <button onClick={() => setActivePanel(p => p==='history'?null:'history')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='history'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-secondary':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="History"><History className="w-5 h-5" /></button>
+            <button onClick={() => setActivePanel(p => p==='units'?null:'units')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='units'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-secondary':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="Unit Converter"><ArrowRightLeft className="w-5 h-5" /></button>
+            <button onClick={() => setActivePanel(p => p==='constants'?null:'constants')} className={`flex-1 py-2 flex justify-center items-center rounded-lg transition-colors ${activePanel==='constants'?'bg-slate-100 dark:bg-slate-700 text-indigo-600 dark:text-secondary':'text-slate-500 hover:text-slate-900 dark:hover:text-white'}`} title="Constants"><BookOpen className="w-5 h-5" /></button>
           </div>
 
           {activePanel === 'history' && (
-            <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col h-[500px]">
+            <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700 flex flex-col h-[500px]">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">History</h3>
                 <button onClick={() => setHistory([])} className="text-xs text-red-500 hover:text-red-600">Clear</button>
@@ -133,7 +133,7 @@ function UnitConverterPanel() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+    <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
       <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Unit Converter</h3>
       <select value={category} onChange={e => handleCategoryChange(e.target.value)} className="w-full mb-4 p-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white">
         {Object.keys(UNIT_CATEGORIES).map(c => <option key={c} value={c}>{c}</option>)}
@@ -175,7 +175,7 @@ function ConstantsPanel() {
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 flex flex-col h-[500px]">
+    <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700 flex flex-col h-[500px]">
       <h3 className="font-semibold text-slate-900 dark:text-white mb-4">Constants</h3>
       <input type="text" placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} className="w-full mb-4 p-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm" />
       
@@ -184,7 +184,7 @@ function ConstantsPanel() {
           <div key={i} className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700 flex justify-between items-center group">
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-serif font-bold text-indigo-600 dark:text-indigo-400">{c.symbol}</span>
+                <span className="font-serif font-bold text-indigo-600 dark:text-secondary">{c.symbol}</span>
                 <span className="text-sm font-medium text-slate-900 dark:text-white">{c.name}</span>
               </div>
               <div className="text-xs text-slate-500 mt-1">{c.value} {c.unit}</div>

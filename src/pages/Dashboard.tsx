@@ -6,64 +6,64 @@ import { Link } from 'react-router-dom';
 
 const popularTools = [
   {
-    team: 'Media Tools',
+    team: '',
     title: 'Image Converter',
-    salary: 'Free • No Limits',
-    desc: 'Convert between JPG, PNG, WebP and more formats instantly without losing quality.',
+    salary: '',
+    desc: 'Convert between JPG, PNG, WebP and more',
     icon: ImageIcon,
     iconColor: 'bg-blue-600',
     tag: 'POPULAR',
-    location: 'Browser, Online'
+    location: ''
   },
   {
-    team: 'Document Tools',
+    team: '',
     title: 'File Converter',
-    salary: 'Free • Fast',
-    desc: 'Transform any file format instantly right in your browser. Secure and private.',
+    salary: '',
+    desc: 'Transform any file format instantly',
     icon: FileIcon,
     iconColor: 'bg-orange-500',
-    tag: 'NEW',
-    location: 'Browser, Online'
+    tag: 'POPULAR',
+    location: ''
   },
   {
-    team: 'Document Tools',
+    team: '',
     title: 'PDF Converter',
-    salary: 'Free • Secure',
-    desc: 'Convert PDF to Word, Excel, and more. Merge, split, and compress PDF files easily.',
+    salary: '',
+    desc: 'PDF to Word, Excel, and more',
     icon: FileText,
     iconColor: 'bg-pink-500',
-    tag: 'TOOL',
-    location: 'Browser, Online'
+    tag: '',
+    location: ''
   },
   {
-    team: 'Health & Fitness',
+    team: '',
     title: 'BMI Calculator',
-    salary: 'Free • Instant',
-    desc: 'Check your body mass index and get personalized health recommendations.',
+    salary: '',
+    desc: 'Check your body mass index',
     icon: HeartPulse,
     iconColor: 'bg-green-500',
-    tag: 'HEALTH',
-    location: 'Browser, Online'
+    tag: 'POPULAR',
+    location: ''
   },
   {
-    team: 'Financial Tools',
+    team: '',
     title: 'Loan Calculator',
-    salary: 'Free • Accurate',
-    desc: 'Calculate monthly payments, interest rates, and amortization schedules easily.',
+    salary: '',
+    desc: 'Calculate monthly payments and interest',
     icon: Wallet,
     iconColor: 'bg-teal-400',
-    tag: 'FINANCE',
-    location: 'Browser, Online'
+    tag: '',
+    location: ''
   },
   {
-    team: 'Utility Tools',
+    team: '',
     title: 'Age Calculator',
-    salary: 'Free • Precise',
-    desc: 'Find out your exact age in years, months, days, hours, and even seconds.',
+    salary: '',
+    desc: 'Find out your exact age in years, months, days',
     icon: Cake,
     iconColor: 'bg-green-500',
-    tag: 'UTILITY',
-    location: 'Browser, Online'
+    tag: '',
+    location: ''
   }
 ];
 
@@ -103,19 +103,19 @@ export default function Dashboard() {
         <div className="flex items-center gap-4 mt-6 px-2">
           <span className="text-sm text-primary/40 font-medium">Suggestions</span>
           <div className="flex gap-3">
-            <button className="px-5 py-2 rounded-full bg-secondary-container text-secondary text-sm font-medium hover:bg-secondary hover:text-white transition-colors">
+            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
               Your Favorites
             </button>
             <button className="px-5 py-2 rounded-full bg-secondary text-white text-sm font-medium shadow-md">
               Converters
             </button>
-            <button className="px-5 py-2 rounded-full bg-secondary-container text-secondary text-sm font-medium hover:bg-secondary hover:text-white transition-colors">
+            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
               Calculators
             </button>
-            <button className="px-5 py-2 rounded-full bg-secondary-container text-secondary text-sm font-medium hover:bg-secondary hover:text-white transition-colors">
+            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
               Financial
             </button>
-            <button className="px-5 py-2 rounded-full bg-secondary-container text-secondary text-sm font-medium hover:bg-secondary hover:text-white transition-colors">
+            <button className="px-5 py-2 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary text-sm font-medium hover:border-secondary transition-colors shadow-sm">
               Health
             </button>
           </div>
@@ -186,31 +186,35 @@ export default function Dashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.05 }}
-            className="bg-surface-container-low p-6 rounded-3xl shadow-sm border border-outline-variant/30 hover:shadow-md transition-all duration-300 flex flex-col h-full"
+            className="bg-surface-container-low p-6 rounded-[1px] shadow-sm dark:shadow-md border border-outline-variant/30 dark:border-outline-variant hover:shadow-md transition-all duration-300 flex flex-col h-full"
           >
             <div className="flex justify-between items-start mb-4">
               <div>
-                <p className="text-xs font-medium text-primary/40 mb-1">{tool.team}</p>
+                {tool.team && <p className="text-xs font-medium text-primary/40 mb-1">{tool.team}</p>}
                 <h3 className="text-lg font-bold text-primary">{tool.title}</h3>
               </div>
-              <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-sm", tool.iconColor)}>
+              <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-sm dark:bg-surface-container-high dark:text-gray-300 dark:shadow-none", tool.iconColor)}>
                 <tool.icon className="w-6 h-6" />
               </div>
             </div>
             
-            <p className="text-sm font-medium text-secondary mb-4">{tool.salary}</p>
+            {tool.salary && <p className="text-sm font-medium text-secondary mb-4">{tool.salary}</p>}
             
             <p className="text-sm text-primary/50 leading-relaxed mb-8 flex-1">
               {tool.desc}
             </p>
             
             <div className="flex items-center justify-between mt-auto">
-              <span className="px-4 py-1.5 bg-secondary-container text-secondary text-xs font-bold rounded-full">
-                {tool.tag}
-              </span>
-              <span className="text-sm font-medium text-primary/60">
-                {tool.location}
-              </span>
+              {tool.tag ? (
+                <span className="px-4 py-1.5 bg-secondary text-white text-xs font-bold rounded-full">
+                  {tool.tag}
+                </span>
+              ) : <div />}
+              {tool.location && (
+                <span className="text-sm font-medium text-primary/60">
+                  {tool.location}
+                </span>
+              )}
             </div>
           </motion.div>
         ))}

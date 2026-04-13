@@ -267,16 +267,16 @@ export default function TriangleCalculator() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
         {/* Tabs */}
-        <div className="flex overflow-x-auto border-b border-slate-200 dark:border-slate-700">
+        <div className="flex overflow-x-auto border-b border-outline-variant/50 dark:border-slate-700">
           {(['SSS', 'SAS', 'ASA', 'AAS', 'SSA'] as Mode[]).map((m) => (
             <button
               key={m}
               onClick={() => handleModeChange(m)}
               className={`flex-1 py-4 px-6 text-sm font-bold whitespace-nowrap transition-colors ${
                 mode === m
-                  ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/20 text-indigo-600 dark:text-secondary border-b-2 border-indigo-600 dark:border-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -355,14 +355,14 @@ export default function TriangleCalculator() {
 
           <button
             onClick={validateAndSolve}
-            className="w-full py-4 bg-indigo-600 text-white text-lg font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm"
+            className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white text-lg font-bold rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm"
           >
             Calculate Triangle
           </button>
 
           {/* Validation Checks */}
           {checks.length > 0 && (
-            <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+            <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-outline-variant/50 dark:border-slate-700">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white mb-3 uppercase tracking-wider">Validation Checks</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {checks.map((check, i) => (

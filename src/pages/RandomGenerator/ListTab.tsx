@@ -141,7 +141,7 @@ export default function ListTab({ onGenerate, loadedSettings }: any) {
       </div>
 
       {dist !== 'weighted' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-outline-variant/50 dark:border-slate-700">
           <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Minimum Value</label>
             <input type="number" value={min} onChange={e=>setMin(e.target.value)} className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -191,7 +191,7 @@ export default function ListTab({ onGenerate, loadedSettings }: any) {
       )}
 
       {dist === 'weighted' && (
-        <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 space-y-4">
+        <div className="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-outline-variant/50 dark:border-slate-700 space-y-4">
           <div className="flex justify-between items-center">
             <h3 className="font-medium text-slate-900 dark:text-white">Weight Table</h3>
             <button onClick={() => setWeights([...weights, { value: '', weight: '1' }])} disabled={weights.length >= 10} className="flex items-center gap-1 text-sm font-medium text-indigo-600 hover:text-indigo-700 disabled:opacity-50"><Plus className="w-4 h-4"/> Add Row</button>
@@ -210,7 +210,7 @@ export default function ListTab({ onGenerate, loadedSettings }: any) {
         </div>
       )}
 
-      <button onClick={handleGenerate} className="w-full py-4 bg-indigo-600 text-white text-lg font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
+      <button onClick={handleGenerate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white text-lg font-bold rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">
         Generate List
       </button>
 
@@ -222,14 +222,14 @@ export default function ListTab({ onGenerate, loadedSettings }: any) {
             <div className="flex justify-between items-center">
               <span className="text-sm font-medium text-slate-500">Generated {result.length} numbers</span>
               <div className="flex gap-2">
-                <button onClick={copyToClipboard} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Copy className="w-4 h-4" /> Copy</button>
-                <button onClick={downloadTxt} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Download className="w-4 h-4" /> Save</button>
+                <button onClick={copyToClipboard} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Copy className="w-4 h-4" /> Copy</button>
+                <button onClick={downloadTxt} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Download className="w-4 h-4" /> Save</button>
               </div>
             </div>
-            <div className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700 max-h-96 overflow-y-auto">
+            <div className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-outline-variant/50 dark:border-slate-700 max-h-96 overflow-y-auto">
               <div className="flex flex-wrap gap-2">
                 {result.map((n, i) => (
-                  <span key={i} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg font-mono text-slate-800 dark:text-slate-200 shadow-sm">{n}</span>
+                  <span key={i} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg font-mono text-slate-800 dark:text-slate-200 shadow-sm">{n}</span>
                 ))}
               </div>
             </div>

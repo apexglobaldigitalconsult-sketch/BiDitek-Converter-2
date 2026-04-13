@@ -61,7 +61,7 @@ export default function ReversePctTab() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-center gap-4 text-xl md:text-2xl font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-700">
+      <div className="flex flex-wrap items-center justify-center gap-4 text-xl md:text-2xl font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-outline-variant/50 dark:border-slate-700">
         <input type="number" value={y} onChange={e=>setY(e.target.value)} className="w-32 p-3 text-center rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 shadow-sm" placeholder="Result" />
         <span>is the result after a</span>
         <div className="relative">
@@ -72,7 +72,7 @@ export default function ReversePctTab() {
         <div className="w-full text-center mt-2 text-lg text-slate-500">What was the original value?</div>
       </div>
       <div className="flex justify-center">
-        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">Calculate</button>
+        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">Calculate</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-center">{error}</div>}
       {resData && <ResultDisplay {...resData} />}

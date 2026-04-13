@@ -110,7 +110,7 @@ export default function GraphMode() {
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-4 items-center bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+      <div className="flex flex-wrap gap-4 items-center bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-outline-variant/50 dark:border-slate-700">
         <div className="flex items-center gap-2">
           <span className="text-sm text-slate-500">X Range:</span>
           <input type="number" value={range.xMin} onChange={e => setRange(r => ({...r, xMin: Number(e.target.value)}))} className="w-16 p-1 text-sm rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white" />

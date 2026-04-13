@@ -25,7 +25,7 @@ export default function Results({ mode, result }: ResultsProps) {
     if (diffMs <= 0) {
       const daysAgo = Math.floor(Math.abs(diffMs) / (1000 * 60 * 60 * 24));
       return (
-        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+        <div className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-outline-variant/50 dark:border-slate-700 text-center">
           <p className="text-lg font-bold text-slate-700 dark:text-slate-300">
             This date was {formatNum(daysAgo)} days ago.
           </p>
@@ -46,8 +46,8 @@ export default function Results({ mode, result }: ResultsProps) {
     }
 
     return (
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+        <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
           <h3 className="text-lg font-bold text-slate-900 dark:text-white">Countdown to Result Date</h3>
         </div>
         <div className="p-8 bg-slate-900 text-white">
@@ -92,11 +92,11 @@ export default function Results({ mode, result }: ResultsProps) {
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
       {/* Section 1: Primary Result */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-8 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+        <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
           {mode === 'duration' ? (
             <>
-              <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">
+              <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">
                 Exact Duration
               </p>
               <div className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
@@ -110,7 +110,7 @@ export default function Results({ mode, result }: ResultsProps) {
             </>
           ) : (
             <>
-              <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">
+              <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">
                 Result Date
               </p>
               <div className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-2">
@@ -161,8 +161,8 @@ export default function Results({ mode, result }: ResultsProps) {
       </div>
 
       {/* Section 2: Duration in Multiple Units */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+        <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
           <h3 className="text-lg font-bold text-slate-900 dark:text-white">Duration in Multiple Units</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-700">
@@ -175,9 +175,9 @@ export default function Results({ mode, result }: ResultsProps) {
             { label: 'Total Minutes', val: `${formatNum(result.totalUnits.minutes)} minutes`, sci: result.totalUnits.minutes.toExponential(4) },
             { label: 'Total Seconds', val: `${formatNum(result.totalUnits.seconds)} seconds`, sci: result.totalUnits.seconds.toExponential(4) },
           ].map((item, i) => (
-            <div key={i} className={`p-6 ${item.highlight ? 'bg-indigo-50 dark:bg-indigo-900/20' : 'bg-white dark:bg-slate-800'}`}>
+            <div key={i} className={`p-6 ${item.highlight ? 'bg-indigo-50 dark:bg-secondary/20' : 'bg-white dark:bg-slate-800'}`}>
               <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">{item.label}</p>
-              <p className={`text-xl font-bold ${item.highlight ? 'text-indigo-600 dark:text-indigo-400 text-2xl' : 'text-slate-900 dark:text-white'}`}>
+              <p className={`text-xl font-bold ${item.highlight ? 'text-indigo-600 dark:text-secondary text-2xl' : 'text-slate-900 dark:text-white'}`}>
                 {item.val}
               </p>
               {item.sci && <p className="text-xs text-slate-400 mt-1 font-mono">{item.sci}</p>}
@@ -187,8 +187,8 @@ export default function Results({ mode, result }: ResultsProps) {
       </div>
 
       {/* Section 3: Business Days vs Calendar Days */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+        <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
           <h3 className="text-lg font-bold text-slate-900 dark:text-white">Business Days vs Calendar Days</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-700">
@@ -220,7 +220,7 @@ export default function Results({ mode, result }: ResultsProps) {
           </button>
           
           {showHolidays && (
-            <div className="p-4 border-t border-slate-200 dark:border-slate-700">
+            <div className="p-4 border-t border-outline-variant/50 dark:border-slate-700">
               {result.holidays.length > 0 ? (
                 <ul className="space-y-2">
                   {result.holidays.map((h, i) => (
@@ -240,8 +240,8 @@ export default function Results({ mode, result }: ResultsProps) {
       </div>
 
       {/* Section 4: Day of Week Details */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+        <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
           <h3 className="text-lg font-bold text-slate-900 dark:text-white">Day of Week Details</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-700">

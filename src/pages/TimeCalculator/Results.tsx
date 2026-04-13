@@ -27,9 +27,9 @@ export default function Results({ mode, result }: ResultsProps) {
     
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-8 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Result</p>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Result</p>
             <div className={`text-4xl md:text-5xl font-black tracking-tight ${isNegative ? 'text-red-600 dark:text-red-400' : 'text-slate-900 dark:text-white'}`}>
               {sign}{days} <span className="text-2xl text-slate-500">days,</span>{' '}
               {hours} <span className="text-2xl text-slate-500">hours,</span>{' '}
@@ -67,9 +67,9 @@ export default function Results({ mode, result }: ResultsProps) {
     
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-8 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Duration</p>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Duration</p>
             <div className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
               {days > 0 && <>{days} <span className="text-2xl text-slate-500">days,</span>{' '}</>}
               {hours} <span className="text-2xl text-slate-500">hours,</span>{' '}
@@ -108,9 +108,9 @@ export default function Results({ mode, result }: ResultsProps) {
 
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-8 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Converted Value</p>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Converted Value</p>
             <div className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
               {formatNum(targetValue)} <span className="text-2xl text-slate-500">{targetUnitName}</span>
             </div>
@@ -127,8 +127,8 @@ export default function Results({ mode, result }: ResultsProps) {
               </thead>
               <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
                 {conversions.map((c: any) => (
-                  <tr key={c.id} className={c.id === toUnit ? 'bg-indigo-50/50 dark:bg-indigo-900/10' : 'bg-white dark:bg-slate-800'}>
-                    <td className={`py-4 px-6 font-medium ${c.id === toUnit ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-700 dark:text-slate-300'}`}>
+                  <tr key={c.id} className={c.id === toUnit ? 'bg-indigo-50/50 dark:bg-secondary/10' : 'bg-white dark:bg-slate-800'}>
+                    <td className={`py-4 px-6 font-medium ${c.id === toUnit ? 'text-indigo-600 dark:text-secondary' : 'text-slate-700 dark:text-slate-300'}`}>
                       {c.name}
                     </td>
                     <td className="py-4 px-6 font-mono font-bold text-slate-900 dark:text-white">
@@ -137,7 +137,7 @@ export default function Results({ mode, result }: ResultsProps) {
                     <td className="py-4 px-6">
                       <button
                         onClick={() => handleCopy(c.value.toString())}
-                        className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300"
+                        className="text-xs font-bold text-indigo-600 dark:text-secondary hover:text-indigo-800 dark:hover:text-indigo-300"
                       >
                         COPY
                       </button>
@@ -225,7 +225,7 @@ export default function Results({ mode, result }: ResultsProps) {
             }
 
             return (
-              <div key={zone} className={`bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border ${zone === referenceZone ? 'border-indigo-500 ring-2 ring-indigo-500/20' : 'border-slate-200 dark:border-slate-700'}`}>
+              <div key={zone} className={`bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border ${zone === referenceZone ? 'border-indigo-500 ring-2 ring-indigo-500/20' : 'border-outline-variant/50 dark:border-slate-700'}`}>
                 <div className="flex justify-between items-start mb-4">
                   <div>
                     <h3 className="font-bold text-slate-900 dark:text-white truncate max-w-[180px]" title={zone}>
@@ -234,7 +234,7 @@ export default function Results({ mode, result }: ResultsProps) {
                     <p className="text-xs text-slate-500">{zone}</p>
                   </div>
                   {zone === referenceZone && (
-                    <span className="px-2 py-1 bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 text-[10px] font-bold uppercase rounded">Ref</span>
+                    <span className="px-2 py-1 bg-indigo-100 text-indigo-700 dark:bg-secondary/50 dark:text-indigo-300 text-[10px] font-bold uppercase rounded">Ref</span>
                   )}
                 </div>
                 
@@ -271,9 +271,9 @@ export default function Results({ mode, result }: ResultsProps) {
     
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-8 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Equivalence</p>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Equivalence</p>
             <div className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
               {decimalHours.toFixed(4)} hours = {hh} hours, {mm} minutes, and {ss} seconds
             </div>
@@ -310,9 +310,9 @@ export default function Results({ mode, result }: ResultsProps) {
     if (!isWeekly) {
       return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <div className="p-8 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
-              <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Total Hours Worked</p>
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+            <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+              <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Total Hours Worked</p>
               <div className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
                 {Math.floor(daily.workedSeconds / 3600)} <span className="text-2xl text-slate-500">h</span>{' '}
                 {Math.floor((daily.workedSeconds % 3600) / 60)} <span className="text-2xl text-slate-500">min</span>
@@ -348,19 +348,19 @@ export default function Results({ mode, result }: ResultsProps) {
       return (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 text-center">
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 text-center">
               <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Total Hours Worked</p>
               <p className="text-3xl font-black text-slate-900 dark:text-white">
                 {Math.floor(weekly.totalWorkedHours)} h {Math.round((weekly.totalWorkedHours % 1) * 60)} min
               </p>
             </div>
-            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 text-center">
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 text-center">
               <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Regular Hours</p>
               <p className="text-3xl font-black text-slate-900 dark:text-white">
                 {Math.floor(weekly.regularHours)} h {Math.round((weekly.regularHours % 1) * 60)} min
               </p>
             </div>
-            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 text-center">
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 text-center">
               <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Overtime Hours</p>
               <p className="text-3xl font-black text-slate-900 dark:text-white">
                 {Math.floor(weekly.overtimeHours)} h {Math.round((weekly.overtimeHours % 1) * 60)} min
@@ -369,25 +369,25 @@ export default function Results({ mode, result }: ResultsProps) {
           </div>
 
           {weekly.hourlyRate > 0 && (
-            <div className="bg-indigo-50 dark:bg-indigo-900/20 p-6 rounded-2xl shadow-sm border border-indigo-100 dark:border-indigo-800/50 flex flex-wrap justify-around items-center gap-4 text-center">
+            <div className="bg-indigo-50 dark:bg-secondary/20 p-6 rounded-2xl shadow-sm border border-indigo-100 dark:border-indigo-800/50 flex flex-wrap justify-around items-center gap-4 text-center">
               <div>
-                <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">Regular Pay</p>
+                <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-1">Regular Pay</p>
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">${weekly.regularPay.toFixed(2)}</p>
               </div>
               <div className="text-2xl text-indigo-300 dark:text-indigo-700">+</div>
               <div>
-                <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">Overtime Pay</p>
+                <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-1">Overtime Pay</p>
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">${weekly.overtimePay.toFixed(2)}</p>
               </div>
               <div className="text-2xl text-indigo-300 dark:text-indigo-700">=</div>
               <div>
-                <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-1">Total Pay</p>
-                <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400">${weekly.totalPay.toFixed(2)}</p>
+                <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-1">Total Pay</p>
+                <p className="text-3xl font-black text-indigo-600 dark:text-secondary">${weekly.totalPay.toFixed(2)}</p>
               </div>
             </div>
           )}
 
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">
                 <thead className="bg-slate-50 dark:bg-slate-900/50 text-slate-500 dark:text-slate-400">

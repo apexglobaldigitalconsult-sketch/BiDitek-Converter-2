@@ -150,16 +150,16 @@ export default function UnitConverter() {
         </div>
       </form>
 
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
         {/* Category Tabs */}
-        <div className="flex overflow-x-auto border-b border-slate-200 dark:border-slate-700 scrollbar-hide">
+        <div className="flex overflow-x-auto border-b border-outline-variant/50 dark:border-slate-700 scrollbar-hide">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setCategory(cat)}
               className={`flex-none py-4 px-6 text-sm font-bold whitespace-nowrap transition-colors ${
                 category === cat
-                  ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/20 text-indigo-600 dark:text-secondary border-b-2 border-indigo-600 dark:border-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -199,7 +199,7 @@ export default function UnitConverter() {
             <div className="flex justify-center pb-2">
               <button
                 onClick={handleSwap}
-                className="p-4 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-indigo-100 hover:text-indigo-600 dark:hover:bg-indigo-900/50 dark:hover:text-indigo-400 transition-colors shadow-sm"
+                className="p-4 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-indigo-100 hover:text-indigo-600 dark:hover:bg-indigo-900/50 dark:hover:text-secondary transition-colors shadow-sm"
                 title="Swap Units"
               >
                 <ArrowLeftRight className="w-6 h-6" />
@@ -220,7 +220,7 @@ export default function UnitConverter() {
                 </select>
               </div>
               <div className="h-[72px] flex items-end">
-                <button className="w-full py-4 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm hidden md:block">
+                <button className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-bold rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm hidden md:block">
                   Convert
                 </button>
               </div>
@@ -235,10 +235,10 @@ export default function UnitConverter() {
 
           {/* Primary Result */}
           {canConvert && conversionResult && fromUnitObj && toUnitObj && (
-            <div className="p-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50 text-center animate-in zoom-in-95 duration-300">
-              <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Result</p>
+            <div className="p-8 bg-indigo-50 dark:bg-secondary/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50 text-center animate-in zoom-in-95 duration-300">
+              <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Result</p>
               <div className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight break-all">
-                {formatNumber(conversionResult.result)} <span className="text-indigo-600 dark:text-indigo-400">{toUnitObj.symbol}</span>
+                {formatNumber(conversionResult.result)} <span className="text-indigo-600 dark:text-secondary">{toUnitObj.symbol}</span>
               </div>
               <p className="text-slate-500 dark:text-slate-400 mt-4 font-medium">
                 {formatNumber(parsedValue)} {fromUnitObj.name} = {formatNumber(conversionResult.result)} {toUnitObj.name}
@@ -251,8 +251,8 @@ export default function UnitConverter() {
       {canConvert && conversionResult && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Multi-Unit Table */}
-          <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
-            <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+          <div className="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden flex flex-col">
+            <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">All {category} Units</h3>
             </div>
             <div className="overflow-x-auto max-h-[400px] overflow-y-auto">
@@ -274,7 +274,7 @@ export default function UnitConverter() {
                     return (
                       <tr key={u.id} className={`
                         ${isFrom ? 'bg-slate-100 dark:bg-slate-700/50' : ''}
-                        ${isTo ? 'bg-indigo-50 dark:bg-indigo-900/20' : ''}
+                        ${isTo ? 'bg-indigo-50 dark:bg-secondary/20' : ''}
                         hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors
                       `}>
                         <td className="py-3 px-6">
@@ -283,13 +283,13 @@ export default function UnitConverter() {
                           </span>
                           <span className="ml-2 text-slate-400">({u.symbol})</span>
                         </td>
-                        <td className={`py-3 px-6 font-mono ${isTo ? 'font-bold text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'}`}>
+                        <td className={`py-3 px-6 font-mono ${isTo ? 'font-bold text-indigo-600 dark:text-secondary' : 'text-slate-900 dark:text-white'}`}>
                           {formattedVal}
                         </td>
                         <td className="py-3 px-6 text-right">
                           <button
                             onClick={() => handleCopy(formattedVal, u.id)}
-                            className="p-2 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors relative"
+                            className="p-2 text-slate-400 hover:text-indigo-600 dark:hover:text-secondary transition-colors relative"
                             title="Copy value"
                           >
                             <Copy className="w-4 h-4" />
@@ -310,7 +310,7 @@ export default function UnitConverter() {
 
           <div className="space-y-8">
             {/* Step-by-Step Explanation */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
               <button
                 onClick={() => setShowExplanation(!showExplanation)}
                 className="w-full p-6 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors"
@@ -319,15 +319,15 @@ export default function UnitConverter() {
                 {showExplanation ? <ChevronUp className="w-5 h-5 text-slate-500" /> : <ChevronDown className="w-5 h-5 text-slate-500" />}
               </button>
               {showExplanation && (
-                <div className="p-6 border-t border-slate-200 dark:border-slate-700 bg-slate-900 text-emerald-400 font-mono text-sm overflow-x-auto">
+                <div className="p-6 border-t border-outline-variant/50 dark:border-slate-700 bg-slate-900 text-emerald-400 font-mono text-sm overflow-x-auto">
                   <pre className="whitespace-pre-wrap">{conversionResult.formula}</pre>
                 </div>
               )}
             </div>
 
             {/* History */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col max-h-[400px]">
-              <div className="p-6 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden flex flex-col max-h-[400px]">
+              <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 flex items-center justify-between">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   <History className="w-5 h-5" /> History
                 </h3>

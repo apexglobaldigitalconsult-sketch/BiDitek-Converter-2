@@ -65,7 +65,7 @@ export default function PctChangeTab() {
         </thead>
         <tbody>
           {[-50, -25, -10, 0, 10, 25, 50, 100].map(p => (
-            <tr key={p} className={p === res ? 'bg-indigo-50 dark:bg-indigo-900/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
+            <tr key={p} className={p === res ? 'bg-indigo-50 dark:bg-secondary/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
               <td className="p-3">{p > 0 ? '+' : ''}{p}%</td>
               <td className="p-3">{(valX * (1 + p/100)).toFixed(2).replace(/\.00$/, '')}</td>
             </tr>
@@ -95,7 +95,7 @@ export default function PctChangeTab() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-center justify-center gap-4 text-xl md:text-2xl font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-slate-200 dark:border-slate-700">
+      <div className="flex flex-wrap items-center justify-center gap-4 text-xl md:text-2xl font-medium text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-outline-variant/50 dark:border-slate-700">
         <span>From</span>
         <input type="number" value={x} onChange={e=>setX(e.target.value)} className="w-32 p-3 text-center rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500 shadow-sm" placeholder="Original" />
         <span>to</span>
@@ -103,7 +103,7 @@ export default function PctChangeTab() {
         <span>is what % change?</span>
       </div>
       <div className="flex justify-center">
-        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">Calculate</button>
+        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">Calculate</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-center">{error}</div>}
       {resData && <ResultDisplay {...resData} />}

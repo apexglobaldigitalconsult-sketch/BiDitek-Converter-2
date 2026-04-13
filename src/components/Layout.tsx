@@ -119,10 +119,10 @@ export default function Layout({ children }: LayoutProps) {
       {/* Sidebar Navigation */}
       <aside className="hidden lg:flex flex-col w-[280px] fixed inset-y-0 left-0 bg-sidebar-bg text-sidebar-text z-50 overflow-y-auto no-scrollbar">
         <div className="px-8 py-8 flex items-center gap-3">
-          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-sidebar-bg font-bold text-2xl">
+          <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center text-white font-bold text-2xl">
             J
           </div>
-          <span className="text-2xl font-bold tracking-tight text-white">
+          <span className="text-2xl font-bold tracking-tight text-primary dark:text-white">
             Jobie
           </span>
         </div>
@@ -134,7 +134,7 @@ export default function Layout({ children }: LayoutProps) {
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                isActive ? "bg-background text-sidebar-bg" : "text-sidebar-text-muted hover:text-white"
+                isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
               )
             }
           >
@@ -146,7 +146,7 @@ export default function Layout({ children }: LayoutProps) {
           <div className="pt-2">
             <button 
               onClick={() => setIsConvertersOpen(!isConvertersOpen)}
-              className="w-full flex items-center justify-between px-6 py-4 text-base font-medium text-sidebar-text-muted hover:text-white transition-colors group rounded-l-full"
+              className="w-full flex items-center justify-between px-6 py-4 text-base font-medium text-sidebar-text-muted hover:text-primary dark:hover:text-secondary transition-colors group rounded-l-full"
             >
               <div className="flex items-center gap-4">
                 <Repeat className="w-5 h-5" />
@@ -169,7 +169,7 @@ export default function Layout({ children }: LayoutProps) {
                       className={({ isActive }) =>
                         cn(
                           "flex items-center pl-[3.25rem] pr-6 py-3 text-sm font-medium transition-all relative rounded-l-full",
-                          isActive ? "bg-background text-sidebar-bg" : "text-sidebar-text-muted hover:text-white"
+                          isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
                         )
                       }
                     >
@@ -185,7 +185,7 @@ export default function Layout({ children }: LayoutProps) {
           <div className="pt-2">
             <button 
               onClick={() => setIsCalculatorsOpen(!isCalculatorsOpen)}
-              className="w-full flex items-center justify-between px-6 py-4 text-base font-medium text-sidebar-text-muted hover:text-white transition-colors group rounded-l-full"
+              className="w-full flex items-center justify-between px-6 py-4 text-base font-medium text-sidebar-text-muted hover:text-primary dark:hover:text-secondary transition-colors group rounded-l-full"
             >
               <div className="flex items-center gap-4">
                 <Calculator className="w-5 h-5" />
@@ -205,7 +205,7 @@ export default function Layout({ children }: LayoutProps) {
                     <div key={category.name} className="mb-2">
                       <button 
                         onClick={() => toggleCategory(category.name)}
-                        className="w-full flex items-center justify-between pl-[3.25rem] pr-6 py-2 text-xs font-bold uppercase tracking-wider text-sidebar-text-muted/70 hover:text-white transition-colors"
+                        className="w-full flex items-center justify-between pl-[3.25rem] pr-6 py-2 text-xs font-bold uppercase tracking-wider text-sidebar-text-muted/70 hover:text-primary dark:hover:text-secondary transition-colors"
                       >
                         {category.name}
                         {openCategories.includes(category.name) ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
@@ -225,7 +225,7 @@ export default function Layout({ children }: LayoutProps) {
                                 className={({ isActive }) =>
                                   cn(
                                     "flex items-center pl-16 pr-6 py-2.5 text-sm font-medium transition-all relative rounded-l-full",
-                                    isActive ? "bg-background text-sidebar-bg" : "text-sidebar-text-muted hover:text-white"
+                                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
                                   )
                                 }
                               >
@@ -266,7 +266,7 @@ export default function Layout({ children }: LayoutProps) {
           </div>
 
           <div className="hidden md:flex items-center flex-1 max-w-xl mx-8">
-            <div className="w-full flex items-center bg-background px-6 py-3.5 rounded-full border border-outline-variant/50 focus-within:shadow-md focus-within:border-secondary/30 transition-all">
+            <div className="w-full flex items-center bg-surface-container-low shadow-sm px-6 py-3.5 rounded-full border border-outline-variant/50 focus-within:shadow-md focus-within:border-secondary/30 transition-all">
               <Search className="w-5 h-5 text-primary/40" />
               <input 
                 type="text" 
@@ -277,6 +277,13 @@ export default function Layout({ children }: LayoutProps) {
           </div>
 
           <div className="flex items-center gap-4 lg:gap-6">
+            <button 
+              onClick={toggleTheme}
+              className="p-3 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary/60 hover:text-secondary hover:shadow-sm transition-all relative"
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </button>
             <button className="p-3 rounded-full bg-surface-container-low border border-outline-variant/50 text-primary/60 hover:text-secondary hover:shadow-sm transition-all relative">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               <span className="absolute -top-1 -right-1 w-5 h-5 bg-secondary text-white text-[10px] font-bold flex items-center justify-center rounded-full border-2 border-surface-container-low">18</span>
@@ -314,16 +321,16 @@ export default function Layout({ children }: LayoutProps) {
           >
             <div className="p-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-sidebar-bg font-bold text-xl">
+                <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center text-white font-bold text-xl">
                   J
                 </div>
-                <span className="text-xl font-bold text-white">
+                <span className="text-xl font-bold text-primary dark:text-white">
                   Jobie
                 </span>
               </div>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-white/70 hover:text-white"
+                className="p-2 text-primary/70 hover:text-primary dark:text-white/70 dark:hover:text-white"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -337,7 +344,7 @@ export default function Layout({ children }: LayoutProps) {
                 className={({ isActive }) =>
                   cn(
                     "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                    isActive ? "bg-background text-sidebar-bg" : "text-sidebar-text-muted hover:text-white"
+                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
                   )
                 }
               >
@@ -351,7 +358,7 @@ export default function Layout({ children }: LayoutProps) {
                 className={({ isActive }) =>
                   cn(
                     "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                    isActive ? "bg-background text-sidebar-bg" : "text-sidebar-text-muted hover:text-white"
+                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
                   )
                 }
               >
@@ -365,7 +372,7 @@ export default function Layout({ children }: LayoutProps) {
                 className={({ isActive }) =>
                   cn(
                     "flex items-center gap-4 px-6 py-4 text-base font-medium transition-all relative rounded-l-full",
-                    isActive ? "bg-background text-sidebar-bg" : "text-sidebar-text-muted hover:text-white"
+                    isActive ? "bg-surface-container-low text-secondary dark:bg-secondary/10" : "text-sidebar-text-muted hover:text-primary dark:hover:text-secondary"
                   )
                 }
               >

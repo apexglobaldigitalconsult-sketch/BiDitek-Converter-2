@@ -54,7 +54,7 @@ export function WeightedMode({ scale }: { scale: GradeScale[] }) {
       </div>
       <div className="space-y-3">
         {rows.map((r, i) => (
-          <div key={r.id} className="grid grid-cols-1 md:grid-cols-12 gap-3 p-4 md:p-0 bg-slate-50 md:bg-transparent dark:bg-slate-900/50 md:dark:bg-transparent rounded-xl border border-slate-200 md:border-none dark:border-slate-700 items-center">
+          <div key={r.id} className="grid grid-cols-1 md:grid-cols-12 gap-3 p-4 md:p-0 bg-slate-50 md:bg-transparent dark:bg-slate-900/50 md:dark:bg-transparent rounded-xl border border-outline-variant/50 md:border-none dark:border-slate-700 items-center">
             <div className="md:col-span-4">
               <label className="md:hidden block text-xs font-bold text-slate-500 uppercase mb-1">Category Name</label>
               <input type="text" value={r.name} onChange={e => updateRow(r.id, 'name', e.target.value)} placeholder={`Category ${i + 1}`} className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -73,25 +73,25 @@ export function WeightedMode({ scale }: { scale: GradeScale[] }) {
             </div>
             <div className="md:col-span-1 flex justify-end md:justify-center">
               {rows.length > 1 && (
-                <button onClick={() => removeRow(r.id)} className="p-2 text-slate-400 hover:text-red-500 transition-colors bg-white md:bg-transparent dark:bg-slate-800 md:dark:bg-transparent rounded-lg border border-slate-200 md:border-none dark:border-slate-700"><X className="w-5 h-5" /></button>
+                <button onClick={() => removeRow(r.id)} className="p-2 text-slate-400 hover:text-red-500 transition-colors bg-white md:bg-transparent dark:bg-slate-800 md:dark:bg-transparent rounded-lg border border-outline-variant/50 md:border-none dark:border-slate-700"><X className="w-5 h-5" /></button>
               )}
             </div>
           </div>
         ))}
       </div>
       <div className="flex flex-wrap gap-3">
-        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Category</button>
+        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-secondary bg-indigo-50 dark:bg-secondary/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Category</button>
         <button onClick={clear} className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors">Clear All</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl font-medium border border-red-100 dark:border-red-800/50">{error}</div>}
-      <button onClick={calculate} className="w-full py-4 bg-indigo-600 text-white font-black text-lg rounded-xl hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Grade</button>
+      <button onClick={calculate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Grade</button>
 
       {result && (
-        <div className="mt-8 p-6 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
+        <div className="mt-8 p-6 bg-indigo-50 dark:bg-secondary/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
           <div className="text-center mb-6">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Weighted Final Grade</p>
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Weighted Final Grade</p>
             <div className="text-5xl font-black text-slate-900 dark:text-white mb-2">{result.finalPct.toFixed(2)}%</div>
-            <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{getLetterGrade(result.finalPct, scale)}</div>
+            <div className="text-2xl font-bold text-indigo-600 dark:text-secondary">{getLetterGrade(result.finalPct, scale)}</div>
           </div>
           {result.totalWeight !== 100 && (
             <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 rounded-xl flex items-start gap-3 border border-amber-200 dark:border-amber-800/50">
@@ -115,7 +115,7 @@ export function WeightedMode({ scale }: { scale: GradeScale[] }) {
                     <td className="py-3 font-medium text-slate-900 dark:text-white">{b.name}</td>
                     <td className="py-3 text-slate-600 dark:text-slate-300">{b.pct.toFixed(2)}%</td>
                     <td className="py-3 text-slate-600 dark:text-slate-300">{b.weight}%</td>
-                    <td className="py-3 text-right font-bold text-indigo-600 dark:text-indigo-400">{b.contribution.toFixed(2)}%</td>
+                    <td className="py-3 text-right font-bold text-indigo-600 dark:text-secondary">{b.contribution.toFixed(2)}%</td>
                   </tr>
                 ))}
               </tbody>
@@ -175,7 +175,7 @@ export function GPAMode() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b border-slate-200 dark:border-slate-700">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b border-outline-variant/50 dark:border-slate-700">
         <div>
           <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Prior Cumulative GPA (Optional)</label>
           <input type="number" step="0.01" min="0" max="4" value={priorGpa} onChange={e => setPriorGpa(e.target.value)} placeholder="e.g. 3.5" className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -194,7 +194,7 @@ export function GPAMode() {
       </div>
       <div className="space-y-3">
         {rows.map((r, i) => (
-          <div key={r.id} className="grid grid-cols-1 md:grid-cols-12 gap-3 p-4 md:p-0 bg-slate-50 md:bg-transparent dark:bg-slate-900/50 md:dark:bg-transparent rounded-xl border border-slate-200 md:border-none dark:border-slate-700 items-center">
+          <div key={r.id} className="grid grid-cols-1 md:grid-cols-12 gap-3 p-4 md:p-0 bg-slate-50 md:bg-transparent dark:bg-slate-900/50 md:dark:bg-transparent rounded-xl border border-outline-variant/50 md:border-none dark:border-slate-700 items-center">
             <div className="md:col-span-5">
               <label className="md:hidden block text-xs font-bold text-slate-500 uppercase mb-1">Course Name</label>
               <input type="text" value={r.name} onChange={e => updateRow(r.id, 'name', e.target.value)} placeholder={`Course ${i + 1}`} className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -212,23 +212,23 @@ export function GPAMode() {
             </div>
             <div className="md:col-span-1 flex justify-end md:justify-center">
               {rows.length > 1 && (
-                <button onClick={() => removeRow(r.id)} className="p-2 text-slate-400 hover:text-red-500 transition-colors bg-white md:bg-transparent dark:bg-slate-800 md:dark:bg-transparent rounded-lg border border-slate-200 md:border-none dark:border-slate-700"><X className="w-5 h-5" /></button>
+                <button onClick={() => removeRow(r.id)} className="p-2 text-slate-400 hover:text-red-500 transition-colors bg-white md:bg-transparent dark:bg-slate-800 md:dark:bg-transparent rounded-lg border border-outline-variant/50 md:border-none dark:border-slate-700"><X className="w-5 h-5" /></button>
               )}
             </div>
           </div>
         ))}
       </div>
       <div className="flex flex-wrap gap-3">
-        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Course</button>
+        <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-secondary bg-indigo-50 dark:bg-secondary/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Course</button>
         <button onClick={clear} className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors">Clear All</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl font-medium border border-red-100 dark:border-red-800/50">{error}</div>}
-      <button onClick={calculate} className="w-full py-4 bg-indigo-600 text-white font-black text-lg rounded-xl hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate GPA</button>
+      <button onClick={calculate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate GPA</button>
 
       {result && (
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50 text-center">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Semester GPA</p>
+          <div className="p-6 bg-indigo-50 dark:bg-secondary/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50 text-center">
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Semester GPA</p>
             <div className="text-5xl font-black text-slate-900 dark:text-white mb-2">{result.semGpa.toFixed(2)}</div>
             <p className="text-slate-600 dark:text-slate-300 text-sm">Based on {result.semCreds} credits</p>
           </div>
@@ -307,12 +307,12 @@ export function FinalExamMode({ scale }: { scale: GradeScale[] }) {
         <button onClick={clear} className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors">Clear All</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl font-medium border border-red-100 dark:border-red-800/50">{error}</div>}
-      <button onClick={calculate} className="w-full py-4 bg-indigo-600 text-white font-black text-lg rounded-xl hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Required Score</button>
+      <button onClick={calculate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Required Score</button>
 
       {result && (
-        <div className={`mt-8 p-6 rounded-2xl border ${result.possible ? 'bg-indigo-50 dark:bg-indigo-900/20 border-indigo-100 dark:border-indigo-800/50' : 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800/50'}`}>
+        <div className={`mt-8 p-6 rounded-2xl border ${result.possible ? 'bg-indigo-50 dark:bg-secondary/20 border-indigo-100 dark:border-indigo-800/50' : 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800/50'}`}>
           <div className="text-center">
-            <p className={`text-sm font-bold uppercase tracking-wider mb-2 ${result.possible ? 'text-indigo-600 dark:text-indigo-400' : 'text-red-600 dark:text-red-400'}`}>Required Final Exam Score</p>
+            <p className={`text-sm font-bold uppercase tracking-wider mb-2 ${result.possible ? 'text-indigo-600 dark:text-secondary' : 'text-red-600 dark:text-red-400'}`}>Required Final Exam Score</p>
             <div className={`text-5xl font-black mb-2 ${result.possible ? 'text-slate-900 dark:text-white' : 'text-red-600 dark:text-red-400'}`}>
               {result.possible ? `${result.required.toFixed(2)}%` : 'Impossible'}
             </div>
@@ -400,7 +400,7 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-4">
         <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Mode:</span>
-        <div className="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
+        <div className="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1 border border-outline-variant/50 dark:border-slate-700">
           <button onClick={() => setIsWeighted(false)} className={`px-4 py-2 text-sm font-bold rounded-md transition-colors ${!isWeighted ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}>Simple Average</button>
           <button onClick={() => setIsWeighted(true)} className={`px-4 py-2 text-sm font-bold rounded-md transition-colors ${isWeighted ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}>Weighted Average</button>
         </div>
@@ -415,7 +415,7 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
       </div>
       <div className="space-y-3">
         {rows.map((r, i) => (
-          <div key={r.id} className="grid grid-cols-1 md:grid-cols-12 gap-3 p-4 md:p-0 bg-slate-50 md:bg-transparent dark:bg-slate-900/50 md:dark:bg-transparent rounded-xl border border-slate-200 md:border-none dark:border-slate-700 items-center">
+          <div key={r.id} className="grid grid-cols-1 md:grid-cols-12 gap-3 p-4 md:p-0 bg-slate-50 md:bg-transparent dark:bg-slate-900/50 md:dark:bg-transparent rounded-xl border border-outline-variant/50 md:border-none dark:border-slate-700 items-center">
             <div className={isWeighted ? "md:col-span-4" : "md:col-span-5"}>
               <label className="md:hidden block text-xs font-bold text-slate-500 uppercase mb-1">Assignment Name</label>
               <input type="text" value={r.name} onChange={e => updateRow(r.id, 'name', e.target.value)} placeholder={`Assignment ${i + 1}`} className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -436,7 +436,7 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
             )}
             <div className="md:col-span-1 flex justify-end md:justify-center">
               {rows.length > 1 && (
-                <button onClick={() => removeRow(r.id)} className="p-2 text-slate-400 hover:text-red-500 transition-colors bg-white md:bg-transparent dark:bg-slate-800 md:dark:bg-transparent rounded-lg border border-slate-200 md:border-none dark:border-slate-700"><X className="w-5 h-5" /></button>
+                <button onClick={() => removeRow(r.id)} className="p-2 text-slate-400 hover:text-red-500 transition-colors bg-white md:bg-transparent dark:bg-slate-800 md:dark:bg-transparent rounded-lg border border-outline-variant/50 md:border-none dark:border-slate-700"><X className="w-5 h-5" /></button>
               )}
             </div>
           </div>
@@ -445,7 +445,7 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
 
       <div className="flex flex-wrap gap-3 items-center justify-between">
         <div className="flex gap-3">
-          <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Assignment</button>
+          <button onClick={addRow} className="px-4 py-2 text-sm font-bold text-indigo-600 dark:text-secondary bg-indigo-50 dark:bg-secondary/20 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 rounded-lg transition-colors flex items-center gap-2"><Plus className="w-4 h-4" /> Add Assignment</button>
           <button onClick={clear} className="px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors">Clear All</button>
         </div>
         <div className="flex items-center gap-2">
@@ -455,14 +455,14 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
       </div>
 
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl font-medium border border-red-100 dark:border-red-800/50">{error}</div>}
-      <button onClick={calculate} className="w-full py-4 bg-indigo-600 text-white font-black text-lg rounded-xl hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Average</button>
+      <button onClick={calculate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"><Calculator className="w-6 h-6" /> Calculate Average</button>
 
       {result && (
-        <div className="mt-8 p-6 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
+        <div className="mt-8 p-6 bg-indigo-50 dark:bg-secondary/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
           <div className="text-center mb-6">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Final Average</p>
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Final Average</p>
             <div className="text-5xl font-black text-slate-900 dark:text-white mb-2">{result.finalPct.toFixed(2)}%</div>
-            <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">{getLetterGrade(result.finalPct, scale)}</div>
+            <div className="text-2xl font-bold text-indigo-600 dark:text-secondary">{getLetterGrade(result.finalPct, scale)}</div>
           </div>
           <div className="grid grid-cols-2 gap-4 text-center">
             <div className="p-4 bg-white dark:bg-slate-800 rounded-xl border border-indigo-100 dark:border-indigo-800/50">

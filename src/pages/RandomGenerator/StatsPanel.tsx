@@ -9,7 +9,7 @@ export default function StatsPanel({ data, distribution }: { data: number[], dis
   const maxBucketCount = buckets.length > 0 ? Math.max(...buckets.map(b => b.count)) : 0;
 
   return (
-    <div className="mt-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 animate-in fade-in slide-in-from-bottom-4">
+    <div className="mt-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-outline-variant/50 dark:border-slate-700 animate-in fade-in slide-in-from-bottom-4">
       <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Statistics Summary</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
         <StatBox label="Count" value={stats.count} />
@@ -50,7 +50,7 @@ export default function StatsPanel({ data, distribution }: { data: number[], dis
 
 function StatBox({ label, value }: { label: string, value: string | number }) {
   return (
-    <div className="bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
+    <div className="bg-white dark:bg-slate-800 p-3 rounded-xl border border-outline-variant/50 dark:border-slate-700">
       <div className="text-xs text-slate-500 mb-1">{label}</div>
       <div className="font-semibold text-slate-900 dark:text-white truncate" title={String(value)}>{value}</div>
     </div>

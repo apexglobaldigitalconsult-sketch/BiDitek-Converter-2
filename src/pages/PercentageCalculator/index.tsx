@@ -20,7 +20,7 @@ export default function PercentageCalculator() {
         <p className="mt-2 text-slate-600 dark:text-slate-400">Calculate percentages, changes, differences, tips, and discounts.</p>
       </div>
 
-      <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 mb-6 hide-scrollbar">
+      <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700 mb-6 hide-scrollbar">
         {[
           { id: 'ofValue', label: '% of Value', icon: Percent },
           { id: 'asValue', label: 'Value as %', icon: ArrowRightLeft },
@@ -36,7 +36,7 @@ export default function PercentageCalculator() {
               onClick={() => setMode(tab.id as Mode)}
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                 mode === tab.id
-                  ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/30 text-indigo-600 dark:text-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -47,7 +47,7 @@ export default function PercentageCalculator() {
         })}
       </div>
 
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
         {mode === 'ofValue' && <PctOfValueTab />}
         {mode === 'asValue' && <ValueAsPctTab />}
         {mode === 'change' && <PctChangeTab />}

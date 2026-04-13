@@ -19,7 +19,7 @@ export default function GradeCalculator() {
     <div className="max-w-5xl mx-auto space-y-8 pb-12 px-4 sm:px-6 lg:px-8 pt-8">
       <div className="text-center space-y-4">
         <h1 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight flex items-center justify-center gap-3">
-          <GraduationCap className="w-10 h-10 text-indigo-600 dark:text-indigo-400" />
+          <GraduationCap className="w-10 h-10 text-indigo-600 dark:text-secondary" />
           Grade Calculator
         </h1>
         <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
@@ -27,16 +27,16 @@ export default function GradeCalculator() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-3xl dark:rounded-xl shadow-xl border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
         {/* Tabs */}
-        <div className="flex overflow-x-auto border-b border-slate-200 dark:border-slate-700 scrollbar-hide">
+        <div className="flex overflow-x-auto border-b border-outline-variant/50 dark:border-slate-700 scrollbar-hide">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 min-w-[140px] py-4 px-6 text-sm font-bold whitespace-nowrap transition-colors ${
                 activeTab === tab.id
-                  ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/20 text-indigo-600 dark:text-secondary border-b-2 border-indigo-600 dark:border-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -47,17 +47,17 @@ export default function GradeCalculator() {
 
         {/* Scale Editor Toggle */}
         {activeTab !== 'gpa' && (
-          <div className="bg-slate-50 dark:bg-slate-900/30 border-b border-slate-200 dark:border-slate-700">
+          <div className="bg-slate-50 dark:bg-slate-900/30 border-b border-outline-variant/50 dark:border-slate-700">
             <button 
               onClick={() => setShowScale(!showScale)}
-              className="w-full px-6 py-3 flex items-center justify-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="w-full px-6 py-3 flex items-center justify-center gap-2 text-sm font-bold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-secondary transition-colors"
             >
               <Settings className="w-4 h-4" />
               {showScale ? 'Hide Grading Scale' : 'Customize Grading Scale'}
             </button>
             
             {showScale && (
-              <div className="p-6 border-t border-slate-200 dark:border-slate-700">
+              <div className="p-6 border-t border-outline-variant/50 dark:border-slate-700">
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                   {scale.map((item, i) => (
                     <div key={item.letter} className="flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function GradeCalculator() {
                 <div className="mt-4 flex justify-end">
                   <button 
                     onClick={() => setScale(DEFAULT_SCALE)} 
-                    className="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline"
+                    className="text-sm font-bold text-indigo-600 dark:text-secondary hover:underline"
                   >
                     Reset to Default
                   </button>

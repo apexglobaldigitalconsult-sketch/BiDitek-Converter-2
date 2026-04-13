@@ -60,7 +60,7 @@ export default function ScientificMode({ onHistoryAdd }: ScientificModeProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
         <div className="flex justify-between text-xs text-slate-500 mb-2">
           <button onClick={() => setUseRadians(!useRadians)} className="font-bold hover:text-indigo-600">
             {useRadians ? 'RAD' : 'DEG'}
@@ -92,9 +92,9 @@ export default function ScientificMode({ onHistoryAdd }: ScientificModeProps) {
                 else handleInput(btn.replace('ˣ', '^').replace('²', '^2').replace('³', '^3').replace('ʸ', '^'));
               }}
               className={`p-3 rounded-lg text-sm font-medium transition-colors ${
-                ['=', 'AC', 'DEL'].includes(btn) ? 'bg-indigo-600 text-white hover:bg-indigo-700' :
+                ['=', 'AC', 'DEL'].includes(btn) ? 'bg-indigo-600 dark:bg-secondary text-white hover:bg-indigo-700 dark:hover:bg-[#ff7a1a]' :
                 ['÷', '×', '−', '+'].includes(btn) ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-600' :
-                'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+                'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-outline-variant/50 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
               }`}
             >
               {btn}

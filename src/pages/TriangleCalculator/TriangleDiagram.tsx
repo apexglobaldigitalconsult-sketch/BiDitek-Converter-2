@@ -90,7 +90,7 @@ export default function TriangleDiagram({ triangle }: TriangleDiagramProps) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full max-w-md aspect-4/3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden relative">
+      <div className="w-full max-w-md aspect-4/3 bg-slate-50 dark:bg-slate-900 rounded-xl border border-outline-variant/50 dark:border-slate-700 overflow-hidden relative">
         <svg viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`} className="w-full h-full">
           {/* Circumcircle */}
           {showCircumcircle && (

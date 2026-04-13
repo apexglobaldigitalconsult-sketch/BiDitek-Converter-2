@@ -141,9 +141,9 @@ export default function AgeCalculator() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-3xl dark:rounded-xl shadow-xl border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
         {/* Tabs */}
-        <div className="flex overflow-x-auto border-b border-slate-200 dark:border-slate-700 scrollbar-hide">
+        <div className="flex overflow-x-auto border-b border-outline-variant/50 dark:border-slate-700 scrollbar-hide">
           {[
             { id: 'myAge', label: 'My Age' },
             { id: 'dateToDate', label: 'Date to Date' },
@@ -154,7 +154,7 @@ export default function AgeCalculator() {
               onClick={() => setMode(tab.id as Mode)}
               className={`flex-1 min-w-[120px] py-4 px-6 text-sm font-bold whitespace-nowrap transition-colors ${
                 mode === tab.id
-                  ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/20 text-indigo-600 dark:text-secondary border-b-2 border-indigo-600 dark:border-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -179,7 +179,7 @@ export default function AgeCalculator() {
                 
                 <button
                   onClick={() => setShowBirthTime(!showBirthTime)}
-                  className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 flex items-center gap-1"
+                  className="text-sm font-medium text-indigo-600 dark:text-secondary hover:text-indigo-700 flex items-center gap-1"
                 >
                   {showBirthTime ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   {showBirthTime ? 'Hide birth time' : 'Add birth time for more precision'}
@@ -215,7 +215,7 @@ export default function AgeCalculator() {
           {mode === 'dateToDate' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <h3 className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2">Start</h3>
+                <h3 className="font-bold text-slate-900 dark:text-white border-b border-outline-variant/50 dark:border-slate-700 pb-2">Start</h3>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Start Date</label>
                   <input
@@ -236,7 +236,7 @@ export default function AgeCalculator() {
                 </div>
               </div>
               <div className="space-y-4">
-                <h3 className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2">End</h3>
+                <h3 className="font-bold text-slate-900 dark:text-white border-b border-outline-variant/50 dark:border-slate-700 pb-2">End</h3>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">End Date</label>
                   <input
@@ -320,7 +320,7 @@ export default function AgeCalculator() {
           <div className="pt-4">
             <button
               onClick={handleCalculate}
-              className="w-full py-4 bg-indigo-600 text-white font-black text-lg rounded-xl hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"
+              className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"
             >
               <Calculator className="w-6 h-6" /> Calculate Age
             </button>

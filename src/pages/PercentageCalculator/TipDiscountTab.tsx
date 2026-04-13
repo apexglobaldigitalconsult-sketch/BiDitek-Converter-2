@@ -33,7 +33,7 @@ function TipCalculator() {
     const perPersonTotal = total / valPeople;
 
     const customResult = (
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-outline-variant/50 dark:border-slate-700 shadow-sm">
         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Tip Summary</h3>
         <div className="space-y-3">
           <div className="flex justify-between text-slate-600 dark:text-slate-400"><span>Tip Amount</span><span className="font-medium text-slate-900 dark:text-white">${tipAmt.toFixed(2)}</span></div>
@@ -46,9 +46,9 @@ function TipCalculator() {
             </>
           )}
           <div className="w-full h-px bg-slate-200 dark:bg-slate-700 my-2"></div>
-          <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+          <div className="flex justify-between items-center bg-indigo-50 dark:bg-secondary/20 p-3 rounded-lg">
             <span className="font-bold text-indigo-900 dark:text-indigo-100">{valPeople > 1 ? 'Per Person — Total' : 'Total to Pay'}</span>
-            <span className="text-xl font-bold text-indigo-600 dark:text-indigo-400">${perPersonTotal.toFixed(2)}</span>
+            <span className="text-xl font-bold text-indigo-600 dark:text-secondary">${perPersonTotal.toFixed(2)}</span>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@ function TipCalculator() {
           {[10, 15, 18, 20, 25].map(p => {
             const t = valBill * (p/100);
             return (
-              <tr key={p} className={p === valTip ? 'bg-indigo-50 dark:bg-indigo-900/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
+              <tr key={p} className={p === valTip ? 'bg-indigo-50 dark:bg-secondary/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
                 <td className="p-3">{p}%</td>
                 <td className="p-3">${t.toFixed(2)}</td>
                 <td className="p-3">${(valBill + t).toFixed(2)}</td>
@@ -91,7 +91,7 @@ function TipCalculator() {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+    <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-outline-variant/50 dark:border-slate-700">
       <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Tip Calculator</h3>
       <div className="space-y-4 mb-6">
         <div>
@@ -109,7 +109,7 @@ function TipCalculator() {
           </div>
           <div className="flex flex-wrap gap-2">
             {[10, 15, 18, 20, 25].map(p => (
-              <button key={p} onClick={() => setTip(p.toString())} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">{p}%</button>
+              <button key={p} onClick={() => setTip(p.toString())} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">{p}%</button>
             ))}
           </div>
         </div>
@@ -118,7 +118,7 @@ function TipCalculator() {
           <input type="number" value={people} onChange={e=>setPeople(e.target.value)} min="1" className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" placeholder="1" />
         </div>
       </div>
-      <button onClick={calculate} className="w-full py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">Calculate Tip</button>
+      <button onClick={calculate} className="w-full py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">Calculate Tip</button>
       {error && <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-sm text-center">{error}</div>}
       {resData && <div className="mt-6"><ResultDisplay {...resData} /></div>}
     </div>
@@ -147,16 +147,16 @@ function DiscountCalculator() {
     const savings = valOrig - finalPrice;
 
     const customResult = (
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-outline-variant/50 dark:border-slate-700 shadow-sm">
         <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Discount Summary</h3>
         <div className="space-y-3">
           <div className="flex justify-between text-slate-600 dark:text-slate-400"><span>Discount Amount</span><span className="font-medium text-red-500">-${discAmt.toFixed(2)}</span></div>
           <div className="flex justify-between text-slate-600 dark:text-slate-400"><span>Price After Discount</span><span className="font-medium text-slate-900 dark:text-white">${afterDisc.toFixed(2)}</span></div>
           <div className="flex justify-between text-slate-600 dark:text-slate-400"><span>Tax Amount</span><span className="font-medium text-slate-900 dark:text-white">+${taxAmt.toFixed(2)}</span></div>
           <div className="w-full h-px bg-slate-200 dark:bg-slate-700 my-2"></div>
-          <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 p-3 rounded-lg">
+          <div className="flex justify-between items-center bg-indigo-50 dark:bg-secondary/20 p-3 rounded-lg">
             <span className="font-bold text-indigo-900 dark:text-indigo-100">Final Price</span>
-            <span className="text-xl font-bold text-indigo-600 dark:text-indigo-400">${finalPrice.toFixed(2)}</span>
+            <span className="text-xl font-bold text-indigo-600 dark:text-secondary">${finalPrice.toFixed(2)}</span>
           </div>
           <div className="text-center text-sm font-medium text-green-600 dark:text-green-400 mt-2">
             You Save ${discAmt.toFixed(2)} ({valDisc}%)
@@ -203,7 +203,7 @@ function DiscountCalculator() {
             const t = a * (valTax/100);
             const f = a + t;
             return (
-              <tr key={p} className={p === valDisc ? 'bg-indigo-50 dark:bg-indigo-900/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
+              <tr key={p} className={p === valDisc ? 'bg-indigo-50 dark:bg-secondary/20 font-bold text-indigo-700 dark:text-indigo-300' : 'border-b border-slate-100 dark:border-slate-800'}>
                 <td className="p-3">{p}%</td>
                 <td className="p-3">${d.toFixed(2)}</td>
                 <td className="p-3">${f.toFixed(2)}</td>
@@ -218,7 +218,7 @@ function DiscountCalculator() {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+    <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-outline-variant/50 dark:border-slate-700">
       <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Discount Calculator</h3>
       <div className="space-y-4 mb-6">
         <div>
@@ -236,7 +236,7 @@ function DiscountCalculator() {
           </div>
           <div className="flex flex-wrap gap-2">
             {[5, 10, 15, 20, 25, 30, 50].map(p => (
-              <button key={p} onClick={() => setDisc(p.toString())} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">{p}%</button>
+              <button key={p} onClick={() => setDisc(p.toString())} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors">{p}%</button>
             ))}
           </div>
         </div>
@@ -249,7 +249,7 @@ function DiscountCalculator() {
           <p className="text-xs text-slate-500 mt-1">Tax is applied after discount.</p>
         </div>
       </div>
-      <button onClick={calculate} className="w-full py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">Calculate Discount</button>
+      <button onClick={calculate} className="w-full py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">Calculate Discount</button>
       {error && <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-sm text-center">{error}</div>}
       {resData && <div className="mt-6"><ResultDisplay {...resData} /></div>}
     </div>

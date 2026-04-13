@@ -12,7 +12,7 @@ export default function AdvancedMode() {
             onClick={() => setActiveTab(tab as any)}
             className={`flex-1 py-2 text-sm font-medium rounded-md capitalize transition-colors ${
               activeTab === tab 
-                ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm' 
+                ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-secondary shadow-sm' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -109,18 +109,18 @@ function MatrixSection() {
 
       <div className="flex flex-wrap gap-2">
         {['A+B', 'A-B', 'A*B', 'detA', 'detB', 'transA', 'transB'].map(op => (
-          <button key={op} onClick={() => handleOp(op)} className="px-3 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/50 text-sm font-medium">{op}</button>
+          <button key={op} onClick={() => handleOp(op)} className="px-3 py-1.5 bg-indigo-100 dark:bg-secondary/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/50 text-sm font-medium">{op}</button>
         ))}
       </div>
 
       {error && <p className="text-red-500 text-sm">{error}</p>}
       
       {result && (
-        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-outline-variant/50 dark:border-slate-700">
           <div className="text-sm font-medium text-slate-500 mb-2">Result</div>
           <div className="inline-grid gap-2" style={{ gridTemplateColumns: `repeat(${result[0].length}, minmax(0, 1fr))` }}>
             {result.map((row, r) => row.map((val, c) => (
-              <div key={`${r}-${c}`} className="px-4 py-2 bg-white dark:bg-slate-700 rounded border border-slate-200 dark:border-slate-600 text-center font-mono text-slate-900 dark:text-white">
+              <div key={`${r}-${c}`} className="px-4 py-2 bg-white dark:bg-slate-700 rounded border border-outline-variant/50 dark:border-slate-600 text-center font-mono text-slate-900 dark:text-white">
                 {Number.isInteger(val) ? val : val.toFixed(4)}
               </div>
             )))}
@@ -164,11 +164,11 @@ function ComplexSection() {
       </div>
       <div className="flex gap-2">
         {['+', '-', '*', '/'].map(op => (
-          <button key={op} onClick={() => handleOp(op)} className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/50 font-medium text-lg">{op}</button>
+          <button key={op} onClick={() => handleOp(op)} className="px-4 py-2 bg-indigo-100 dark:bg-secondary/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/50 font-medium text-lg">{op}</button>
         ))}
       </div>
       {res && (
-        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-outline-variant/50 dark:border-slate-700">
           <div className="text-sm font-medium text-slate-500 mb-2">Result</div>
           <div className="text-xl font-mono text-slate-900 dark:text-white mb-2">
             {res.r.toFixed(4)} {res.i >= 0 ? '+' : '-'} {Math.abs(res.i).toFixed(4)}i
@@ -225,16 +225,16 @@ function CalculusSection() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-outline-variant/50 dark:border-slate-700">
           <h4 className="font-medium text-slate-900 dark:text-white mb-3">Derivative at x</h4>
           <div className="flex gap-2 mb-3">
             <input type="number" value={valX} onChange={e => setValX(e.target.value)} className="w-24 p-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white" placeholder="x =" />
-            <button onClick={calcDeriv} className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">f'(x)</button>
+            <button onClick={calcDeriv} className="px-4 py-2 bg-indigo-600 dark:bg-secondary text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-[#ff7a1a]">f'(x)</button>
           </div>
           {resDeriv && <div className="text-lg font-mono text-slate-900 dark:text-white">≈ {resDeriv}</div>}
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-outline-variant/50 dark:border-slate-700">
           <h4 className="font-medium text-slate-900 dark:text-white mb-3">Definite Integral</h4>
           <div className="flex gap-2 mb-3 items-center">
             <span className="text-2xl font-serif">∫</span>
@@ -242,7 +242,7 @@ function CalculusSection() {
               <input type="number" value={boundB} onChange={e => setBoundB(e.target.value)} className="w-16 p-1 text-xs rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white" placeholder="b" />
               <input type="number" value={boundA} onChange={e => setBoundA(e.target.value)} className="w-16 p-1 text-xs rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white" placeholder="a" />
             </div>
-            <button onClick={calcInteg} className="ml-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Compute</button>
+            <button onClick={calcInteg} className="ml-2 px-4 py-2 bg-indigo-600 dark:bg-secondary text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-[#ff7a1a]">Compute</button>
           </div>
           {resInteg && <div className="text-lg font-mono text-slate-900 dark:text-white">≈ {resInteg}</div>}
         </div>

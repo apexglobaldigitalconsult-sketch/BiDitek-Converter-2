@@ -48,7 +48,7 @@ export default function ProgrammerMode() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
         <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Base Conversion</h3>
         <div className="flex gap-4 mb-4">
           <select 
@@ -89,7 +89,7 @@ export default function ProgrammerMode() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Bitwise Operations</h3>
           <select 
@@ -116,7 +116,7 @@ export default function ProgrammerMode() {
 
         <div className="flex gap-2 mb-4 flex-wrap">
           {['AND', 'OR', 'XOR', 'NOT A', 'NOT B'].map(op => (
-            <button key={op} onClick={() => handleBitOp(op)} className="px-3 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/50 text-sm font-medium">
+            <button key={op} onClick={() => handleBitOp(op)} className="px-3 py-1.5 bg-indigo-100 dark:bg-secondary/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/50 text-sm font-medium">
               {op}
             </button>
           ))}
@@ -129,8 +129,8 @@ export default function ProgrammerMode() {
         </div>
 
         {bitResult !== null && (
-          <div className="p-4 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800/30">
-            <div className="text-sm text-indigo-600 dark:text-indigo-400 mb-2 font-medium">Result</div>
+          <div className="p-4 rounded-lg bg-indigo-50 dark:bg-secondary/20 border border-indigo-100 dark:border-indigo-800/30">
+            <div className="text-sm text-indigo-600 dark:text-secondary mb-2 font-medium">Result</div>
             <div className="grid grid-cols-[40px_1fr] gap-2 text-sm">
               <span className="font-bold text-slate-500">DEC</span><span className="font-mono text-slate-900 dark:text-white">{bitResult}</span>
               <span className="font-bold text-slate-500">HEX</span><span className="font-mono text-slate-900 dark:text-white">{formatValue(bitResult, 16)}</span>

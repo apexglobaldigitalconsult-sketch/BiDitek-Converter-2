@@ -127,7 +127,7 @@ export default function NumberTab({ onGenerate, loadedSettings }: any) {
         </div>
       </div>
 
-      <button onClick={handleGenerate} className="w-full py-4 bg-indigo-600 text-white text-lg font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
+      <button onClick={handleGenerate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white text-lg font-bold rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">
         Generate Number{parseInt(qty) > 1 ? 's' : ''}
       </button>
 
@@ -136,22 +136,22 @@ export default function NumberTab({ onGenerate, loadedSettings }: any) {
       {result && (
         <div key={animKey} className="mt-8 animate-in zoom-in-95 duration-300">
           {result.length === 1 ? (
-            <div className="p-12 bg-slate-50 dark:bg-slate-800/80 rounded-3xl border border-slate-200 dark:border-slate-700 flex justify-center items-center">
-              <span className="text-7xl md:text-9xl font-black text-indigo-600 dark:text-indigo-400 tracking-tighter">{result[0]}</span>
+            <div className="p-12 bg-slate-50 dark:bg-slate-800/80 rounded-3xl dark:rounded-xl border border-outline-variant/50 dark:border-slate-700 flex justify-center items-center">
+              <span className="text-7xl md:text-9xl font-black text-indigo-600 dark:text-secondary tracking-tighter">{result[0]}</span>
             </div>
           ) : (
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium text-slate-500">Generated {result.length} numbers</span>
                 <div className="flex gap-2">
-                  <button onClick={copyToClipboard} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Copy className="w-4 h-4" /> Copy</button>
-                  <button onClick={downloadTxt} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Download className="w-4 h-4" /> Save</button>
+                  <button onClick={copyToClipboard} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Copy className="w-4 h-4" /> Copy</button>
+                  <button onClick={downloadTxt} className="flex items-center gap-1 px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors"><Download className="w-4 h-4" /> Save</button>
                 </div>
               </div>
-              <div className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700 max-h-96 overflow-y-auto">
+              <div className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-outline-variant/50 dark:border-slate-700 max-h-96 overflow-y-auto">
                 <div className="flex flex-wrap gap-2">
                   {result.map((n, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg font-mono text-slate-800 dark:text-slate-200 shadow-sm">{n}</span>
+                    <span key={i} className="px-3 py-1.5 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-lg font-mono text-slate-800 dark:text-slate-200 shadow-sm">{n}</span>
                   ))}
                 </div>
               </div>

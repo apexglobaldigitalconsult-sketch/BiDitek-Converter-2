@@ -33,7 +33,7 @@ export default function StatisticsMode() {
         {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
         <button
           onClick={handleCalculate}
-          className="mt-3 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          className="mt-3 px-4 py-2 bg-indigo-600 dark:bg-secondary text-white rounded-lg hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors"
         >
           Parse & Calculate
         </button>
@@ -41,7 +41,7 @@ export default function StatisticsMode() {
 
       {stats && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Descriptive Statistics</h3>
             <div className="space-y-2 text-sm">
               <StatRow label="Count (n)" value={stats.n} />
@@ -63,7 +63,7 @@ export default function StatisticsMode() {
               <StatRow label="Kurtosis" value={stats.kurtosis.toFixed(4)} />
             </div>
           </div>
-          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Sorted Data</h3>
             <div className="max-h-96 overflow-y-auto pr-2">
               {stats.sorted.map((val: number, i: number) => (

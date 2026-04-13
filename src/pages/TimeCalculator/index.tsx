@@ -283,9 +283,9 @@ export default function TimeCalculator() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-3xl dark:rounded-xl shadow-xl border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
         {/* Tabs */}
-        <div className="flex overflow-x-auto border-b border-slate-200 dark:border-slate-700 scrollbar-hide">
+        <div className="flex overflow-x-auto border-b border-outline-variant/50 dark:border-slate-700 scrollbar-hide">
           {[
             { id: 'addSubtract', label: 'Add / Subtract' },
             { id: 'duration', label: 'Duration' },
@@ -299,7 +299,7 @@ export default function TimeCalculator() {
               onClick={() => setMode(tab.id as Mode)}
               className={`flex-1 min-w-[120px] py-4 px-6 text-sm font-bold whitespace-nowrap transition-colors ${
                 mode === tab.id
-                  ? 'bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/20 text-indigo-600 dark:text-secondary border-b-2 border-indigo-600 dark:border-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -330,7 +330,7 @@ export default function TimeCalculator() {
 
               <div className="space-y-4">
                 {timeRows.map((row, index) => (
-                  <div key={row.id} className="flex flex-wrap md:flex-nowrap items-end gap-4 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <div key={row.id} className="flex flex-wrap md:flex-nowrap items-end gap-4 p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-outline-variant/50 dark:border-slate-700">
                     <div className="w-full md:w-auto font-bold text-slate-500 dark:text-slate-400 pt-2 md:pt-0">
                       Time {index + 1}
                     </div>
@@ -361,13 +361,13 @@ export default function TimeCalculator() {
                 ))}
                 
                 {timeRows.length < 20 && (
-                  <button onClick={addTimeRow} className="text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 flex items-center gap-1">
+                  <button onClick={addTimeRow} className="text-sm font-bold text-indigo-600 dark:text-secondary hover:text-indigo-700 flex items-center gap-1">
                     <Plus className="w-4 h-4" /> Add Another Time
                   </button>
                 )}
               </div>
 
-              <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+              <div className="pt-4 border-t border-outline-variant/50 dark:border-slate-700">
                 <label className="flex items-center gap-2 cursor-pointer mb-4">
                   <input type="checkbox" checked={useBaseTime} onChange={(e) => setUseBaseTime(e.target.checked)} className="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" />
                   <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Start with a base time (HH:MM:SS)</span>
@@ -383,7 +383,7 @@ export default function TimeCalculator() {
           {mode === 'duration' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <h3 className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2">Start Time</h3>
+                <h3 className="font-bold text-slate-900 dark:text-white border-b border-outline-variant/50 dark:border-slate-700 pb-2">Start Time</h3>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Time (HH:MM:SS)</label>
                   <input type="time" step="1" value={durStartTime} onChange={(e) => setDurStartTime(e.target.value)} className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -394,7 +394,7 @@ export default function TimeCalculator() {
                 </div>
               </div>
               <div className="space-y-4">
-                <h3 className="font-bold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2">End Time</h3>
+                <h3 className="font-bold text-slate-900 dark:text-white border-b border-outline-variant/50 dark:border-slate-700 pb-2">End Time</h3>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Time (HH:MM:SS)</label>
                   <input type="time" step="1" value={durEndTime} onChange={(e) => setDurEndTime(e.target.value)} className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -474,7 +474,7 @@ export default function TimeCalculator() {
 
                 <div className="flex flex-wrap gap-2 p-4 min-h-[100px] border border-slate-300 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-900/50">
                   {tzSelected.map(zone => (
-                    <span key={zone} className="inline-flex items-center gap-1 px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300">
+                    <span key={zone} className="inline-flex items-center gap-1 px-3 py-1 bg-white dark:bg-slate-800 border border-outline-variant/50 dark:border-slate-700 rounded-full text-sm font-medium text-slate-700 dark:text-slate-300">
                       {zone.split('/').pop()?.replace(/_/g, ' ')}
                       <button onClick={() => toggleTz(zone)} className="text-slate-400 hover:text-red-500"><X className="w-4 h-4" /></button>
                     </span>
@@ -492,7 +492,7 @@ export default function TimeCalculator() {
                     className="w-full pl-10 p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
                   />
                   {tzSearch && (
-                    <ul className="absolute z-10 w-full mt-1 max-h-60 overflow-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg">
+                    <ul className="absolute z-10 w-full mt-1 max-h-60 overflow-auto bg-white dark:bg-slate-800 border border-outline-variant/50 dark:border-slate-700 rounded-xl shadow-lg">
                       {TIMEZONES.filter(z => z.toLowerCase().includes(tzSearch.toLowerCase())).slice(0, 50).map(z => (
                         <li key={z}>
                           <button 
@@ -500,7 +500,7 @@ export default function TimeCalculator() {
                             className="w-full text-left px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 text-sm text-slate-700 dark:text-slate-300 flex justify-between items-center"
                           >
                             {z}
-                            {tzSelected.includes(z) && <span className="text-indigo-600 dark:text-indigo-400 font-bold text-xs">Added</span>}
+                            {tzSelected.includes(z) && <span className="text-indigo-600 dark:text-secondary font-bold text-xs">Added</span>}
                           </button>
                         </li>
                       ))}
@@ -641,7 +641,7 @@ export default function TimeCalculator() {
                     </table>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-200 dark:border-slate-700">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-outline-variant/50 dark:border-slate-700">
                     <div>
                       <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Standard Hours/Week</label>
                       <input type="number" min="1" value={workStdWeek} onChange={(e) => setWorkStdWeek(Number(e.target.value))} className="w-full p-3 rounded-xl border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900/50 text-slate-900 dark:text-white focus:ring-2 focus:ring-indigo-500" />
@@ -670,7 +670,7 @@ export default function TimeCalculator() {
             <div className="pt-4">
               <button
                 onClick={handleCalculate}
-                className="w-full py-4 bg-indigo-600 text-white font-black text-lg rounded-xl hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"
+                className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"
               >
                 <Calculator className="w-6 h-6" /> Calculate
               </button>

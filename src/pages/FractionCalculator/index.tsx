@@ -14,7 +14,7 @@ export default function FractionCalculator() {
         <p className="mt-2 text-slate-600 dark:text-slate-400">Comprehensive tool for fraction arithmetic, simplification, and conversion.</p>
       </div>
 
-      <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 mb-6 hide-scrollbar">
+      <div className="flex overflow-x-auto bg-white dark:bg-slate-800 p-1 rounded-xl shadow-sm border border-outline-variant/50 dark:border-slate-700 mb-6 hide-scrollbar">
         {[
           { id: 'arithmetic', label: 'Arithmetic', icon: Calculator },
           { id: 'mixed', label: 'Mixed Numbers', icon: LayoutGrid },
@@ -29,7 +29,7 @@ export default function FractionCalculator() {
               onClick={() => setMode(tab.id as Mode)}
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                 mode === tab.id
-                  ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400'
+                  ? 'bg-indigo-50 dark:bg-secondary/30 text-indigo-600 dark:text-secondary'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50'
               }`}
             >
@@ -40,7 +40,7 @@ export default function FractionCalculator() {
         })}
       </div>
 
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700">
         {mode === 'arithmetic' && <ArithmeticTab />}
         {mode === 'mixed' && <MixedNumbersTab />}
         {mode === 'simplify' && <SimplifyTab />}
@@ -203,7 +203,7 @@ function SummaryRow({ f }: { f: Fraction }) {
   const decVal = f.num / f.den;
 
   return (
-    <div className="mt-6 border-t border-slate-200 dark:border-slate-700 pt-6">
+    <div className="mt-6 border-t border-outline-variant/50 dark:border-slate-700 pt-6">
       <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4 uppercase tracking-wider">Equivalent Forms</h3>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         <div className="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg">
@@ -328,7 +328,7 @@ function ArithmeticTab() {
         
         <div className="flex flex-row md:flex-col gap-2">
           {['+', '-', '*', '/'].map(o => (
-            <button key={o} onClick={() => setOp(o as any)} className={`w-10 h-10 rounded-lg font-bold text-lg transition-colors ${op === o ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+            <button key={o} onClick={() => setOp(o as any)} className={`w-10 h-10 rounded-lg font-bold text-lg transition-colors ${op === o ? 'bg-indigo-600 dark:bg-secondary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
               {o === '*' ? '×' : o === '/' ? '÷' : o}
             </button>
           ))}
@@ -338,7 +338,7 @@ function ArithmeticTab() {
       </div>
 
       <div className="flex justify-center">
-        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
+        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">
           Calculate
         </button>
       </div>
@@ -347,7 +347,7 @@ function ArithmeticTab() {
 
       {result && (
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
-          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col items-center">
+          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-outline-variant/50 dark:border-slate-700 flex flex-col items-center">
             <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Result</h2>
             <div className="flex items-center gap-6">
               <DisplayFraction f={result.simp} size="large" />
@@ -360,7 +360,7 @@ function ArithmeticTab() {
             </div>
           </div>
 
-          <div className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+          <div className="border border-outline-variant/50 dark:border-slate-700 rounded-xl overflow-hidden">
             <button onClick={() => setShowSteps(!showSteps)} className="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
               <span className="font-semibold text-slate-900 dark:text-white">Step-by-Step Solution</span>
               {showSteps ? <ChevronUp className="w-5 h-5 text-slate-500" /> : <ChevronDown className="w-5 h-5 text-slate-500" />}
@@ -374,7 +374,7 @@ function ArithmeticTab() {
             )}
           </div>
 
-          <div className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+          <div className="border border-outline-variant/50 dark:border-slate-700 rounded-xl overflow-hidden">
             <button onClick={() => setShowDiagram(!showDiagram)} className="w-full flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
               <span className="font-semibold text-slate-900 dark:text-white">Visual Diagram</span>
               {showDiagram ? <ChevronUp className="w-5 h-5 text-slate-500" /> : <ChevronDown className="w-5 h-5 text-slate-500" />}
@@ -470,7 +470,7 @@ function MixedNumbersTab() {
         
         <div className="flex flex-row md:flex-col gap-2">
           {['+', '-', '*', '/'].map(o => (
-            <button key={o} onClick={() => setOp(o as any)} className={`w-10 h-10 rounded-lg font-bold text-lg transition-colors ${op === o ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
+            <button key={o} onClick={() => setOp(o as any)} className={`w-10 h-10 rounded-lg font-bold text-lg transition-colors ${op === o ? 'bg-indigo-600 dark:bg-secondary text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>
               {o === '*' ? '×' : o === '/' ? '÷' : o}
             </button>
           ))}
@@ -480,7 +480,7 @@ function MixedNumbersTab() {
       </div>
 
       <div className="flex justify-center">
-        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
+        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">
           Calculate
         </button>
       </div>
@@ -489,7 +489,7 @@ function MixedNumbersTab() {
 
       {result && (
         <div className="space-y-6 animate-in fade-in">
-          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col items-center">
+          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-outline-variant/50 dark:border-slate-700 flex flex-col items-center">
             <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Result</h2>
             <div className="flex items-center gap-6">
               <DisplayMixed m={toMixed(result.simp)} size="large" />
@@ -502,8 +502,8 @@ function MixedNumbersTab() {
             </div>
           </div>
 
-          <div className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-            <div className="p-4 bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-700">Step-by-Step Solution</div>
+          <div className="border border-outline-variant/50 dark:border-slate-700 rounded-xl overflow-hidden">
+            <div className="p-4 bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-900 dark:text-white border-b border-outline-variant/50 dark:border-slate-700">Step-by-Step Solution</div>
             <div className="p-6 bg-white dark:bg-slate-900">
               <ol className="list-decimal list-inside space-y-3 text-slate-700 dark:text-slate-300">
                 {result.steps.map((step, i) => <li key={i} className="pl-2">{step}</li>)}
@@ -541,13 +541,13 @@ function SimplifyTab() {
         <FractionInput label="Fraction to Simplify" num={n} den={d} onNumChange={setN} onDenChange={setD} />
       </div>
       <div className="flex justify-center">
-        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">Simplify</button>
+        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">Simplify</button>
       </div>
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-center">{error}</div>}
       
       {result && (
         <div className="space-y-6 animate-in fade-in">
-          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col items-center">
+          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-outline-variant/50 dark:border-slate-700 flex flex-col items-center">
             <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Result</h2>
             <DisplayFraction f={result.simp} size="large" />
             <div className="mt-4 text-slate-600 dark:text-slate-400">
@@ -592,8 +592,8 @@ function ConversionTab() {
     <div className="space-y-8">
       <div className="flex justify-center mb-6">
         <div className="bg-slate-100 dark:bg-slate-800 p-1 rounded-lg flex">
-          <button onClick={() => setMode('d2f')} className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${mode === 'd2f' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-600 dark:text-slate-400'}`}>Decimal → Fraction</button>
-          <button onClick={() => setMode('f2d')} className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${mode === 'f2d' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm' : 'text-slate-600 dark:text-slate-400'}`}>Fraction → Decimal</button>
+          <button onClick={() => setMode('d2f')} className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${mode === 'd2f' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-secondary shadow-sm' : 'text-slate-600 dark:text-slate-400'}`}>Decimal → Fraction</button>
+          <button onClick={() => setMode('f2d')} className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${mode === 'f2d' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-secondary shadow-sm' : 'text-slate-600 dark:text-slate-400'}`}>Fraction → Decimal</button>
         </div>
       </div>
 
@@ -615,14 +615,14 @@ function ConversionTab() {
       </div>
 
       <div className="flex justify-center">
-        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">Convert</button>
+        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">Convert</button>
       </div>
 
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-center">{error}</div>}
 
       {(resF || resD) && (
         <div className="space-y-6 animate-in fade-in">
-          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col items-center">
+          <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-outline-variant/50 dark:border-slate-700 flex flex-col items-center">
             <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Result</h2>
             {mode === 'd2f' && resF && <DisplayFraction f={resF} size="large" />}
             {mode === 'f2d' && resD && (
@@ -678,14 +678,14 @@ function CompareTab() {
       </div>
 
       <div className="flex justify-center">
-        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 text-white font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">Compare</button>
+        <button onClick={calculate} className="px-8 py-3 bg-indigo-600 dark:bg-secondary text-white font-medium rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">Compare</button>
       </div>
 
       {error && <div className="p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-xl text-center">{error}</div>}
 
       {result && (
         <div className="space-y-6 animate-in fade-in">
-          <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col items-center">
+          <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-outline-variant/50 dark:border-slate-700 flex flex-col items-center">
             <div className="flex items-center gap-6 text-3xl font-bold">
               <DisplayFraction f={result.f1} />
               <span className={`px-4 py-2 rounded-xl text-white ${result.comp === '>' ? 'bg-green-500' : result.comp === '<' ? 'bg-red-500' : 'bg-blue-500'}`}>
@@ -698,7 +698,7 @@ function CompareTab() {
             </div>
           </div>
 
-          <div className="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row items-center justify-center gap-12">
+          <div className="p-6 bg-white dark:bg-slate-900 rounded-xl border border-outline-variant/50 dark:border-slate-700 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="flex flex-col items-center gap-3">
               <VisualDiagram num={result.f1.num} den={result.f1.den} color="#3b82f6" />
               <span className="text-sm font-medium text-slate-500">Fraction A</span>

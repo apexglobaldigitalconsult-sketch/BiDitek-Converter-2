@@ -75,7 +75,7 @@ export default function PickerTab({ onGenerate, loadedSettings }: any) {
         </div>
       </div>
 
-      <button onClick={handlePick} className="w-full py-4 bg-indigo-600 text-white text-lg font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
+      <button onClick={handlePick} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white text-lg font-bold rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">
         Pick Random Item{parseInt(count) > 1 ? 's' : ''}
       </button>
 
@@ -84,15 +84,15 @@ export default function PickerTab({ onGenerate, loadedSettings }: any) {
       {result && (
         <div key={animKey} className="mt-8 animate-in zoom-in-95 duration-300">
           {result.length === 1 ? (
-            <div className="p-12 bg-slate-50 dark:bg-slate-800/80 rounded-3xl border border-slate-200 dark:border-slate-700 flex justify-center items-center text-center">
-              <span className="text-4xl md:text-6xl font-black text-indigo-600 dark:text-indigo-400 break-words">{result[0]}</span>
+            <div className="p-12 bg-slate-50 dark:bg-slate-800/80 rounded-3xl dark:rounded-xl border border-outline-variant/50 dark:border-slate-700 flex justify-center items-center text-center">
+              <span className="text-4xl md:text-6xl font-black text-indigo-600 dark:text-secondary break-words">{result[0]}</span>
             </div>
           ) : (
-            <div className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700">
+            <div className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-outline-variant/50 dark:border-slate-700">
               <h3 className="text-sm font-medium text-slate-500 mb-4">Picked {result.length} items:</h3>
               <div className="flex flex-wrap gap-3">
                 {result.map((item, i) => (
-                  <div key={i} className="px-4 py-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl font-medium text-slate-800 dark:text-slate-200 shadow-sm animate-in slide-in-from-bottom-4" style={{ animationDelay: `${Math.min(i * 30, 1000)}ms` }}>
+                  <div key={i} className="px-4 py-2 bg-white dark:bg-slate-700 border border-outline-variant/50 dark:border-slate-600 rounded-xl font-medium text-slate-800 dark:text-slate-200 shadow-sm animate-in slide-in-from-bottom-4" style={{ animationDelay: `${Math.min(i * 30, 1000)}ms` }}>
                     {item}
                   </div>
                 ))}

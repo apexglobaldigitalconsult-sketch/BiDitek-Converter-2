@@ -12,8 +12,8 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
   if (mode === 'reference') {
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <BookOpen className="w-5 h-5 text-indigo-500" /> GPA Conversion Table
             </h3>
@@ -32,7 +32,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
               <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
                 {GRADE_REFERENCE.map(r => (
                   <tr key={r.letter} className="bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                    <td className="py-3 px-6 font-black text-indigo-600 dark:text-indigo-400">{r.letter}</td>
+                    <td className="py-3 px-6 font-black text-indigo-600 dark:text-secondary">{r.letter}</td>
                     <td className="py-3 px-6 font-mono font-bold text-slate-900 dark:text-white">{r.p40.toFixed(1)}</td>
                     <td className="py-3 px-6 font-mono font-bold text-slate-900 dark:text-white">{r.p43.toFixed(1)}</td>
                     <td className="py-3 px-6 text-slate-600 dark:text-slate-400">{r.pct}</td>
@@ -45,22 +45,22 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <div className="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+            <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Weighted GPA Scale</h3>
             </div>
             <div className="p-6 space-y-4">
               <p className="text-sm text-slate-600 dark:text-slate-400">Bonus points added to the standard grade point value:</p>
               <ul className="space-y-3">
-                <li className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                <li className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-outline-variant/50 dark:border-slate-700">
                   <span className="font-bold text-slate-700 dark:text-slate-300">Regular</span>
                   <span className="font-mono font-bold text-slate-500">+0.0</span>
                 </li>
-                <li className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                <li className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-outline-variant/50 dark:border-slate-700">
                   <span className="font-bold text-slate-700 dark:text-slate-300">Honors / Dual Enrollment</span>
-                  <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400">+0.5</span>
+                  <span className="font-mono font-bold text-indigo-600 dark:text-secondary">+0.5</span>
                 </li>
-                <li className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                <li className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-outline-variant/50 dark:border-slate-700">
                   <span className="font-bold text-slate-700 dark:text-slate-300">AP / IB</span>
                   <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">+1.0</span>
                 </li>
@@ -69,8 +69,8 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <div className="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+            <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Academic Standing</h3>
             </div>
             <div className="p-6 space-y-4">
@@ -104,7 +104,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                   <span className="text-sm font-medium text-red-600 dark:text-red-400">Academic Probation Risk</span>
                 </li>
               </ul>
-              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 mt-4">
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-outline-variant/50 dark:border-slate-700 mt-4">
                 <p className="text-xs text-slate-500 italic">Thresholds vary significantly by institution. Always verify with your school's official academic policies.</p>
               </div>
             </div>
@@ -120,16 +120,16 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
     const res = result as TargetResult;
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
           <div className={`p-8 text-center border-b ${
             res.status === 'achieved' ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-100 dark:border-emerald-800/50' :
             res.status === 'impossible' ? 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800/50' :
-            'bg-indigo-50 dark:bg-indigo-900/20 border-indigo-100 dark:border-indigo-800/50'
+            'bg-indigo-50 dark:bg-secondary/20 border-indigo-100 dark:border-indigo-800/50'
           }`}>
             <p className={`text-sm font-bold uppercase tracking-wider mb-2 ${
               res.status === 'achieved' ? 'text-emerald-600 dark:text-emerald-400' :
               res.status === 'impossible' ? 'text-red-600 dark:text-red-400' :
-              'text-indigo-600 dark:text-indigo-400'
+              'text-indigo-600 dark:text-secondary'
             }`}>
               Required GPA for Remaining Credits
             </p>
@@ -188,8 +188,8 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">What-If Scenarios</h3>
             <p className="text-sm text-slate-500">What your cumulative GPA will be based on your performance in the remaining {res.creditsRemaining} credits.</p>
           </div>
@@ -205,7 +205,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                 {res.whatIfs.map((wi, i) => {
                   const isTarget = Math.abs(wi.gpa - res.requiredGpa) < 0.01;
                   return (
-                    <tr key={i} className={isTarget ? 'bg-indigo-50 dark:bg-indigo-900/20' : 'bg-white dark:bg-slate-800'}>
+                    <tr key={i} className={isTarget ? 'bg-indigo-50 dark:bg-secondary/20' : 'bg-white dark:bg-slate-800'}>
                       <td className="py-4 px-6 font-medium text-slate-900 dark:text-white flex items-center gap-2">
                         {wi.gpa.toFixed(2)}
                         {wi.gpa === 4.0 && <span className="text-xs text-slate-500">(All A's)</span>}
@@ -213,7 +213,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                         {wi.gpa === 2.0 && <span className="text-xs text-slate-500">(All C's)</span>}
                         {isTarget && <span className="px-2 py-0.5 bg-indigo-100 text-indigo-700 dark:bg-indigo-800 dark:text-indigo-300 text-xs font-bold rounded uppercase">Required</span>}
                       </td>
-                      <td className={`py-4 px-6 font-mono font-bold ${isTarget ? 'text-indigo-600 dark:text-indigo-400 text-lg' : 'text-slate-900 dark:text-white'}`}>
+                      <td className={`py-4 px-6 font-mono font-bold ${isTarget ? 'text-indigo-600 dark:text-secondary text-lg' : 'text-slate-900 dark:text-white'}`}>
                         {wi.result.toFixed(2)}
                       </td>
                     </tr>
@@ -249,8 +249,8 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Standard GPA Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
-          <div className="p-6 text-center bg-slate-50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden flex flex-col">
+          <div className="p-6 text-center bg-slate-50 dark:bg-slate-900/50 border-b border-outline-variant/50 dark:border-slate-700">
             <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Unweighted GPA</p>
             <div className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight">
               {unweightedGpa.toFixed(2)} <span className="text-2xl text-slate-400 font-medium">/ {maxScale.toFixed(1)}</span>
@@ -259,17 +259,17 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
           <div className="grid grid-cols-2 divide-x divide-slate-200 dark:divide-slate-700 flex-1">
             <div className="p-4 text-center flex flex-col justify-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Letter Equivalent</p>
-              <p className="text-2xl font-black text-indigo-600 dark:text-indigo-400">{getPercentageEquivalent(unweightedGpa, scale) !== 'N/A' ? GRADE_REFERENCE.find(r => r.pct === getPercentageEquivalent(unweightedGpa, scale))?.letter || '-' : '-'}</p>
+              <p className="text-2xl font-black text-indigo-600 dark:text-secondary">{getPercentageEquivalent(unweightedGpa, scale) !== 'N/A' ? GRADE_REFERENCE.find(r => r.pct === getPercentageEquivalent(unweightedGpa, scale))?.letter || '-' : '-'}</p>
             </div>
             <div className="p-4 text-center flex flex-col justify-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Percentage</p>
               <p className="text-xl font-bold text-slate-900 dark:text-white">{getPercentageEquivalent(unweightedGpa, scale)}</p>
             </div>
-            <div className="p-4 text-center border-t border-slate-200 dark:border-slate-700 flex flex-col justify-center">
+            <div className="p-4 text-center border-t border-outline-variant/50 dark:border-slate-700 flex flex-col justify-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Total Credits</p>
               <p className="text-xl font-bold text-slate-900 dark:text-white">{res.totalCredits}</p>
             </div>
-            <div className="p-4 text-center border-t border-slate-200 dark:border-slate-700 flex flex-col justify-center">
+            <div className="p-4 text-center border-t border-outline-variant/50 dark:border-slate-700 flex flex-col justify-center">
               <p className="text-xs text-slate-500 uppercase tracking-wider font-bold mb-1">Grade Points</p>
               <p className="text-xl font-bold text-slate-900 dark:text-white">{res.totalUnweightedPoints.toFixed(2)}</p>
             </div>
@@ -277,9 +277,9 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
         </div>
 
         {/* Weighted GPA Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col">
-          <div className="p-6 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
-            <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Weighted GPA</p>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden flex flex-col">
+          <div className="p-6 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+            <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">Weighted GPA</p>
             <div className="text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight">
               {weightedGpa.toFixed(2)} <span className="text-2xl text-slate-400 font-medium">/ {maxWeightedScale.toFixed(1)}</span>
             </div>
@@ -303,8 +303,8 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
 
       {/* Course Breakdown (Semester Mode) */}
       {!isCumulative && (res as SemesterResult).courses.length > 0 && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Course Breakdown</h3>
           </div>
           <div className="overflow-x-auto">
@@ -325,7 +325,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                     <td className="py-4 px-6 font-medium text-slate-900 dark:text-white">
                       {course.name || `Course ${i + 1}`}
                       {course.weight !== 'Regular' && (
-                        <span className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">
+                        <span className="ml-2 px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-indigo-100 text-indigo-700 dark:bg-secondary/30 dark:text-secondary">
                           {course.weight}
                         </span>
                       )}
@@ -333,7 +333,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-300">{course.credits}</td>
                     <td className="py-4 px-6 font-bold text-slate-900 dark:text-white">{course.grade}</td>
                     <td className="py-4 px-6 font-mono text-slate-600 dark:text-slate-400">{course.unweightedPoints.toFixed(2)}</td>
-                    <td className="py-4 px-6 font-mono font-bold text-indigo-600 dark:text-indigo-400">{course.weightedPoints.toFixed(2)}</td>
+                    <td className="py-4 px-6 font-mono font-bold text-indigo-600 dark:text-secondary">{course.weightedPoints.toFixed(2)}</td>
                     <td className="py-4 px-6 font-mono font-bold text-slate-900 dark:text-white text-right">{course.contribution.toFixed(2)}</td>
                   </tr>
                 ))}
@@ -353,15 +353,15 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
 
       {/* Cumulative Breakdown (Cumulative Mode) */}
       {isCumulative && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-center">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 flex justify-between items-center">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-indigo-500" /> Cumulative Semester Breakdown
             </h3>
           </div>
           
           {/* CSS Chart */}
-          <div className="p-8 border-b border-slate-200 dark:border-slate-700">
+          <div className="p-8 border-b border-outline-variant/50 dark:border-slate-700">
             <div className="relative h-48 w-full flex items-end justify-between pt-4">
               {/* Y-axis labels */}
               <div className="absolute left-0 top-0 bottom-0 w-8 flex flex-col justify-between text-xs text-slate-400 font-mono">
@@ -384,7 +384,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                 className="absolute left-8 right-0 border-t-2 border-dashed border-indigo-500/50 z-0"
                 style={{ bottom: `${(weightedGpa / maxWeightedScale) * 100}%` }}
               >
-                <span className="absolute -top-6 right-0 text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-800 px-1">
+                <span className="absolute -top-6 right-0 text-xs font-bold text-indigo-600 dark:text-secondary bg-white dark:bg-slate-800 px-1">
                   Overall: {weightedGpa.toFixed(2)}
                 </span>
               </div>
@@ -434,7 +434,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                     </td>
                     <td className="py-4 px-6 text-slate-600 dark:text-slate-300">{sem.totalCredits}</td>
                     <td className="py-4 px-6 font-mono font-bold text-slate-900 dark:text-white">{sem.weightedGpa.toFixed(2)}</td>
-                    <td className="py-4 px-6 font-mono font-bold text-indigo-600 dark:text-indigo-400">{sem.cumulativeGpaAfter?.toFixed(2)}</td>
+                    <td className="py-4 px-6 font-mono font-bold text-indigo-600 dark:text-secondary">{sem.cumulativeGpaAfter?.toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -443,7 +443,7 @@ export default function Results({ mode, result, scale = '4.0' }: ResultsProps) {
                   <td className="py-4 px-6 text-right">Overall:</td>
                   <td className="py-4 px-6">{res.totalCredits}</td>
                   <td className="py-4 px-6"></td>
-                  <td className="py-4 px-6 font-mono text-indigo-600 dark:text-indigo-400 text-lg">{weightedGpa.toFixed(2)}</td>
+                  <td className="py-4 px-6 font-mono text-indigo-600 dark:text-secondary text-lg">{weightedGpa.toFixed(2)}</td>
                 </tr>
               </tfoot>
             </table>

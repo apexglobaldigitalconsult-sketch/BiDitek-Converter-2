@@ -131,7 +131,7 @@ export default function LotteryTab({ onGenerate, loadedSettings }: any) {
       </div>
 
       {format === 'custom' && (
-        <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 space-y-6">
+        <div className="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-outline-variant/50 dark:border-slate-700 space-y-6">
           <div>
             <h4 className="font-medium text-slate-900 dark:text-white mb-4">Main Numbers</h4>
             <div className="grid grid-cols-3 gap-4">
@@ -150,7 +150,7 @@ export default function LotteryTab({ onGenerate, loadedSettings }: any) {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+          <div className="pt-4 border-t border-outline-variant/50 dark:border-slate-700">
             <div className="flex items-center justify-between mb-4">
               <h4 className="font-medium text-slate-900 dark:text-white">Bonus Numbers</h4>
               <label className="flex items-center gap-2 cursor-pointer">
@@ -178,7 +178,7 @@ export default function LotteryTab({ onGenerate, loadedSettings }: any) {
         </div>
       )}
 
-      <button onClick={handleGenerate} className="w-full py-4 bg-indigo-600 text-white text-lg font-bold rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
+      <button onClick={handleGenerate} className="w-full py-4 bg-indigo-600 dark:bg-secondary text-white text-lg font-bold rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-sm">
         Generate Numbers
       </button>
 
@@ -187,16 +187,16 @@ export default function LotteryTab({ onGenerate, loadedSettings }: any) {
       {result && (
         <div key={animKey} className="mt-8 space-y-4">
           {result.map((line, idx) => (
-            <div key={idx} className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-4 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${idx * 100}ms` }}>
+            <div key={idx} className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-outline-variant/50 dark:border-slate-700 flex flex-col sm:flex-row items-center gap-4 animate-in slide-in-from-bottom-4" style={{ animationDelay: `${idx * 100}ms` }}>
               <div className="text-sm font-bold text-slate-400 uppercase tracking-wider w-16 text-center sm:text-left">Line {idx + 1}</div>
               <div className="flex flex-wrap justify-center sm:justify-start gap-3 flex-1">
                 {line.main.map((n, i) => (
-                  <div key={`m-${i}`} className="w-12 h-12 rounded-full bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 flex items-center justify-center font-bold text-lg text-slate-800 dark:text-slate-200 shadow-sm">
+                  <div key={`m-${i}`} className="w-12 h-12 rounded-full bg-white dark:bg-slate-700 border-2 border-outline-variant/50 dark:border-slate-600 flex items-center justify-center font-bold text-lg text-slate-800 dark:text-slate-200 shadow-sm">
                     {n}
                   </div>
                 ))}
                 {line.bonus.map((n, i) => (
-                  <div key={`b-${i}`} className="w-12 h-12 rounded-full bg-indigo-100 dark:bg-indigo-900/50 border-2 border-indigo-300 dark:border-indigo-700 flex items-center justify-center font-bold text-lg text-indigo-700 dark:text-indigo-300 shadow-sm ml-2">
+                  <div key={`b-${i}`} className="w-12 h-12 rounded-full bg-indigo-100 dark:bg-secondary/50 border-2 border-indigo-300 dark:border-indigo-700 flex items-center justify-center font-bold text-lg text-indigo-700 dark:text-indigo-300 shadow-sm ml-2">
                     {n}
                   </div>
                 ))}

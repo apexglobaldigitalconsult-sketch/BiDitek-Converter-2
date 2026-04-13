@@ -77,7 +77,7 @@ export default function StdDevCalculator() {
         </p>
       </div>
 
-      <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-3xl dark:rounded-xl shadow-xl border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
         <div className="p-6 md:p-8 space-y-6">
           
           {/* Data Entry */}
@@ -88,7 +88,7 @@ export default function StdDevCalculator() {
               </label>
               <button 
                 onClick={handleLoadExample}
-                className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 flex items-center gap-1"
+                className="text-sm font-medium text-indigo-600 dark:text-secondary hover:text-indigo-700 flex items-center gap-1"
               >
                 <FileText className="w-4 h-4" /> Load Example
               </button>
@@ -123,7 +123,7 @@ export default function StdDevCalculator() {
           )}
 
           {/* Manual Entry Row */}
-          <form onSubmit={handleAddManual} className="flex gap-3 items-center p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700">
+          <form onSubmit={handleAddManual} className="flex gap-3 items-center p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-outline-variant/50 dark:border-slate-700">
             <label className="text-sm font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap">
               Add single value:
             </label>
@@ -146,7 +146,7 @@ export default function StdDevCalculator() {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button
               onClick={handleCalculate}
-              className="flex-1 py-4 bg-indigo-600 text-white font-black text-lg rounded-xl hover:bg-indigo-700 transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"
+              className="flex-1 py-4 bg-indigo-600 dark:bg-secondary text-white font-black text-lg rounded-xl hover:bg-indigo-700 dark:hover:bg-[#ff7a1a] transition-colors shadow-md shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2"
             >
               <Calculator className="w-6 h-6" /> Parse & Calculate
             </button>

@@ -20,9 +20,9 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4">
       {/* Section 1: Primary Age Result */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-8 text-center bg-indigo-50 dark:bg-indigo-900/20 border-b border-indigo-100 dark:border-indigo-800/50">
-          <p className="text-sm font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+        <div className="p-8 text-center bg-indigo-50 dark:bg-secondary/20 border-b border-indigo-100 dark:border-indigo-800/50">
+          <p className="text-sm font-bold text-indigo-600 dark:text-secondary uppercase tracking-wider mb-2">
             {mode === 'dateToDate' ? 'Duration' : 'Your Exact Age'}
           </p>
           <div className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
@@ -63,8 +63,8 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
       </div>
 
       {/* Section 2: Age in All Time Units */}
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-        <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+        <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
           <h3 className="text-lg font-bold text-slate-900 dark:text-white">Age in All Time Units</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 dark:bg-slate-700">
@@ -77,9 +77,9 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
             { label: 'Minutes', val: formatNum(totalUnits.minutes), sci: totalUnits.minutes.toExponential(4) },
             { label: 'Seconds', val: formatNum(totalUnits.seconds), sci: totalUnits.seconds.toExponential(4) },
           ].map((item, i) => (
-            <div key={i} className={`p-6 ${item.highlight ? 'bg-indigo-50 dark:bg-indigo-900/20' : 'bg-white dark:bg-slate-800'}`}>
+            <div key={i} className={`p-6 ${item.highlight ? 'bg-indigo-50 dark:bg-secondary/20' : 'bg-white dark:bg-slate-800'}`}>
               <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">{item.label}</p>
-              <p className={`text-2xl font-bold ${item.highlight ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'}`}>
+              <p className={`text-2xl font-bold ${item.highlight ? 'text-indigo-600 dark:text-secondary' : 'text-slate-900 dark:text-white'}`}>
                 {item.val}
               </p>
               {item.sci && <p className="text-xs text-slate-400 mt-1 font-mono">{item.sci}</p>}
@@ -90,7 +90,7 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
 
       {/* Section 3: Next Birthday Countdown (Only for My Age / Units) */}
       {mode !== 'dateToDate' && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
           {nextBday.isToday ? (
             <div className="p-12 text-center bg-gradient-to-br from-pink-50 to-purple-50 dark:from-pink-900/20 dark:to-purple-900/20">
               <div className="text-6xl mb-4">🎂</div>
@@ -116,13 +116,13 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                <div className="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-outline-variant/50 dark:border-slate-700 text-center">
                   <p className="text-sm text-slate-500 mb-1">Days Until Birthday</p>
                   <p className="text-3xl font-black text-slate-900 dark:text-white">{formatNum(nextBday.daysUntil)} days</p>
                 </div>
-                <div className="p-6 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-100 dark:border-indigo-800/50 text-center">
-                  <p className="text-sm text-indigo-600 dark:text-indigo-400 font-bold mb-1 uppercase tracking-wider">Countdown</p>
-                  <p className="text-3xl font-black text-indigo-600 dark:text-indigo-400">
+                <div className="p-6 bg-indigo-50 dark:bg-secondary/20 rounded-xl border border-indigo-100 dark:border-indigo-800/50 text-center">
+                  <p className="text-sm text-indigo-600 dark:text-secondary font-bold mb-1 uppercase tracking-wider">Countdown</p>
+                  <p className="text-3xl font-black text-indigo-600 dark:text-secondary">
                     {nextBday.monthsUntil} <span className="text-lg">months</span>, {nextBday.daysRemaining} <span className="text-lg">days</span>
                   </p>
                 </div>
@@ -148,8 +148,8 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
 
       {/* Section 4: Birth Day & Personal Details */}
       {mode !== 'dateToDate' && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Birth Day & Personal Details</h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 dark:bg-slate-700">
@@ -173,14 +173,14 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
 
       {/* Section 5: Birth Year Context */}
       {mode !== 'dateToDate' && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">The World in {dob.getFullYear()}</h3>
             <p className="text-sm text-slate-500 mt-1">In {dob.getFullYear()}, the world population was approximately {yearContext.pop} billion.</p>
           </div>
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {yearContext.events.map((ev, i) => (
-              <div key={i} className="p-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
+              <div key={i} className="p-5 rounded-xl border border-outline-variant/50 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm">
                 <span className="inline-block px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold uppercase tracking-wider rounded mb-3">
                   {ev.cat}
                 </span>
@@ -188,7 +188,7 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
               </div>
             ))}
           </div>
-          <div className="p-4 border-t border-slate-200 dark:border-slate-700 text-center text-xs text-slate-400">
+          <div className="p-4 border-t border-outline-variant/50 dark:border-slate-700 text-center text-xs text-slate-400">
             These are selected highlights from your birth year for fun reference only.
           </div>
         </div>
@@ -196,8 +196,8 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
 
       {/* Section 6: Important Age Milestones */}
       {mode !== 'dateToDate' && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-outline-variant/50 dark:border-slate-700 overflow-hidden">
+          <div className="p-6 border-b border-outline-variant/50 dark:border-slate-700">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Important Age Milestones</h3>
           </div>
           <div className="overflow-x-auto">
@@ -216,11 +216,11 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
                   return (
                     <tr key={i} className={`
                       ${m.isPast ? 'bg-white dark:bg-slate-800 opacity-70' : 'bg-white dark:bg-slate-800'}
-                      ${isNext ? 'bg-indigo-50/50 dark:bg-indigo-900/10' : ''}
+                      ${isNext ? 'bg-indigo-50/50 dark:bg-secondary/10' : ''}
                       hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors
                     `}>
                       <td className="py-4 px-6 font-bold text-slate-900 dark:text-white">{m.age}</td>
-                      <td className={`py-4 px-6 ${isNext ? 'font-bold text-indigo-600 dark:text-indigo-400' : 'text-slate-700 dark:text-slate-300'}`}>
+                      <td className={`py-4 px-6 ${isNext ? 'font-bold text-indigo-600 dark:text-secondary' : 'text-slate-700 dark:text-slate-300'}`}>
                         {m.label}
                       </td>
                       <td className="py-4 px-6 text-slate-600 dark:text-slate-400">
@@ -231,7 +231,7 @@ export default function Results({ mode, exactAge, totalUnits, dob, asOf, hasTime
                           m.isPast 
                             ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' 
                             : isNext
-                              ? 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400'
+                              ? 'bg-indigo-100 text-indigo-800 dark:bg-secondary/30 dark:text-secondary'
                               : 'bg-slate-100 text-slate-800 dark:bg-slate-700 dark:text-slate-300'
                         }`}>
                           {m.status}

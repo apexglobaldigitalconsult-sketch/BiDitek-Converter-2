@@ -2,37 +2,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F4F7FE;
-  --primary: #2B3674;
-  --secondary: #4318FF;
-  --secondary-container: #E9E3FF;
-  --surface-container-low: #FFFFFF;
-  --surface-container: #F4F7FE;
-  --surface-container-high: #EAEBEE;
-  --surface-container-highest: #DFE0E4;
-  --surface-bright: #FFFFFF;
-  --on-surface: #2B3674;
-  --outline-variant: #E0E5F2;
-  --sidebar-bg: #4318FF;
-  --sidebar-text: #FFFFFF;
-  --sidebar-text-muted: rgba(255, 255, 255, 0.7);
+  --background: #f8f9fa;
+  --primary: #1a1a1a;
+  --secondary: #ff6a00;
+  --secondary-container: rgba(255, 106, 0, 0.1);
+  --surface-container-low: #ffffff;
+  --surface-container: #f8f9fa;
+  --surface-container-high: #f1f3f5;
+  --surface-container-highest: #e9ecef;
+  --surface-bright: #ffffff;
+  --on-surface: #1a1a1a;
+  --outline-variant: #e9ecef;
+  --sidebar-bg: #f8f9fa;
+  --sidebar-text: #495057;
+  --sidebar-text-muted: #868e96;
 }
 
 .dark {
-  --background: #0B1437;
+  --background: #0f1115;
   --primary: #FFFFFF;
-  --secondary: #7551FF;
-  --secondary-container: #111C44;
-  --surface-container-low: #111C44;
-  --surface-container: #1B254B;
-  --surface-container-high: #2B3674;
-  --surface-container-highest: #323440;
-  --surface-bright: #111C44;
+  --secondary: #ff6a00;
+  --secondary-container: rgba(255, 106, 0, 0.1);
+  --surface-container-low: #1a1d24;
+  --surface-container: #1e2128;
+  --surface-container-high: #2a2d35;
+  --surface-container-highest: #32363f;
+  --surface-bright: #1e2128;
   --on-surface: #FFFFFF;
-  --outline-variant: #2B3674;
-  --sidebar-bg: #111C44;
+  --outline-variant: rgba(255, 255, 255, 0.08);
+  --sidebar-bg: #0b0c0f;
   --sidebar-text: #FFFFFF;
-  --sidebar-text-muted: rgba(255, 255, 255, 0.7);
+  --sidebar-text-muted: rgba(255, 255, 255, 0.5);
 }
 
 @theme {
