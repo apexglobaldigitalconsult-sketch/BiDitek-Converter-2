@@ -164,7 +164,7 @@ export default function Layout({ children }: LayoutProps) {
                       to={item.path}
                       className={({ isActive }) =>
                         cn(
-                          "flex items-center pl-[3.25rem] pr-6 py-3 text-sm font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                          "flex items-center pl-[3.25rem] pr-6 py-3 text-sm font-bold transition-all relative rounded-[1px]",
                           isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                         )
                       }
@@ -201,7 +201,7 @@ export default function Layout({ children }: LayoutProps) {
                     <div key={category.name} className="mb-2">
                       <button 
                         onClick={() => toggleCategory(category.name)}
-                        className="w-full flex items-center justify-between pl-[3.25rem] pr-6 py-2 text-xs font-bold uppercase tracking-wider text-sidebar-text-muted/70 hover:text-primary dark:hover:text-secondary transition-colors"
+                        className="w-full flex items-center justify-between pl-[3.25rem] pr-6 py-2 text-xs font-bold text-sidebar-text-muted/70 hover:text-primary dark:hover:text-secondary transition-colors"
                       >
                         {category.name}
                         {openCategories.includes(category.name) ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
@@ -220,7 +220,7 @@ export default function Layout({ children }: LayoutProps) {
                                 to={item.path}
                                 className={({ isActive }) =>
                                   cn(
-                                    "flex items-center pl-16 pr-6 py-2.5 text-sm font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                                    "flex items-center pl-16 pr-6 py-2.5 text-sm font-bold transition-all relative rounded-[1px]",
                                     isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                                   )
                                 }
@@ -348,7 +348,7 @@ export default function Layout({ children }: LayoutProps) {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-4 px-6 py-4 text-base font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                    "flex items-center gap-4 px-6 py-4 text-base font-bold transition-all relative rounded-[1px]",
                     isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                   )
                 }
@@ -362,7 +362,7 @@ export default function Layout({ children }: LayoutProps) {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-4 px-6 py-4 text-base font-bold uppercase tracking-wider transition-all relative rounded-[1px]",
+                    "flex items-center gap-4 px-6 py-4 text-base font-bold transition-all relative rounded-[1px]",
                     isActive ? "bg-primary text-background shadow-md" : "text-sidebar-text-muted hover:text-secondary hover:bg-secondary/10"
                   )
                 }
