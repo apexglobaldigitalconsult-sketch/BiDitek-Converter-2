@@ -18,6 +18,7 @@ math.import({
 }, { override: true });
 
 export default function ScientificCalculator() {
+  const [mode, setMode] = useState<'basic' | 'scientific'>('scientific');
   const [expression, setExpression] = useState('0');
   const [equation, setEquation] = useState('');
   const [isDegree, setIsDegree] = useState(true);
@@ -129,6 +130,22 @@ export default function ScientificCalculator() {
 
   return (
     <div className="bg-surface-container-low p-6 rounded-[1px] border border-outline-variant/30 shadow-sm w-full">
+      {/* Mode Toggle */}
+      <div className="flex bg-surface-container rounded-[1px] p-1 mb-4 border border-outline-variant/30">
+        <button 
+          onClick={() => setMode('basic')}
+          className={cn("flex-1 py-1.5 text-xs font-bold rounded-[1px] transition-colors", mode === 'basic' ? "bg-secondary text-white shadow-sm" : "text-primary/60 hover:text-primary")}
+        >
+          Basic
+        </button>
+        <button 
+          onClick={() => setMode('scientific')}
+          className={cn("flex-1 py-1.5 text-xs font-bold rounded-[1px] transition-colors", mode === 'scientific' ? "bg-secondary text-white shadow-sm" : "text-primary/60 hover:text-primary")}
+        >
+          Scientific
+        </button>
+      </div>
+
       {/* Display */}
       <div className="bg-surface-container-highest p-4 rounded-[1px] mb-4 text-right overflow-hidden border border-outline-variant/30 shadow-inner flex flex-col justify-end h-24">
         <div className="text-primary/60 text-[12px] font-mono h-5 mb-1 truncate">{equation}</div>
@@ -136,50 +153,52 @@ export default function ScientificCalculator() {
       </div>
 
       {/* Controls */}
-      <div className="flex flex-col md:flex-row gap-2">
+      <div className={cn("flex flex-col md:flex-row gap-2", mode === 'basic' && "max-w-sm mx-auto")}>
         {/* Functions */}
-        <div className="flex-1 grid grid-cols-5 gap-1">
-          {/* Row 1 */}
-          <Button onClick={() => append('sin(')} variant="function">sin</Button>
-          <Button onClick={() => append('cos(')} variant="function">cos</Button>
-          <Button onClick={() => append('tan(')} variant="function">tan</Button>
-          <div className="col-span-2 flex items-center justify-center gap-2 bg-surface-container rounded-[1px] text-[10px] font-bold">
-            <label className="flex items-center gap-1 cursor-pointer">
-              <input type="radio" checked={isDegree} onChange={() => setIsDegree(true)} className="accent-secondary" /> Deg
-            </label>
-            <label className="flex items-center gap-1 cursor-pointer">
-              <input type="radio" checked={!isDegree} onChange={() => setIsDegree(false)} className="accent-secondary" /> Rad
-            </label>
+        {mode === 'scientific' && (
+          <div className="flex-1 grid grid-cols-5 gap-1">
+            {/* Row 1 */}
+            <Button onClick={() => append('sin(')} variant="function">sin</Button>
+            <Button onClick={() => append('cos(')} variant="function">cos</Button>
+            <Button onClick={() => append('tan(')} variant="function">tan</Button>
+            <div className="col-span-2 flex items-center justify-center gap-2 bg-surface-container rounded-[1px] text-[10px] font-bold">
+              <label className="flex items-center gap-1 cursor-pointer">
+                <input type="radio" checked={isDegree} onChange={() => setIsDegree(true)} className="accent-secondary" /> Deg
+              </label>
+              <label className="flex items-center gap-1 cursor-pointer">
+                <input type="radio" checked={!isDegree} onChange={() => setIsDegree(false)} className="accent-secondary" /> Rad
+              </label>
+            </div>
+
+            {/* Row 2 */}
+            <Button onClick={() => append('asin(')} variant="function">sin⁻¹</Button>
+            <Button onClick={() => append('acos(')} variant="function">cos⁻¹</Button>
+            <Button onClick={() => append('atan(')} variant="function">tan⁻¹</Button>
+            <Button onClick={() => append('pi')} variant="function">π</Button>
+            <Button onClick={() => append('e')} variant="function">e</Button>
+
+            {/* Row 3 */}
+            <Button onClick={() => append('^')} variant="function">xʸ</Button>
+            <Button onClick={() => append('^3')} variant="function">x³</Button>
+            <Button onClick={() => append('^2')} variant="function">x²</Button>
+            <Button onClick={() => append('e^')} variant="function">eˣ</Button>
+            <Button onClick={() => append('10^')} variant="function">10ˣ</Button>
+
+            {/* Row 4 */}
+            <Button onClick={() => append('^(1/')} variant="function">ʸ√x</Button>
+            <Button onClick={() => append('cbrt(')} variant="function">³√x</Button>
+            <Button onClick={() => append('sqrt(')} variant="function">√x</Button>
+            <Button onClick={() => append('log(')} variant="function">ln</Button>
+            <Button onClick={() => append('log10(')} variant="function">log</Button>
+
+            {/* Row 5 */}
+            <Button onClick={() => append('(')} variant="function">(</Button>
+            <Button onClick={() => append(')')} variant="function">)</Button>
+            <Button onClick={() => append('^-1')} variant="function">1/x</Button>
+            <Button onClick={() => append('%')} variant="operator">%</Button>
+            <Button onClick={() => append('!')} variant="function">n!</Button>
           </div>
-
-          {/* Row 2 */}
-          <Button onClick={() => append('asin(')} variant="function">sin⁻¹</Button>
-          <Button onClick={() => append('acos(')} variant="function">cos⁻¹</Button>
-          <Button onClick={() => append('atan(')} variant="function">tan⁻¹</Button>
-          <Button onClick={() => append('pi')} variant="function">π</Button>
-          <Button onClick={() => append('e')} variant="function">e</Button>
-
-          {/* Row 3 */}
-          <Button onClick={() => append('^')} variant="function">xʸ</Button>
-          <Button onClick={() => append('^3')} variant="function">x³</Button>
-          <Button onClick={() => append('^2')} variant="function">x²</Button>
-          <Button onClick={() => append('e^')} variant="function">eˣ</Button>
-          <Button onClick={() => append('10^')} variant="function">10ˣ</Button>
-
-          {/* Row 4 */}
-          <Button onClick={() => append('^(1/')} variant="function">ʸ√x</Button>
-          <Button onClick={() => append('cbrt(')} variant="function">³√x</Button>
-          <Button onClick={() => append('sqrt(')} variant="function">√x</Button>
-          <Button onClick={() => append('log(')} variant="function">ln</Button>
-          <Button onClick={() => append('log10(')} variant="function">log</Button>
-
-          {/* Row 5 */}
-          <Button onClick={() => append('(')} variant="function">(</Button>
-          <Button onClick={() => append(')')} variant="function">)</Button>
-          <Button onClick={() => append('^-1')} variant="function">1/x</Button>
-          <Button onClick={() => append('%')} variant="operator">%</Button>
-          <Button onClick={() => append('!')} variant="function">n!</Button>
-        </div>
+        )}
 
         {/* Number Pad & Basic Ops */}
         <div className="flex-1 grid grid-cols-5 gap-1">
@@ -193,25 +212,49 @@ export default function ScientificCalculator() {
           <Button onClick={() => append('5')}>5</Button>
           <Button onClick={() => append('6')}>6</Button>
           <Button onClick={() => append('-')} variant="operator">-</Button>
-          <Button onClick={() => append('Ans')} variant="function">Ans</Button>
+          {mode === 'scientific' ? (
+            <Button onClick={() => append('Ans')} variant="function">Ans</Button>
+          ) : (
+            <Button onClick={() => append('%')} variant="operator">%</Button>
+          )}
 
           <Button onClick={() => append('1')}>1</Button>
           <Button onClick={() => append('2')}>2</Button>
           <Button onClick={() => append('3')}>3</Button>
           <Button onClick={() => append('×')} variant="operator">×</Button>
-          <Button onClick={() => handleMemory('M+')} variant="function">M+</Button>
+          {mode === 'scientific' ? (
+            <Button onClick={() => handleMemory('M+')} variant="function">M+</Button>
+          ) : (
+            <Button onClick={() => append('(')} variant="function">(</Button>
+          )}
 
           <Button onClick={() => append('0')}>0</Button>
           <Button onClick={() => append('.')}>.</Button>
-          <Button onClick={() => append('E')} variant="function">EXP</Button>
+          {mode === 'scientific' ? (
+            <Button onClick={() => append('E')} variant="function">EXP</Button>
+          ) : (
+            <Button onClick={() => append(')')} variant="function">)</Button>
+          )}
           <Button onClick={() => append('÷')} variant="operator">÷</Button>
-          <Button onClick={() => handleMemory('M-')} variant="function">M-</Button>
+          {mode === 'scientific' ? (
+            <Button onClick={() => handleMemory('M-')} variant="function">M-</Button>
+          ) : (
+            <Button onClick={toggleSign} variant="function">±</Button>
+          )}
 
-          <Button onClick={toggleSign}>±</Button>
-          <Button onClick={() => append('random()')}>RND</Button>
-          <Button onClick={clear} variant="action">AC</Button>
+          {mode === 'scientific' ? (
+            <>
+              <Button onClick={toggleSign}>±</Button>
+              <Button onClick={() => append('random()')}>RND</Button>
+            </>
+          ) : (
+            <div className="col-span-2"></div>
+          )}
+          <Button onClick={clear} variant="action" className={mode === 'basic' ? "col-span-2" : ""}>AC</Button>
           <Button onClick={calculate} variant="operator">=</Button>
-          <Button onClick={() => handleMemory('MR')} variant="function">MR</Button>
+          {mode === 'scientific' && (
+            <Button onClick={() => handleMemory('MR')} variant="function">MR</Button>
+          )}
         </div>
       </div>
     </div>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { useTheme } from '../lib/ThemeContext';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { theme } = useTheme();
 
   return (
     <footer className="bg-surface-container-low border-t border-outline-variant/50 pt-16 pb-8 mt-auto">
@@ -13,18 +15,21 @@ export default function Footer() {
           {/* About Section */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <img 
-                src="https://i.ibb.co/6JwtYnkr/Bid-Itek-converter-light-mode-logo.png" 
-                alt="Bi-Dtek Converter" 
-                className="h-8 w-auto object-contain block dark:hidden" 
-                referrerPolicy="no-referrer" 
-              />
-              <img 
-                src="https://i.ibb.co/Vpj2fw6G/Bid-Itek-converter-dark-mode-logo.png" 
-                alt="Bi-Dtek Converter" 
-                className="h-8 w-auto object-contain hidden dark:block" 
-                referrerPolicy="no-referrer" 
-              />
+              {theme === 'dark' ? (
+                <img 
+                  src="https://i.ibb.co/Vpj2fw6G/Bid-Itek-converter-dark-mode-logo.png" 
+                  alt="Bi-Dtek Converter" 
+                  className="h-8 w-auto object-contain" 
+                  referrerPolicy="no-referrer" 
+                />
+              ) : (
+                <img 
+                  src="https://i.ibb.co/6JwtYnkr/Bid-Itek-converter-light-mode-logo.png" 
+                  alt="Bi-Dtek Converter" 
+                  className="h-8 w-auto object-contain" 
+                  referrerPolicy="no-referrer" 
+                />
+              )}
             </Link>
             <p className="text-[14px] text-primary/70 font-body leading-relaxed mb-6 max-w-sm">
               Bi-Dtek Converter is your comprehensive platform for all essential tools, calculators, and converters. We provide accurate, fast, and easy-to-use utilities for everyday tasks.
