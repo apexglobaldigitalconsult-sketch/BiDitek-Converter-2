@@ -24,6 +24,7 @@ import {
 import { cn } from '@/src/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTheme } from '../lib/ThemeContext';
+import Footer from './Footer';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -304,6 +305,7 @@ export default function Layout({ children }: LayoutProps) {
         <main className="flex-1 p-8 lg:p-10 pt-4">
           {children}
         </main>
+        <Footer />
       </div>
 
       {/* Mobile Menu Overlay */}

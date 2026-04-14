@@ -20,36 +20,36 @@ export default function MortgageCalculator() {
   const [otherCosts, setOtherCosts] = useState('4000');
 
   const calculateMortgage = () => {
-    const P = parseFloat(homePrice) - parseFloat(downPaymentAmount);
-    const r = parseFloat(interestRate) / 100 / 12;
-    const n = parseFloat(loanTerm) * 12;
+    const P = (parseFloat(homePrice) || 0) - (parseFloat(downPaymentAmount) || 0);
+    const r = (parseFloat(interestRate) || 0) / 100 / 12;
+    const n = (parseFloat(loanTerm) || 0) * 12;
     
     let monthlyPrincipalAndInterest = 0;
     if (r > 0) {
       monthlyPrincipalAndInterest = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    } else {
+    } else if (n > 0) {
       monthlyPrincipalAndInterest = P / n;
     }
 
-    const monthlyPropertyTax = includeTaxes ? parseFloat(propertyTaxesAmount) / 12 : 0;
-    const monthlyHomeInsurance = includeTaxes ? parseFloat(homeInsurance) / 12 : 0;
-    const monthlyPMI = includeTaxes ? parseFloat(pmiInsurance) : 0;
-    const monthlyHOA = includeTaxes ? parseFloat(hoaFee) : 0;
-    const monthlyOther = includeTaxes ? parseFloat(otherCosts) / 12 : 0;
+    const monthlyPropertyTax = includeTaxes ? (parseFloat(propertyTaxesAmount) || 0) / 12 : 0;
+    const monthlyHomeInsurance = includeTaxes ? (parseFloat(homeInsurance) || 0) / 12 : 0;
+    const monthlyPMI = includeTaxes ? (parseFloat(pmiInsurance) || 0) : 0;
+    const monthlyHOA = includeTaxes ? (parseFloat(hoaFee) || 0) : 0;
+    const monthlyOther = includeTaxes ? (parseFloat(otherCosts) || 0) / 12 : 0;
 
     const totalMonthlyPayment = monthlyPrincipalAndInterest + monthlyPropertyTax + monthlyHomeInsurance + monthlyPMI + monthlyHOA + monthlyOther;
 
     return {
-      principalAndInterest: monthlyPrincipalAndInterest,
-      propertyTax: monthlyPropertyTax,
-      homeInsurance: monthlyHomeInsurance,
-      pmi: monthlyPMI,
-      hoa: monthlyHOA,
-      other: monthlyOther,
-      total: totalMonthlyPayment,
-      loanAmount: P,
-      totalInterest: (monthlyPrincipalAndInterest * n) - P,
-      totalPayments: totalMonthlyPayment * n
+      principalAndInterest: monthlyPrincipalAndInterest || 0,
+      propertyTax: monthlyPropertyTax || 0,
+      homeInsurance: monthlyHomeInsurance || 0,
+      pmi: monthlyPMI || 0,
+      hoa: monthlyHOA || 0,
+      other: monthlyOther || 0,
+      total: totalMonthlyPayment || 0,
+      loanAmount: P || 0,
+      totalInterest: ((monthlyPrincipalAndInterest * n) - P) || 0,
+      totalPayments: (totalMonthlyPayment * n) || 0
     };
   };
 
@@ -59,15 +59,16 @@ export default function MortgageCalculator() {
   ]);
 
   const generateAmortizationSchedule = () => {
-    const P = results.loanAmount;
-    const r = parseFloat(interestRate) / 100 / 12;
-    const n = parseFloat(loanTerm) * 12;
-    const payment = results.principalAndInterest;
+    const P = results.loanAmount || 0;
+    const r = (parseFloat(interestRate) || 0) / 100 / 12;
+    const n = (parseFloat(loanTerm) || 0) * 12;
+    const payment = results.principalAndInterest || 0;
 
     let balance = P;
     const schedule = [];
-    let currentYear = parseInt(startYear);
+    let currentYear = parseInt(startYear) || new Date().getFullYear();
     let currentMonthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(startMonth);
+    if (currentMonthIndex === -1) currentMonthIndex = 0;
 
     let yearlyInterest = 0;
     let yearlyPrincipal = 0;

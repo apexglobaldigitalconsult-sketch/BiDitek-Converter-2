@@ -1,101 +1,114 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
+import { create, all } from 'mathjs';
+
+const math = create(all);
+
+let currentIsDegree = true;
+
+// Override trigonometric functions to support degrees
+math.import({
+  sin: (x: any) => currentIsDegree ? Math.sin(Number(x) * Math.PI / 180) : Math.sin(Number(x)),
+  cos: (x: any) => currentIsDegree ? Math.cos(Number(x) * Math.PI / 180) : Math.cos(Number(x)),
+  tan: (x: any) => currentIsDegree ? Math.tan(Number(x) * Math.PI / 180) : Math.tan(Number(x)),
+  asin: (x: any) => currentIsDegree ? Math.asin(Number(x)) * 180 / Math.PI : Math.asin(Number(x)),
+  acos: (x: any) => currentIsDegree ? Math.acos(Number(x)) * 180 / Math.PI : Math.acos(Number(x)),
+  atan: (x: any) => currentIsDegree ? Math.atan(Number(x)) * 180 / Math.PI : Math.atan(Number(x)),
+}, { override: true });
 
 export default function ScientificCalculator() {
-  const [display, setDisplay] = useState('0');
+  const [expression, setExpression] = useState('0');
   const [equation, setEquation] = useState('');
   const [isDegree, setIsDegree] = useState(true);
   const [memory, setMemory] = useState(0);
   const [lastAnswer, setLastAnswer] = useState(0);
 
-  const handleNumber = (num: string) => {
-    if (display === '0') {
-      setDisplay(num);
-    } else {
-      setDisplay(display + num);
-    }
-  };
+  useEffect(() => {
+    currentIsDegree = isDegree;
+  }, [isDegree]);
 
-  const handleOperator = (op: string) => {
-    setEquation(display + ' ' + op + ' ');
-    setDisplay('0');
+  const append = (val: string) => {
+    setExpression(prev => {
+      if (prev.startsWith('Error') || (prev === '0' && !['+', '-', '×', '÷', '%', '^', '.', '!', 'E'].includes(val))) {
+        return val;
+      }
+      return prev + val;
+    });
   };
 
   const calculate = () => {
     try {
-      let result: number;
-      const fullEquation = equation + display;
-      // Simple eval for basic arithmetic, but we should be careful
-      // For a real app, use a math library like mathjs
-      // Here we'll do a basic implementation
-      const parts = fullEquation.split(' ');
-      if (parts.length === 3) {
-        const a = parseFloat(parts[0]);
-        const op = parts[1];
-        const b = parseFloat(parts[2]);
-        switch (op) {
-          case '+': result = a + b; break;
-          case '-': result = a - b; break;
-          case '×': result = a * b; break;
-          case '÷': result = a / b; break;
-          default: result = b;
+      if (!expression) return;
+      let evalExpr = expression.replace(/×/g, '*').replace(/÷/g, '/').replace(/%/g, '/100');
+      const res = math.evaluate(evalExpr, { Ans: lastAnswer });
+      
+      if (typeof res === 'number') {
+        if (!isFinite(res)) {
+          setExpression('Error: Div by 0');
+          setEquation(expression + ' =');
+          return;
         }
-        setDisplay(result.toString());
-        setEquation('');
-        setLastAnswer(result);
+        const formatted = math.format(res, { precision: 14 });
+        setEquation(expression + ' =');
+        setExpression(formatted);
+        setLastAnswer(res);
+      } else if (res && res.isComplex) {
+        setExpression('Error: Complex');
+        setEquation(expression + ' =');
+      } else {
+        setExpression(res.toString());
+        setEquation(expression + ' =');
       }
     } catch (e) {
-      setDisplay('Error');
+      setExpression('Error');
+      setEquation(expression + ' =');
     }
-  };
-
-  const handleFunction = (fn: string) => {
-    const val = parseFloat(display);
-    let result: number = val;
-
-    switch (fn) {
-      case 'sin': result = isDegree ? Math.sin(val * Math.PI / 180) : Math.sin(val); break;
-      case 'cos': result = isDegree ? Math.cos(val * Math.PI / 180) : Math.cos(val); break;
-      case 'tan': result = isDegree ? Math.tan(val * Math.PI / 180) : Math.tan(val); break;
-      case 'asin': result = isDegree ? Math.asin(val) * 180 / Math.PI : Math.asin(val); break;
-      case 'acos': result = isDegree ? Math.acos(val) * 180 / Math.PI : Math.acos(val); break;
-      case 'atan': result = isDegree ? Math.atan(val) * 180 / Math.PI : Math.atan(val); break;
-      case 'sqrt': result = Math.sqrt(val); break;
-      case 'sqr': result = Math.pow(val, 2); break;
-      case 'cube': result = Math.pow(val, 3); break;
-      case 'log': result = Math.log10(val); break;
-      case 'ln': result = Math.log(val); break;
-      case 'exp': result = Math.exp(val); break;
-      case '10x': result = Math.pow(10, val); break;
-      case 'inv': result = 1 / val; break;
-      case 'fact': {
-        let f = 1;
-        for (let i = 1; i <= val; i++) f *= i;
-        result = f;
-        break;
-      }
-      case 'pi': result = Math.PI; break;
-      case 'e': result = Math.E; break;
-      case 'rnd': result = Math.random(); break;
-      case 'abs': result = Math.abs(val); break;
-      case 'neg': result = -val; break;
-    }
-
-    setDisplay(result.toString());
   };
 
   const clear = () => {
-    setDisplay('0');
+    setExpression('0');
     setEquation('');
   };
 
   const backspace = () => {
-    if (display.length > 1) {
-      setDisplay(display.slice(0, -1));
-    } else {
-      setDisplay('0');
+    setExpression(prev => {
+      if (prev.startsWith('Error')) return '0';
+      if (prev.length > 1) return prev.slice(0, -1);
+      return '0';
+    });
+  };
+
+  const toggleSign = () => {
+    setExpression(prev => {
+      if (prev.startsWith('Error')) return '0';
+      const match = prev.match(/(^|[-+×÷(])(-?\d+\.?\d*)$/);
+      if (match) {
+        const num = match[2];
+        const prefix = prev.slice(0, prev.length - num.length);
+        if (num.startsWith('-')) {
+          return prefix + num.slice(1);
+        } else {
+          return prefix + '-' + num;
+        }
+      }
+      return prev + '-';
+    });
+  };
+
+  const handleMemory = (op: string) => {
+    let val = 0;
+    try {
+      let evalExpr = expression.replace(/×/g, '*').replace(/÷/g, '/').replace(/%/g, '/100');
+      const res = math.evaluate(evalExpr, { Ans: lastAnswer });
+      val = typeof res === 'number' ? res : 0;
+    } catch (e) {
+      val = 0;
     }
+
+    if (op === 'M+') setMemory(memory + val);
+    if (op === 'M-') setMemory(memory - val);
+    if (op === 'MR') append(memory.toString());
   };
 
   const Button = ({ children, onClick, className, variant = 'default' }: any) => (
@@ -117,9 +130,9 @@ export default function ScientificCalculator() {
   return (
     <div className="bg-surface-container-low p-6 rounded-[1px] border border-outline-variant/30 shadow-sm w-full">
       {/* Display */}
-      <div className="bg-surface-container-highest p-4 rounded-[1px] mb-4 text-right overflow-hidden border border-outline-variant/30 shadow-inner">
-        <div className="text-primary/60 text-[10px] font-mono h-4 mb-1">{equation}</div>
-        <div className="text-primary text-3xl font-mono font-bold truncate">{display}</div>
+      <div className="bg-surface-container-highest p-4 rounded-[1px] mb-4 text-right overflow-hidden border border-outline-variant/30 shadow-inner flex flex-col justify-end h-24">
+        <div className="text-primary/60 text-[12px] font-mono h-5 mb-1 truncate">{equation}</div>
+        <div className="text-primary text-3xl font-mono font-bold break-all leading-tight max-h-16 overflow-y-auto scrollbar-hide">{expression}</div>
       </div>
 
       {/* Controls */}
@@ -127,9 +140,9 @@ export default function ScientificCalculator() {
         {/* Functions */}
         <div className="flex-1 grid grid-cols-5 gap-1">
           {/* Row 1 */}
-          <Button onClick={() => handleFunction('sin')} variant="function">sin</Button>
-          <Button onClick={() => handleFunction('cos')} variant="function">cos</Button>
-          <Button onClick={() => handleFunction('tan')} variant="function">tan</Button>
+          <Button onClick={() => append('sin(')} variant="function">sin</Button>
+          <Button onClick={() => append('cos(')} variant="function">cos</Button>
+          <Button onClick={() => append('tan(')} variant="function">tan</Button>
           <div className="col-span-2 flex items-center justify-center gap-2 bg-surface-container rounded-[1px] text-[10px] font-bold">
             <label className="flex items-center gap-1 cursor-pointer">
               <input type="radio" checked={isDegree} onChange={() => setIsDegree(true)} className="accent-secondary" /> Deg
@@ -140,65 +153,65 @@ export default function ScientificCalculator() {
           </div>
 
           {/* Row 2 */}
-          <Button onClick={() => handleFunction('asin')} variant="function">sin⁻¹</Button>
-          <Button onClick={() => handleFunction('acos')} variant="function">cos⁻¹</Button>
-          <Button onClick={() => handleFunction('atan')} variant="function">tan⁻¹</Button>
-          <Button onClick={() => handleFunction('pi')} variant="function">π</Button>
-          <Button onClick={() => handleFunction('e')} variant="function">e</Button>
+          <Button onClick={() => append('asin(')} variant="function">sin⁻¹</Button>
+          <Button onClick={() => append('acos(')} variant="function">cos⁻¹</Button>
+          <Button onClick={() => append('atan(')} variant="function">tan⁻¹</Button>
+          <Button onClick={() => append('pi')} variant="function">π</Button>
+          <Button onClick={() => append('e')} variant="function">e</Button>
 
           {/* Row 3 */}
-          <Button onClick={() => handleFunction('pow')} variant="function">xʸ</Button>
-          <Button onClick={() => handleFunction('cube')} variant="function">x³</Button>
-          <Button onClick={() => handleFunction('sqr')} variant="function">x²</Button>
-          <Button onClick={() => handleFunction('exp')} variant="function">eˣ</Button>
-          <Button onClick={() => handleFunction('10x')} variant="function">10ˣ</Button>
+          <Button onClick={() => append('^')} variant="function">xʸ</Button>
+          <Button onClick={() => append('^3')} variant="function">x³</Button>
+          <Button onClick={() => append('^2')} variant="function">x²</Button>
+          <Button onClick={() => append('e^')} variant="function">eˣ</Button>
+          <Button onClick={() => append('10^')} variant="function">10ˣ</Button>
 
           {/* Row 4 */}
-          <Button onClick={() => handleFunction('yroot')} variant="function">ʸ√x</Button>
-          <Button onClick={() => handleFunction('croot')} variant="function">³√x</Button>
-          <Button onClick={() => handleFunction('sqrt')} variant="function">√x</Button>
-          <Button onClick={() => handleFunction('ln')} variant="function">ln</Button>
-          <Button onClick={() => handleFunction('log')} variant="function">log</Button>
+          <Button onClick={() => append('^(1/')} variant="function">ʸ√x</Button>
+          <Button onClick={() => append('cbrt(')} variant="function">³√x</Button>
+          <Button onClick={() => append('sqrt(')} variant="function">√x</Button>
+          <Button onClick={() => append('log(')} variant="function">ln</Button>
+          <Button onClick={() => append('log10(')} variant="function">log</Button>
 
           {/* Row 5 */}
-          <Button onClick={() => handleNumber('(')} variant="function">(</Button>
-          <Button onClick={() => handleNumber(')')} variant="function">)</Button>
-          <Button onClick={() => handleFunction('inv')} variant="function">1/x</Button>
-          <Button onClick={() => handleOperator('%')} variant="operator">%</Button>
-          <Button onClick={() => handleFunction('fact')} variant="function">n!</Button>
+          <Button onClick={() => append('(')} variant="function">(</Button>
+          <Button onClick={() => append(')')} variant="function">)</Button>
+          <Button onClick={() => append('^-1')} variant="function">1/x</Button>
+          <Button onClick={() => append('%')} variant="operator">%</Button>
+          <Button onClick={() => append('!')} variant="function">n!</Button>
         </div>
 
         {/* Number Pad & Basic Ops */}
         <div className="flex-1 grid grid-cols-5 gap-1">
-          <Button onClick={() => handleNumber('7')}>7</Button>
-          <Button onClick={() => handleNumber('8')}>8</Button>
-          <Button onClick={() => handleNumber('9')}>9</Button>
-          <Button onClick={() => handleOperator('+')} variant="operator">+</Button>
+          <Button onClick={() => append('7')}>7</Button>
+          <Button onClick={() => append('8')}>8</Button>
+          <Button onClick={() => append('9')}>9</Button>
+          <Button onClick={() => append('+')} variant="operator">+</Button>
           <Button onClick={backspace} variant="function">Back</Button>
 
-          <Button onClick={() => handleNumber('4')}>4</Button>
-          <Button onClick={() => handleNumber('5')}>5</Button>
-          <Button onClick={() => handleNumber('6')}>6</Button>
-          <Button onClick={() => handleOperator('-')} variant="operator">-</Button>
-          <Button onClick={() => setDisplay(lastAnswer.toString())} variant="function">Ans</Button>
+          <Button onClick={() => append('4')}>4</Button>
+          <Button onClick={() => append('5')}>5</Button>
+          <Button onClick={() => append('6')}>6</Button>
+          <Button onClick={() => append('-')} variant="operator">-</Button>
+          <Button onClick={() => append('Ans')} variant="function">Ans</Button>
 
-          <Button onClick={() => handleNumber('1')}>1</Button>
-          <Button onClick={() => handleNumber('2')}>2</Button>
-          <Button onClick={() => handleNumber('3')}>3</Button>
-          <Button onClick={() => handleOperator('×')} variant="operator">×</Button>
-          <Button onClick={() => setMemory(memory + parseFloat(display))} variant="function">M+</Button>
+          <Button onClick={() => append('1')}>1</Button>
+          <Button onClick={() => append('2')}>2</Button>
+          <Button onClick={() => append('3')}>3</Button>
+          <Button onClick={() => append('×')} variant="operator">×</Button>
+          <Button onClick={() => handleMemory('M+')} variant="function">M+</Button>
 
-          <Button onClick={() => handleNumber('0')}>0</Button>
-          <Button onClick={() => handleNumber('.')}>.</Button>
-          <Button onClick={() => handleFunction('exp')} variant="function">EXP</Button>
-          <Button onClick={() => handleOperator('÷')} variant="operator">÷</Button>
-          <Button onClick={() => setMemory(memory - parseFloat(display))} variant="function">M-</Button>
+          <Button onClick={() => append('0')}>0</Button>
+          <Button onClick={() => append('.')}>.</Button>
+          <Button onClick={() => append('E')} variant="function">EXP</Button>
+          <Button onClick={() => append('÷')} variant="operator">÷</Button>
+          <Button onClick={() => handleMemory('M-')} variant="function">M-</Button>
 
-          <Button onClick={() => handleFunction('neg')}>±</Button>
-          <Button onClick={() => handleFunction('rnd')}>RND</Button>
+          <Button onClick={toggleSign}>±</Button>
+          <Button onClick={() => append('random()')}>RND</Button>
           <Button onClick={clear} variant="action">AC</Button>
           <Button onClick={calculate} variant="operator">=</Button>
-          <Button onClick={() => setDisplay(memory.toString())} variant="function">MR</Button>
+          <Button onClick={() => handleMemory('MR')} variant="function">MR</Button>
         </div>
       </div>
     </div>
