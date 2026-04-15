@@ -95,7 +95,7 @@ export default function PinMode({ onGenerate }: { onGenerate: (pw: string, mode:
           <label className="font-label text-[10px] font-black uppercase tracking-[0.3em] text-primary/50">PIN Type</label>
           <select 
             value={pinType} 
-            onChange={e => setPinType(e.target.value as any)}
+            onChange={e => setPinType(e.target.value as 'numeric' | 'alphanumeric' | 'hexadecimal')}
             className="w-full bg-surface-container border-none p-4 text-sm font-bold text-primary focus:ring-2 ring-secondary/20 rounded-[1px]"
           >
             <option value="numeric">Numeric (0-9)</option>

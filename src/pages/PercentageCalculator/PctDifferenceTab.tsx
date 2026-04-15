@@ -4,7 +4,7 @@ import ResultDisplay from './ResultDisplay';
 export default function PctDifferenceTab() {
   const [x, setX] = useState('');
   const [y, setY] = useState('');
-  const [resData, setResData] = useState<any>(null);
+  const [resData, setResData] = useState<{ result: string | number, interpretation: string, steps: React.ReactNode, visual: React.ReactNode } | null>(null);
   const [error, setError] = useState('');
 
   const calculate = () => {

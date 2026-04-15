@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Calculator, Percent, Dice5, Home, TrendingUp, Banknote, Scale, Flame, Globe, Hash } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
 import { Link } from 'react-router-dom';

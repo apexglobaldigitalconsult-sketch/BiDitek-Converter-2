@@ -9,12 +9,12 @@ let currentIsDegree = true;
 
 // Override trigonometric functions to support degrees
 math.import({
-  sin: (x: any) => currentIsDegree ? Math.sin(Number(x) * Math.PI / 180) : Math.sin(Number(x)),
-  cos: (x: any) => currentIsDegree ? Math.cos(Number(x) * Math.PI / 180) : Math.cos(Number(x)),
-  tan: (x: any) => currentIsDegree ? Math.tan(Number(x) * Math.PI / 180) : Math.tan(Number(x)),
-  asin: (x: any) => currentIsDegree ? Math.asin(Number(x)) * 180 / Math.PI : Math.asin(Number(x)),
-  acos: (x: any) => currentIsDegree ? Math.acos(Number(x)) * 180 / Math.PI : Math.acos(Number(x)),
-  atan: (x: any) => currentIsDegree ? Math.atan(Number(x)) * 180 / Math.PI : Math.atan(Number(x)),
+  sin: (x: number | string) => currentIsDegree ? Math.sin(Number(x) * Math.PI / 180) : Math.sin(Number(x)),
+  cos: (x: number | string) => currentIsDegree ? Math.cos(Number(x) * Math.PI / 180) : Math.cos(Number(x)),
+  tan: (x: number | string) => currentIsDegree ? Math.tan(Number(x) * Math.PI / 180) : Math.tan(Number(x)),
+  asin: (x: number | string) => currentIsDegree ? Math.asin(Number(x)) * 180 / Math.PI : Math.asin(Number(x)),
+  acos: (x: number | string) => currentIsDegree ? Math.acos(Number(x)) * 180 / Math.PI : Math.acos(Number(x)),
+  atan: (x: number | string) => currentIsDegree ? Math.atan(Number(x)) * 180 / Math.PI : Math.atan(Number(x)),
 }, { override: true });
 
 export default function ScientificCalculator() {
@@ -112,7 +112,7 @@ export default function ScientificCalculator() {
     if (op === 'MR') append(memory.toString());
   };
 
-  const Button = ({ children, onClick, className, variant = 'default' }: any) => (
+  const Button = ({ children, onClick, className, variant = 'default' }: { children: React.ReactNode, onClick?: () => void, className?: string, variant?: 'default' | 'action' | 'operator' | 'function' }) => (
     <button
       onClick={onClick}
       className={cn(

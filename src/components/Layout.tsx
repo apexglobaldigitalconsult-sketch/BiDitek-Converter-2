@@ -10,14 +10,6 @@ import {
   Moon,
   ChevronDown,
   ChevronUp,
-  HeartPulse,
-  Ruler,
-  Wallet,
-  Cake,
-  FileText,
-  DollarSign,
-  Divide,
-  Monitor,
   MapPin,
   SlidersHorizontal
 } from 'lucide-react';

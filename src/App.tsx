@@ -18,7 +18,6 @@ import CompoundInterestCalculator from './pages/CompoundInterestCalculator';
 import SalaryCalculator from './pages/SalaryCalculator';
 import InterestRateCalculator from './pages/InterestRateCalculator';
 import SalesTaxCalculator from './pages/SalesTaxCalculator';
-import GenericCalculator from './pages/GenericCalculator';
 import Sitemap from './pages/Sitemap';
 import CalorieCalculator from './pages/CalorieCalculator';
 import BodyFatCalculator from './pages/BodyFatCalculator';

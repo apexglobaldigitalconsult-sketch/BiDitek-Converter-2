@@ -14,7 +14,7 @@ function TipCalculator() {
   const [bill, setBill] = useState('');
   const [tip, setTip] = useState('');
   const [people, setPeople] = useState('1');
-  const [resData, setResData] = useState<any>(null);
+  const [resData, setResData] = useState<{ customResult: React.ReactNode, visual: React.ReactNode, table: React.ReactNode } | null>(null);
   const [error, setError] = useState('');
 
   const calculate = () => {
@@ -129,7 +129,7 @@ function DiscountCalculator() {
   const [orig, setOrig] = useState('');
   const [disc, setDisc] = useState('');
   const [tax, setTax] = useState('');
-  const [resData, setResData] = useState<any>(null);
+  const [resData, setResData] = useState<{ customResult: React.ReactNode, visual: React.ReactNode, table: React.ReactNode } | null>(null);
   const [error, setError] = useState('');
 
   const calculate = () => {

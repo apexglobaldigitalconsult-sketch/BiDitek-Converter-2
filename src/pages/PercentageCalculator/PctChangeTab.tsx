@@ -5,7 +5,7 @@ import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 export default function PctChangeTab() {
   const [x, setX] = useState('');
   const [y, setY] = useState('');
-  const [resData, setResData] = useState<any>(null);
+  const [resData, setResData] = useState<{ result: string | number, interpretation: string, badges: React.ReactNode, steps: React.ReactNode, visual: React.ReactNode, table: React.ReactNode } | null>(null);
   const [error, setError] = useState('');
 
   const calculate = () => {

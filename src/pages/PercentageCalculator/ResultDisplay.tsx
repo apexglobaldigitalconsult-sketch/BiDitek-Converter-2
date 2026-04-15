@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-export default function ResultDisplay({ result, interpretation, badges, steps, visual, table, customResult }: any) {
+interface ResultDisplayProps {
+  result?: React.ReactNode;
+  interpretation?: React.ReactNode;
+  badges?: React.ReactNode;
+  steps?: React.ReactNode;
+  visual?: React.ReactNode;
+  table?: React.ReactNode;
+  customResult?: React.ReactNode;
+}
+
+export default function ResultDisplay({ result, interpretation, badges, steps, visual, table, customResult }: ResultDisplayProps) {
   const [showSteps, setShowSteps] = useState(true);
 
   return (

@@ -2,7 +2,6 @@ import React from 'react';
 import { ArrowRightLeft, RefreshCw, Repeat, Calculator, DollarSign } from 'lucide-react';
 import { motion } from 'motion/react';
 import { cn } from '@/src/lib/utils';
-import { Link } from 'react-router-dom';
 import ScientificCalculator from '../components/ScientificCalculator';
 
 const popularTools = [

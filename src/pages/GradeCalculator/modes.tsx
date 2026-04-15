@@ -4,7 +4,7 @@ import { Plus, X, Calculator, AlertTriangle } from 'lucide-react';
 
 export function WeightedMode({ scale }: { scale: GradeScale[] }) {
   const [rows, setRows] = useState([{ id: '1', name: '', score: '', total: '', weight: '' }]);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<{ finalPct: number, totalWeight: number, breakdown: { name: string, pct: number, contribution: number, weight: number }[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const addRow = () => setRows([...rows, { id: Date.now().toString(), name: '', score: '', total: '', weight: '' }]);
@@ -15,7 +15,7 @@ export function WeightedMode({ scale }: { scale: GradeScale[] }) {
   const calculate = () => {
     let totalW = 0;
     let earnedW = 0;
-    const breakdown: any[] = [];
+    const breakdown: { name: string, pct: number, contribution: number, weight: number }[] = [];
     for (const r of rows) {
       if (r.score !== '' && r.total !== '' && r.weight !== '') {
         const s = Number(r.score);
@@ -110,7 +110,7 @@ export function WeightedMode({ scale }: { scale: GradeScale[] }) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-indigo-100 dark:divide-indigo-800/50">
-                {result.breakdown.map((b: any, i: number) => (
+                {result.breakdown.map((b: { name: string, pct: number, contribution: number, weight: number }, i: number) => (
                   <tr key={i}>
                     <td className="py-3 font-medium text-slate-900 dark:text-white">{b.name}</td>
                     <td className="py-3 text-slate-600 dark:text-slate-300">{b.pct.toFixed(2)}%</td>
@@ -131,7 +131,7 @@ export function GPAMode() {
   const [rows, setRows] = useState([{ id: '1', name: '', grade: '', credits: '' }]);
   const [priorGpa, setPriorGpa] = useState('');
   const [priorCredits, setPriorCredits] = useState('');
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<{ semGpa: number, cumGpa: number, semCreds: number, totCreds: number, courseRes: { name: string, grade: string, credits: number, points: number }[], hasPrior: boolean } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const addRow = () => setRows([...rows, { id: Date.now().toString(), name: '', grade: '', credits: '' }]);
@@ -142,7 +142,7 @@ export function GPAMode() {
   const calculate = () => {
     let semPts = 0;
     let semCreds = 0;
-    const courseRes: any[] = [];
+    const courseRes: { name: string, grade: string, credits: number, points: number }[] = [];
     for (const r of rows) {
       if (r.grade && r.credits !== '') {
         const c = Number(r.credits);
@@ -249,7 +249,7 @@ export function FinalExamMode({ scale }: { scale: GradeScale[] }) {
   const [current, setCurrent] = useState('');
   const [desired, setDesired] = useState('');
   const [weight, setWeight] = useState('');
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<{ required: number, maxPossible: number, possible: boolean } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const clear = () => { setCurrent(''); setDesired(''); setWeight(''); setResult(null); setError(null); };
@@ -332,7 +332,7 @@ export function AverageMode({ scale }: { scale: GradeScale[] }) {
   const [rows, setRows] = useState([{ id: '1', name: '', score: '', total: '', weight: '' }]);
   const [isWeighted, setIsWeighted] = useState(false);
   const [dropN, setDropN] = useState('');
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<{ finalPct: number, highest: number, lowest: number, keptCount: number, droppedCount: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const addRow = () => setRows([...rows, { id: Date.now().toString(), name: '', score: '', total: '', weight: '' }]);

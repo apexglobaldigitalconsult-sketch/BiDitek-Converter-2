@@ -123,7 +123,7 @@ export default function PassphraseMode({ onGenerate }: { onGenerate: (pw: string
           <label className="font-label text-[10px] font-black uppercase tracking-[0.3em] text-primary/50">Wordlist</label>
           <select 
             value={wordlist} 
-            onChange={e => setWordlist(e.target.value as any)}
+            onChange={e => setWordlist(e.target.value as 'common' | 'extended' | 'nato')}
             className="w-full bg-surface-container border-none p-4 text-sm font-bold text-primary focus:ring-2 ring-secondary/20 rounded-[1px]"
           >
             <option value="common">Common English (~300 words)</option>
@@ -162,7 +162,7 @@ export default function PassphraseMode({ onGenerate }: { onGenerate: (pw: string
           <label className="font-label text-[10px] font-black uppercase tracking-[0.3em] text-primary/50">Capitalization</label>
           <select 
             value={capitalize} 
-            onChange={e => setCapitalize(e.target.value as any)}
+            onChange={e => setCapitalize(e.target.value as 'none' | 'first' | 'all' | 'random')}
             className="w-full bg-surface-container border-none p-4 text-sm font-bold text-primary focus:ring-2 ring-secondary/20 rounded-[1px]"
           >
             <option value="none">none</option>
